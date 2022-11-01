@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/model/article';
 import { DataService } from 'src/app/shared/data.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-article',
@@ -13,11 +14,17 @@ export class ArticleComponent implements OnInit {
   articleObj : Article = {
     id :  '',
     title : '',
-    body : ''
+    body : '',
+    author : '',
+    actif : true,
+    date : new Date(),
   }
   id : string = '';
   title : string = '';
   body : string = '';
+  author : string = '';
+  actif : boolean = true;
+  date : Date = new Date();
   constructor(private data : DataService) {}
   ngOnInit(): void {
     this.getAllArticles();
@@ -28,7 +35,9 @@ export class ArticleComponent implements OnInit {
     this.id = '';
     this.title  = '';
     this.body = '';
-    this.body = '';
+    this.author = '',
+    this.actif = true,
+    this.date = new Date()
   }
   getAllArticles(){
     this.data.getAllArticles().subscribe(res => {
@@ -50,7 +59,9 @@ export class ArticleComponent implements OnInit {
     this.articleObj.id = '';
     this.articleObj.body = this.body;
     this.articleObj.title = this.title;
-
+    this.articleObj.actif = true;
+    this.articleObj.date = new Date();
+    this.articleObj.author = '';
     this.data.addArticle(this.articleObj);
     this.resetForm();
   }
