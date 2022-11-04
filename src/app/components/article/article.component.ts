@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/model/article';
-import { DataService } from 'src/app/shared/data.service';
 import { DatePipe } from '@angular/common';
+import { DataService } from 'src/app/shared/services/data/data.service';
 
 @Component({
   selector: 'app-article',

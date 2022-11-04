@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../shared/services/auth.service';
-import {Article} from "../../model/article";
-import {DataService} from "../../shared/data.service";
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
