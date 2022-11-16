@@ -1,0 +1,72 @@
+<footer class="text-center text-lg-start" style="background-color: #BDE0D5">
+  <section class="">
+    <div class="container-fluid px-5">
+      <div class="text-center">
+        <h2 class="fw-bold mb-5 p-5">
+          Contactez nous !
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="container px-5 my-5">
+              <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                  <div class="form-floating mb-3 shadow bg-white rounded">
+                      <input class="form-control" id="nomPrenom" type="text" placeholder="Nom &amp; Prénom" data-sb-validations="required" />
+                      <label for="nomPrenom">Nom &amp; Prénom</label>
+                      <div class="invalid-feedback" data-sb-feedback="nomPrenom:required">Nom &amp; Prénom is required.</div>
+                  </div>
+                  <div class="form-floating mb-3 shadow bg-white rounded">
+                      <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" />
+                      <label for="email">Email</label>
+                      <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
+                      <div class="invalid-feedback" data-sb-feedback="email:email">Email Email is not valid.</div>
+                  </div>
+                  <div class="form-floating mb-3 shadow bg-white rounded">
+                      <textarea class="form-control" id="votreMessageQuestion" type="text" placeholder="Votre message, question …" style="height: 10rem;" data-sb-validations="required"></textarea>
+                      <label for="votreMessageQuestion">Votre message, question …</label>
+                      <div class="invalid-feedback" data-sb-feedback="votreMessageQuestion:required">Votre message, question … is required.</div>
+                  </div>
+                  <div class="d-none" id="submitSuccessMessage">
+                      <div class="text-center mb-3">
+                          <div class="fw-bolder">Form submission successful!</div>
+                      </div>
+                  </div>
+                  <div class="d-none" id="submitErrorMessage">
+                      <div class="text-center text-danger mb-3">Error sending message!</div>
+                  </div>
+                  <div class="d-grid">
+                      <button class="btn btn-primary btn-lg shadow rounded" id="submitButton" type="submit">Submit</button>
+                  </div>
+              </form>
+            </div>
+		    </div>
+        <div class="col-md-5">
+          <img alt="Bootstrap Image Preview" src="https://www.leparisien.fr/resizer/yHTSjbyPl6dJ6bxVV2oqp7nbP0c=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/lpguideshopping/EF6LO3PQRJ3QSBUY552EAHC2BE.jpg" class="rounded" style="width:674px;height:560px"/>
+        </div>
+      </div>
+    </div>
+</section>
+  <!-- Section: Links  -->
+
+  <section class="d-flex justify-content-center p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Rejoins nous sur :</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Guide des Jeunes
+  </div>
+  <!-- Copyright -->
+</footer>
