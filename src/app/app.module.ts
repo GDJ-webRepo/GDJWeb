@@ -18,6 +18,8 @@ import { ArticleComponent } from './components/article/article.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import {FormsModule} from "@angular/forms";
 import { AuthService } from './shared/services/auth/auth.service';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AuthService } from './shared/services/auth/auth.service';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    ArticleComponent
+    ArticleComponent,
+    NavBarComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
