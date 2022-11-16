@@ -1,0 +1,76 @@
+<div class="container-fluid h-custom">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-9 col-lg-6 col-xl-5">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+        class="img-fluid"
+        alt="Sample image"
+      />
+    </div>
+    <h1>Connexion</h1>
+
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="form-outline mb-4">
+          
+            <input
+              matInput
+              placeholder="Email address"
+              formControlName="email"
+              class="form-control"
+            />
+            <mat-error *ngIf="email?.errors?.['required']">
+              Une adresse mail est obligatoire
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+              Une adresse mail valide est obligatoire
+            </mat-error>
+          
+        </div>
+        <div class="form-outline mb-4">
+          
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              class="form-control"
+            />
+            <mat-error *ngIf="password?.errors?.['required']">
+              Le mot de passe est obligatoire
+            </mat-error>
+    
+        </div>
+        <div class="center margin-top">
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            class="btn btn-primary btn-block mb-4"
+          >
+            Connexion
+          </button>
+        </div>
+        <div class="text-center">
+          <p>Quoi tes toujours pas membre!? <a routerLink="/sign-up">S'enregistrer</a></p>
+          <p>ou enregistre toi avec :</p>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
