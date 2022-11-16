@@ -1,9 +1,6 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './components/landing/landing.component';
-
-
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {
   canActivate,
@@ -13,7 +10,7 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import {ArticleComponent} from './components/article/article.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -23,34 +20,32 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: LandingComponent,
+    component: HomeComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
-    ...canActivate(redirectLoggedInToHome),
+
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    ...canActivate(redirectLoggedInToHome),
+
   },
   {
     path: 'home',
     component: HomeComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+ 
   },
-  {
-    path: 'articles',
-    component: ArticleComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
-    
-  }
+  // {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

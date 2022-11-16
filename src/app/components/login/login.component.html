@@ -10,7 +10,7 @@
     <h1>Connexion</h1>
 
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <form >
         <div class="form-outline mb-4">
           
             <input
@@ -18,13 +18,9 @@
               placeholder="Email address"
               formControlName="email"
               class="form-control"
+              #userName required
             />
-            <mat-error *ngIf="email?.errors?.['required']">
-              Une adresse mail est obligatoire
-            </mat-error>
-            <mat-error *ngIf="email?.errors?.['email']">
-              Une adresse mail valide est obligatoire
-            </mat-error>
+         
           
         </div>
         <div class="form-outline mb-4">
@@ -35,10 +31,10 @@
               placeholder="Password"
               formControlName="password"
               class="form-control"
+              #userPassword required
+
             />
-            <mat-error *ngIf="password?.errors?.['required']">
-              Le mot de passe est obligatoire
-            </mat-error>
+      
     
         </div>
         <div class="center margin-top">
@@ -47,6 +43,7 @@
             mat-raised-button
             color="primary"
             class="btn btn-primary btn-block mb-4"
+            (click)="authService.SignIn(userName.value, userPassword.value)"
           >
             Connexion
           </button>
@@ -58,7 +55,7 @@
             <i class="fab fa-facebook-f"></i>
           </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
+          <button type="button" class="btn btn-link btn-floating mx-1" (click)="authService.GoogleAuth()">
             <i class="fab fa-google"></i>
           </button>
 

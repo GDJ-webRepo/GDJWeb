@@ -1,6 +1,6 @@
 <div
   class="form-container mat-elevation-z5 text-center"
-  *ngIf="user$ | async as user"
+  
 >
   <h1>Update Profile</h1>
   <div class="profile-image">
@@ -15,7 +15,7 @@
     </button>
   </div>
  
-  <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+  <form class="margin-top" [formGroup]="profileForm" >
     <div class="row">
       <mat-form-field>
         <input
