@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { user } from 'rxfire/auth';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
@@ -82,7 +83,7 @@ export class SignUpComponent implements OnInit {
       .signUp(email, password)
       .pipe(
         switchMap(({ user: { uid } }) =>
-          this.usersService.addUser({ uid, email, displayName: name })
+          this.usersService.addUser({ uid, email, displayName: name , roles: {subscriber: true}})
         ),
         this.toast.observe({
           success: 'Congrats! You are all signed up',

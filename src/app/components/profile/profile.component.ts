@@ -50,7 +50,10 @@ export class ProfileComponent implements OnInit {
     }
 
     this.usersService
-      .updateUser({ uid, ...data })
+      .updateUser({
+        uid, ...data,
+        roles: {subscriber: true}
+      })
       .pipe(
         this.toast.observe({
           loading: 'Saving profile data...',

@@ -13,6 +13,7 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import {ArticleComponent} from './components/article/article.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -44,6 +45,12 @@ const routes: Routes = [
     component: ProfileComponent,
     ...canActivate(redirectUnauthorizedToLogin),
   },
+  {
+    path: 'articles',
+    component: ArticleComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+    
+  }
 ];
 
 @NgModule({

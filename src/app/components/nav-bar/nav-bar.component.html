@@ -13,7 +13,7 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/articles">Article</a>
+            <a class="nav-link" routerLink="/articles">Articles</a>
           </li>
           <li *ngIf="user$ | async as user; else loginButton">
             <button mat-button [matMenuTriggerFor]="userMenu">
