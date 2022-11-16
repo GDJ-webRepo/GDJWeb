@@ -11,5 +11,6 @@ export class VerifyEmailComponent implements OnInit {
     public authService: AuthService
   ) { }
   ngOnInit() {
+    
   }
 }

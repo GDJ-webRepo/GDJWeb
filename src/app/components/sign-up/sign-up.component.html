@@ -1,53 +1,84 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
+<div class="tab-content">
+  <div
+    class="tab-pane fade show active"
+    id="pills-login"
+    role="tabpanel"
+    aria-labelledby="tab-login"
+  >
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+      <div class="text-center mb-3">
+        <p>S'enregistrer avec:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+      <p class="text-center">ou:</p>
+
+  
+       <div class="form-outline mb-4">
+          <input matInput placeholder="Name" formControlName="name" class="form-control" />
+          <mat-error *ngIf="name?.errors?.['required']">
+            Le pseudo est requis
+          </mat-error>
+       </div>
+     
+        <div class="form-outline mb-4">
+          <input matInput placeholder="Email address" formControlName="email" class="form-control" />
+          <mat-error *ngIf="email?.errors?.['required']">
+            Une adresse mail est obligatoire
+          </mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">
+            Une adresse mail valide est obligatoire
+          </mat-error>
         </div>
-        <div class="formGroup">
+     
+       <div class="form-outline mb-4">
           <input
+            matInput
             type="password"
-            class="formControl"
             placeholder="Password"
-            #userPwd
-            required
+            formControlName="password"
+            class="form-control" 
           />
-        </div>
-        <div class="formGroup">
+          <mat-error *ngIf="password?.errors?.['required']">
+            Le mot de passe est obligatoire
+          </mat-error>
+       </div>
+      
+   
+       <div class="form-outline mb-4">
           <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            matInput
+            type="password"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+            class="form-control" 
           />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button
-            type="button"
-            class="btn googleBtn"
-            (click)="authService.GoogleAuth()"
-          >
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
-        </div>
+          <mat-error *ngIf="confirmPassword?.errors?.['required']">
+            Confirmer votre mot de passe
+          </mat-error>
+       </div>
+  
+      <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+        Les mots de passe ne match pas 
+      </mat-error>
+      <div class="center margin-top">
+        <button type="submit" mat-raised-button color="primary">
+          S'enregistrer!
+        </button>
       </div>
-      <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <span class="redirect" routerLink="/sign-in">Log In</span></span
-        >
-      </div>
-    </div>
+    </form>
   </div>
+</div>

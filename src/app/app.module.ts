@@ -1,49 +1,57 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { LandingComponent } from './components/landing/landing.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { AppComponent } from './app.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ArticleComponent } from './components/article/article.component';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import {FormsModule} from "@angular/forms";
-import { AuthService } from './shared/services/auth/auth.service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    SignInComponent,
+    LoginComponent,
     SignUpComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent,
-    ArticleComponent,
+    LandingComponent,
+    HomeComponent,
+    ProfileComponent,
     NavBarComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    NgxPermissionsModule.forRoot(),
-    FormsModule
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    HotToastModule.forRoot(),
+    MatMenuModule,
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

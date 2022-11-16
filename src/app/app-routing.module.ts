@@ -1,24 +1,53 @@
+
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LandingComponent } from './components/landing/landing.component';
+
+
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ArticleComponent } from './components/article/article.component';
-// route guard
-import { AuthGuard } from './shared/guard/auth.guard';
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'article', component: ArticleComponent , canActivate: [AuthGuard]},
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: LandingComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    ...canActivate(redirectLoggedInToHome),
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    ...canActivate(redirectLoggedInToHome),
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
 ];
+
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
