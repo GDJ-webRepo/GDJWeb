@@ -5,7 +5,7 @@
     role="tabpanel"
     aria-labelledby="tab-login"
   >
-    <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <form>
       <div class="text-center mb-3">
         <p>S'enregistrer avec:</p>
         <button type="button" class="btn btn-link btn-floating mx-1">
@@ -29,19 +29,13 @@
   
        <div class="form-outline mb-4">
           <input matInput placeholder="Name" formControlName="name" class="form-control" />
-          <mat-error *ngIf="name?.errors?.['required']">
-            Le pseudo est requis
-          </mat-error>
+         
        </div>
      
         <div class="form-outline mb-4">
-          <input matInput placeholder="Email address" formControlName="email" class="form-control" />
-          <mat-error *ngIf="email?.errors?.['required']">
-            Une adresse mail est obligatoire
-          </mat-error>
-          <mat-error *ngIf="email?.errors?.['email']">
-            Une adresse mail valide est obligatoire
-          </mat-error>
+          <input matInput placeholder="Email address" formControlName="email" class="form-control"  #userEmail
+          required />
+         
         </div>
      
        <div class="form-outline mb-4">
@@ -51,10 +45,10 @@
             placeholder="Password"
             formControlName="password"
             class="form-control" 
+            #userPwd
+            required
           />
-          <mat-error *ngIf="password?.errors?.['required']">
-            Le mot de passe est obligatoire
-          </mat-error>
+       
        </div>
       
    
@@ -66,16 +60,12 @@
             formControlName="confirmPassword"
             class="form-control" 
           />
-          <mat-error *ngIf="confirmPassword?.errors?.['required']">
-            Confirmer votre mot de passe
-          </mat-error>
+         
        </div>
   
-      <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
-        Les mots de passe ne match pas 
-      </mat-error>
+ 
       <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary">
+        <button type="submit" mat-raised-button color="primary" (click)="authService.SignUp(userEmail.value, userPwd.value)">
           S'enregistrer!
         </button>
       </div>

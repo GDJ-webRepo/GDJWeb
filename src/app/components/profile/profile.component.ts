@@ -3,7 +3,6 @@ import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs';
-import { UsersService } from 'src/app/shared/services/user/users.service';
 
 
 
@@ -15,7 +14,7 @@ import { UsersService } from 'src/app/shared/services/user/users.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  user$ = this.usersService.currentUserProfile$;
+  // user$ = this.usersService.currentUserProfile$;
 
   profileForm = this.fb.group({
     uid: [''],
@@ -29,35 +28,33 @@ export class ProfileComponent implements OnInit {
   constructor(
 
     private toast: HotToastService,
-    private usersService: UsersService,
     private fb: NonNullableFormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.usersService.currentUserProfile$
-      .pipe(untilDestroyed(this), tap(console.log))
-      .subscribe((user) => {
-        this.profileForm.patchValue({ ...user });
-      });
+  
   }
 
 
-  saveProfile() {
-    const { uid, ...data } = this.profileForm.value;
+  // saveProfile() {
+  //   const { uid, ...data } = this.profileForm.value;
 
-    if (!uid) {
-      return;
-    }
+  //   if (!uid) {
+  //     return;
+  //   }
 
-    this.usersService
-      .updateUser({ uid, ...data })
-      .pipe(
-        this.toast.observe({
-          loading: 'Saving profile data...',
-          success: 'Profile updated successfully',
-          error: 'There was an error in updating the profile',
-        })
-      )
-      .subscribe();
-  }
+  //   this.usersService
+  //     .updateUser({
+  //       uid, ...data,
+  //       roles: {subscriber: true}
+  //     })
+  //     .pipe(
+  //       this.toast.observe({
+  //         loading: 'Saving profile data...',
+  //         success: 'Profile updated successfully',
+  //         error: 'There was an error in updating the profile',
+  //       })
+  //     )
+  //     .subscribe();
+  // }
 }
