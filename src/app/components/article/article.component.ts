@@ -68,7 +68,7 @@ export class ArticleComponent implements OnInit {
 
   deleteArticle(article : Article){
     if (window.confirm('Are you sure you want to delete ' + article.title + ' ?')) {
-      this.data.deleteArtiucle(article);
+      this.data.deleteArticle(article);
     }
   }
 }

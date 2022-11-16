@@ -30,11 +30,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let article of articlesList">
-              <td>{{article.title}}</td>
-              <td>{{article.body}}</td>
+            <tr *ngFor="let articles of articlesList">
+              <td>{{articles.title}}</td>
+              <td>{{articles.body}}</td>
               <td>
-                <button class="btn btn-outline-danger" (click)="deleteArticle(article)">Delete</button>
+                <button class="btn btn-outline-danger" (click)="deleteArticle(articles)">Delete</button>
               </td>
             </tr>
             </tbody>

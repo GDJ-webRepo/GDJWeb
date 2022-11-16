@@ -13,16 +13,16 @@ export class DataService {
   //add article
   addArticle(article : Article) {
     article.id = this.afs.createId();
-    return this.afs.collection('/Articles').add(article)
+    return this.afs.collection('/articles').add(article)
   }
 
   getAllArticles(){
-    return this.afs.collection('/Articles').snapshotChanges();
+    return this.afs.collection('/articles').snapshotChanges();
   }
 
-  deleteArtiucle(article : Article){
+  deleteArticle(article : Article){
     console.log(article.id);
-    return this.afs.doc('/Articles/'+article.id).delete();
+    return this.afs.doc('/articles/'+article.id).delete();
   }
 
   //updateArticle(article : Article){
