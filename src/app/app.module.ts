@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
@@ -26,6 +27,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FooterComponent } from './components/footer/footer.component';
+import { ArticleComponent } from './components/article/article.component';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BlogComponent,
     ArticleFormComponent,
     FooterComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatCardModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,

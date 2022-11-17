@@ -10,10 +10,7 @@ import { ArticleService } from 'src/app/shared/services/data/articles.service';
 })
 export class BlogComponent implements OnInit {
   articles?: Article[];
-  currentArticle?: Article;
-  currentIndex = -1;
-  title = '';
-
+ 
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {

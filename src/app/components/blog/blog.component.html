@@ -1,17 +1,5 @@
 <app-article-form></app-article-form>
-<div class="list row">
-    <div class="col-md-6">
-      <h4>Articles List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let article of articles; let i = index"
-        >
-          {{ article.title }}
-          {{article.body}}
-        </li>
-      </ul>
-    </div>
-   
-  </div>
-  
+<div class="grid">
+  <app-article *ngFor="let article of articles | slice:0:6; " [article]=article></app-article>
+</div>
+
