@@ -1,12 +1,36 @@
 .card-text {
-    /* methode 1 */
-   /* text-overflow: ellipsis;
+  /* methode 1 */
+  /* text-overflow: ellipsis;
      white-space: nowrap;
      overflow: hidden; */
-     
-    /* methode 2 */
-   -webkit-line-clamp: 6;
-   display: -webkit-box;
-   -webkit-box-orient: vertical;
-   overflow: hidden;
- }
+
+  /* methode 2 */
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space:normal;
+}
+
+.card.no-shrink {
+  flex-shrink: 0;
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 3%;
+  width: 45vw;
+  height: 27vw;
+  min-width: 45vh;
+  min-height: 20vh;
+  text-overflow: ellipsis;
+  overflow: scroll;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
+  border-radius: 3%;
+}
+
