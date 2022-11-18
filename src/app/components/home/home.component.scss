@@ -4,6 +4,7 @@
 
 .poste  {
     color: rgb(0, 0, 0);
+    font-size: 12px;
 }
 
 .centrage{
@@ -31,20 +32,9 @@ min-height:90px;
   -ms-transform : scale(1.25);
 } 
 
-.imageSponsor3{
-width: 70%;
-}
-.imageSponsor4{
-width: 110%;
-}
-.imageSponsor5{
-  width: 100%
-}
-.imageSponsor6{
-width: 130%;
-}
-.imageSponsor7{
-width: 70%;
+.imageSponsor{
+width: 60%;
+padding:5px;
 }
 /* --------------------- */
 
@@ -58,33 +48,4 @@ width: 400px;
 border-radius: 6px;
 margin-bottom:2px;
 border:solid 3px #AEAEAE;
-}
-
-.contenue .textDiv {
-padding:0;
-margin:0;
-list-style:none;
-text-align: center;
-}
-
-.contenue .pretest{
- max-height:0;
- overflow: hidden;
- transition: all .5s;
- border-radius:0;
- box-shadow: none;
- border:none;
- margin:0
-}
-.contenue .test {
-display:block;
-width:100%;
-text-decoration: none;
-color: #C06B35;
-padding: 8px 0;
-font-family: verdana;
-font-size:1.8em;
-}
-.contenue .textDiv .pretest .test, .contenue:active .contenue .test {
-font-size:1em
 }
