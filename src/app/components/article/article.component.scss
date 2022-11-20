@@ -24,7 +24,7 @@
   min-width: 45vh;
   min-height: 20vh;
   text-overflow: ellipsis;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .card-img-top {
