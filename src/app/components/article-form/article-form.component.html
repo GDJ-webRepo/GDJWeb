@@ -1,7 +1,7 @@
-<div class="submit-form">
-    <div *ngIf="!submitted">
+<div class="submit-form" style="padding-top: 2%">
+    <div id="form" *ngIf="!submitted">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Titre</label>
         <input
           type="text"
           class="form-control"
@@ -14,16 +14,17 @@
   
       <div class="form-group">
         <label for="description">Description</label>
-        <input
+        <textarea
+          type="text"
           class="form-control"
           id="description"
           required
           [(ngModel)]="article.body"
           name="description"
-        />
-      </div>
+        >description</textarea>
+      </div><br>
   
-      <button (click)="createArticle()" class="btn btn-success">Submit</button>
+      <button (click)="createArticle()" class="btn btn-success">Soumettre</button>
     </div>
   </div>
   

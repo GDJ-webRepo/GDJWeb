@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
@@ -28,6 +28,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FooterComponent } from './components/footer/footer.component';
 import { ArticleComponent } from './components/article/article.component';
+import { RdvComponent } from './components/rdv/rdv.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { ArticleComponent } from './components/article/article.component';
     ArticleFormComponent,
     FooterComponent,
     ArticleComponent,
+    RdvComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,4 +70,4 @@ import { ArticleComponent } from './components/article/article.component';
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
