@@ -22,7 +22,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { BlogComponent } from './components/blog/blog.component';
 import { ArticleFormComponent } from './components/article-form/article-form.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -30,6 +30,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ArticleComponent } from './components/article/article.component';
 import { RdvComponent } from './components/rdv/rdv.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -46,6 +50,7 @@ import { FaqComponent } from './components/faq/faq.component';
     ArticleComponent,
     RdvComponent,
     FaqComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,8 +65,10 @@ import { FaqComponent } from './components/faq/faq.component';
     MatInputModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
     AngularFireAuthModule,
-    AngularFirestoreModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     HotToastModule.forRoot(),

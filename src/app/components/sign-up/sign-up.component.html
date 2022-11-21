@@ -5,7 +5,7 @@
     role="tabpanel"
     aria-labelledby="tab-login"
   >
-    <form>
+    <form  [formGroup]="signUpForm" (ngSubmit)="submit()">
       <div class="text-center mb-3">
         <p>S'enregistrer avec:</p>
         <button type="button" class="btn btn-link btn-floating mx-1">
@@ -65,7 +65,7 @@
   
  
       <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+        <button type="submit" mat-raised-button color="primary" >
           S'enregistrer!
         </button>
       </div>

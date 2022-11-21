@@ -8,8 +8,14 @@ import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RdvComponent } from './components/rdv/rdv.component';
 import { FaqComponent } from './components/faq/faq.component';
-
-
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -21,12 +27,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-
+    ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-
+    ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'home',
@@ -39,7 +45,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'rdv',
@@ -49,7 +55,7 @@ const routes: Routes = [
     path: 'faq',
     component: FaqComponent,
   },
-  // {path: '**', component: PageNotFoundComponent}
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

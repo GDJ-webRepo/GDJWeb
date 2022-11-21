@@ -10,9 +10,7 @@
           </li>
           <!-- Calling SignOut() Api from AuthService -->
           <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
+            <button mat-menu-item (click)="logout()">Logout</button>
           </li>
         </ul>
       </div>
@@ -24,12 +22,12 @@
           <h1 class="h2">User Profile</h1>
         </div>
         <!-- Show user data when logged in -->
-        <div class="card " *ngIf="authService.userData as user">
+        <div class="card " *ngIf="user$ | async as user">
           <div class="mx-auto col-md-12">
             <div class="media">
               <div class="mx-auto col-md-1">
               <img class="align-self-start mr-5 img-thumbnail rounded-circle"
-                   src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                   src=""
                    alt="{{user.displayName}}">
                 </div>
               <div class="media-body">

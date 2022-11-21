@@ -1,4 +1,7 @@
-<app-article-form></app-article-form>
+<div *ngIf="user$ | async as user">
+  <app-article-form *ngIf=user.roles.admin></app-article-form>
+</div>
+
 <div class="grid">
   <app-article *ngFor="let article of articles | slice:0:6; " [article]=article></app-article>
 </div>
