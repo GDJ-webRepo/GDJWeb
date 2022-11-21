@@ -13,6 +13,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { user } from 'rxfire/auth';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { UsersService } from 'src/app/shared/services/user/users.service';
 
 
 
@@ -35,8 +36,63 @@ export function passwordsMatchValidator(): ValidatorFn {
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  signUpForm = this.fb.group(
+    {
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },
+    { validators: passwordsMatchValidator() }
+  );
+
   constructor(
-    public authService: AuthService
-  ) { }
-  ngOnInit() { }
+    private authService: AuthService,
+    private router: Router,
+    private toast: HotToastService,
+    private usersService: UsersService,
+    private fb: NonNullableFormBuilder
+  ) {}
+
+  ngOnInit(): void {}
+
+  get email() {
+    return this.signUpForm.get('email');
+  }
+
+  get password() {
+    return this.signUpForm.get('password');
+  }
+
+  get confirmPassword() {
+    return this.signUpForm.get('confirmPassword');
+  }
+
+  get name() {
+    return this.signUpForm.get('name');
+  }
+
+  submit() {
+    const { name, email, password } = this.signUpForm.value;
+
+    if (!this.signUpForm.valid || !name || !password || !email) {
+      return;
+    }
+
+    this.authService
+      .signUp(email, password)
+      .pipe(
+        switchMap(({ user: { uid } }) =>
+          this.usersService.addUser({ uid, email, displayName: name, roles:{ subscriber: true} })
+        ),
+        this.toast.observe({
+          success: 'Congrats! You are all signed up',
+          loading: 'Signing up...',
+          error: ({ message }) => `${message}`,
+        })
+      )
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+  }
 }

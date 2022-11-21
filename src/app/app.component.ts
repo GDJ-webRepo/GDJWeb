@@ -15,7 +15,7 @@ export class AppComponent {
     private router: Router
   ) {}
 
-  logout() {
-    this.authService.SignOut()
-  }
+  // logout() {
+  //   this.authService.SignOut()
+  // }
 }
