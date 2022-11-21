@@ -10,23 +10,17 @@
     <h1>Connexion</h1>
 
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      <form   [formGroup]="loginForm" (ngSubmit)="submit()">
-        <div   class="form-outline mb-4">
-          
-            <input
-             matInput placeholder="Email address" formControlName="email"
-            />
-         
-          
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="form-outline mb-4">
+          <input matInput placeholder="Email address" formControlName="email" />
         </div>
         <div class="form-outline mb-4">
-          
-            <input
-             matInput type="password" placeholder="Password" formControlName="password"
-
-            />
-      
-    
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
         </div>
         <div class="center margin-top">
           <button
@@ -34,13 +28,23 @@
             mat-raised-button
             color="primary"
             class="btn btn-primary btn-block mb-4"
-           
           >
             Connexion
           </button>
+          
+        <a routerLink="/forgot-password"><button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="btn btn-primary btn-block mb-4"
+        >Mot de passe oublié</button></a>
+        
         </div>
         <div class="text-center">
-          <p>Quoi tes toujours pas membre!? <a routerLink="/sign-up">S'enregistrer</a></p>
+          <p>
+            Quoi tes toujours pas membre!?
+            <a routerLink="/sign-up">S'enregistrer</a>
+          </p>
           <p>ou enregistre toi avec :</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>

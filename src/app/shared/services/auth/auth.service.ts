@@ -8,6 +8,7 @@ import {
   updateProfile,
   UserInfo,
   UserCredential,
+  sendPasswordResetEmail,
 } from '@angular/fire/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 
@@ -25,6 +26,10 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     return from(signInWithEmailAndPassword(this.auth, email, password));
+  }
+
+  forgotPassword(email: string): Observable<any>{
+    return from(sendPasswordResetEmail(this.auth, email));
   }
 
   // updateProfile(profileData: Partial<UserInfo>): Observable<any> {

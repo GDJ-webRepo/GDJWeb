@@ -18,9 +18,5 @@ export class NavBarComponent {
     private router: Router
   ) {}
 
-  logout() {
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['/']);
-    });
-  }
+ 
 }
