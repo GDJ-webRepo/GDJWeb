@@ -36,6 +36,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 
@@ -62,6 +63,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MdbCarouselModule,
     MatToolbarModule,
     MatCardModule,
     MatIconModule,

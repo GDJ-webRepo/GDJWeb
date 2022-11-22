@@ -9,7 +9,7 @@
       On est tous réunis pour le projet <strong>“Guides Des Jeunes”</strong>.<br><br>
       
       
-      Comme son nom l’indique, on est un guide pour les jeunes ;)<br>
+      Comme son nom l’indique, on est un guide pour les jeunes ;<br>
       On va répondre à des questions que peuvent se poser les jeunes.<br>
       Notre but est de les aider dans la vie de tous les jours. Étant nous-même des jeunes étudiants, on est les mieux placé pour vous comprendre et pour vous aider.<br><br>
       
@@ -25,6 +25,22 @@
   </div>
   <div class="product-device shadow-sm d-none d-md-block"></div>
   <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+<div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;" *ngIf="booli">
+  <mdb-carousel [controls]="true" [indicators]="true">
+  <mdb-carousel-item *ngFor="let article of articles | slice:0:6; ">
+    <img
+      src="../../../assets/images/ordi.jpg"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5 style="font-size:20px">{{ article.title }}</h5>
+      <p style="font-size:18px; background-color: black">{{ article.body }}</p>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
 </div>
 
 <div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
