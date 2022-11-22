@@ -4,7 +4,6 @@ import { Article } from 'src/app/model/article.model';
 
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,9 +18,10 @@ export class ArticleService {
   getAll(): AngularFirestoreCollection<Article>{
     return this.articlesRef;
   }
-  //add article
-  create(article : Article): any {
-   return this.articlesRef.add({ ...article});
+
+  create(article : Article) {
+    article.id = this.db.createId();
+    return this.db.collection('/articles').add(article);
   }
 
   update(id: string, data: any): Promise<void> {
