@@ -62,4 +62,13 @@ export class LoginComponent implements OnInit {
       this.toast.show(error);
     });
   }
+
+  facebookAuth(){
+    this.authService.FacebookAuth().then(
+      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
+    )
+    .catch((error) => {
+      this.toast.show(error);
+    });
+  }
 }
