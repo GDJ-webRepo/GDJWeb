@@ -12,7 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
   });
-
+  emailSubmitted = false;
   constructor(
     private authService: AuthService,
     private toast: HotToastService,
@@ -31,12 +31,10 @@ export class ForgotPasswordComponent implements OnInit {
       return;
     }
 
-    this.authService.forgotPassword(email).pipe(
-      this.toast.observe({
-        success: 'Un mail vous à été envoyé',
-        loading: 'Envoie en cours',
-        error: ({ message }) => `Une érreur c'est produite: ${message} `,
-      })
-    );
+    this.authService.forgotPassword(email).subscribe({
+      error: (err: Error) => console.error('Observer got an error: ' + err),
+      complete: () => {this.toast.show('Un email vous a été envoyé à l\'adresse suivante : '+email);this.emailSubmitted = true},
+    });
   }
 }
+

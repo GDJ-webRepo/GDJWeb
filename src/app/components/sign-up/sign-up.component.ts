@@ -95,4 +95,13 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(['/home']);
       });
   }
+
+  googleAuth(){
+    this.authService.GoogleAuth().then(
+      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
+    )
+    .catch((error) => {
+      this.toast.show(error);
+    });
+  }
 }
