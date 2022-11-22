@@ -11,6 +11,7 @@ import {
   sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
+  FacebookAuthProvider,
 } from '@angular/fire/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 
@@ -36,6 +37,10 @@ export class AuthService {
 
   GoogleAuth() {
     return  signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  FacebookAuth(){
+    return signInWithPopup(this.auth, new FacebookAuthProvider());
   }
   // Auth logic to run auth providers
 
