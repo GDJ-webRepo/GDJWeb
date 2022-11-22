@@ -8,6 +8,9 @@ import {
   updateProfile,
   UserInfo,
   UserCredential,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from '@angular/fire/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 
@@ -26,6 +29,17 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
+
+  forgotPassword(email: string): Observable<any>{
+    return from(sendPasswordResetEmail(this.auth, email));
+  }
+
+  GoogleAuth() {
+    return  signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+  // Auth logic to run auth providers
+
+
 
   // updateProfile(profileData: Partial<UserInfo>): Observable<any> {
   //   const user = this.auth.currentUser;

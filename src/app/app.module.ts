@@ -34,6 +34,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AppComponent,
     LoginComponent,
     SignUpComponent,
+    ForgotPasswordComponent,
     HomeComponent,
     ProfileComponent,
     NavBarComponent,
