@@ -1,4 +1,3 @@
-
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -15,6 +14,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
@@ -23,7 +23,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent,
-
   },
   {
     path: 'login',
@@ -49,6 +48,10 @@ const routes: Routes = [
     component: BlogComponent,
   },
   {
+    path: 'detail/:id',
+    component: ArticleDetailComponent,
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
     ...canActivate(redirectUnauthorizedToLogin),
@@ -56,12 +59,13 @@ const routes: Routes = [
   {
     path: 'rdv',
     component: RdvComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
   },
   {
     path: 'faq',
     component: FaqComponent,
   },
-  {path: '**', component: NotFoundComponent}
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
@@ -69,4 +73,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

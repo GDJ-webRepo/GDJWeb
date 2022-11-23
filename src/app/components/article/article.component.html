@@ -11,6 +11,6 @@
       {{ article.body }}
     </p>
 
-    <a href="">Lire la suite</a>
+    <a [routerLink]="['/detail', article.id]" >Lire la suite</a>
   </div>
 </div>
