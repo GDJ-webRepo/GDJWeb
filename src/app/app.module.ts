@@ -33,6 +33,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
@@ -70,6 +71,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideStorage(()=> getStorage()),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,

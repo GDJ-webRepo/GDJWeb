@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs';
+import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { ImageUploadService } from 'src/app/shared/services/user/image-upload.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
 
 
@@ -29,6 +31,7 @@ export class ProfileComponent implements OnInit {
   });
 
   constructor(
+    private imageUploadService: ImageUploadService,
     private toast: HotToastService,
     private usersService: UsersService,
     private fb: NonNullableFormBuilder,
@@ -50,6 +53,25 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  uploadFile(event: any, { uid }: User) {
+    this.imageUploadService
+      .uploadImage(event.target.files[0], `images/profile/${uid}`)
+      .pipe(
+        this.toast.observe({
+          loading: 'Uploading profile image...',
+          success: 'Image uploaded successfully',
+          error: 'There was an error in uploading the image',
+        }),
+        switchMap((photoURL) =>
+          this.usersService.updateUser({
+            uid,
+            photoURL,
+            roles: {subscriber: true}
+          })
+        )
+      )
+      .subscribe();
+  }
 
 
   saveProfile() {

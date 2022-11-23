@@ -21,8 +21,21 @@
         <div class="pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">User Profile</h1>
         </div>
+        
         <!-- Show user data when logged in -->
         <div class="card " *ngIf="user$ | async as user">
+          <div class="profile-image" style="border-radius: 100%;">
+            <img
+              width="120"
+              height="120"
+              class="margin-top mat-elevation-z1"
+              [src]="user.photoURL ?? '/assets/images/User-image-placeholder.jpg'"
+            />
+            <button mat-mini-fab (click)="inputField.click()">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <input #inputField hidden type="file" (change)="uploadFile($event, user)" />
           <div class="mx-auto col-md-12">
             <div class="media">
               <div class="mx-auto col-md-1">
