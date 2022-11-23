@@ -36,6 +36,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     RdvComponent,
     FaqComponent,
     NotFoundComponent,
+    ArticleDetailComponent,
   ],
   imports: [
     BrowserModule,
