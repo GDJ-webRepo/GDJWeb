@@ -1,6 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="toTop.js"></script>
 <app-nav-bar></app-nav-bar>
 <div class="app">
   <router-outlet></router-outlet>
-  <a href="" id="toTop"class="btn fw-bold position-fixed bottom-0 start-0" style="margin:1%; font-size:20px; color:white; background-color: #F6A762; border-radius:100%">↑</a>
+  <button (click)="topFunction()" id="backtop" title="Go to top"><img src="../assets/images/fleche.png" height="30" width="25"></button>
 </div>
 <app-footer></app-footer>
