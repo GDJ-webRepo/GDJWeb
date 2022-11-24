@@ -1,0 +1,50 @@
+.card-image{
+  display: flex;
+  padding: 3%;
+  justify-content: center;
+}
+
+.card-img-top{
+  width:70%;
+  border-radius: 25px;
+  opacity: 80%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px;
+}
+
+.container-body {
+  display: flex;
+}
+
+.card-body {
+  justify-content: center;
+  padding-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 3%;
+}
+
+.card-title{
+  text-align: left;
+  font-size: 26px;
+  font-weight: bold;
+  padding-left: 2%;
+}
+
+.card-text{
+  padding: 3%;
+}
+
+#retour{
+  text-decoration: none;
+  color: #F6A762;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 2%;
+  transition: all 0.2s;
+}
+
+#retour:hover{
+  font-size: 20px;
+  color:#d89357;
+  transition: all 0.2s;
+}

@@ -1,16 +1,17 @@
 <div class="card">
-  <img
+  <img [routerLink]="['/detail', article.id]"
     src="{{ article.imageUrl }}"
     class="card-img-top"
     alt= ""
+    style="cursor: pointer;"
   />
 
-  <div class="card-body" >
-    <p class="card-title" style="font-family: Noteworthy; font-size: 24px; font-weight: bold;">{{ article.title }}</p>
+  <div class="card-body"  >
+    <p  class="card-title" [routerLink]="['/detail', article.id]">{{ article.title }}</p>
     <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
       {{ article.body }}
     </p>
 
-    <a [routerLink]="['/detail', article.id]" >Lire la suite</a>
+    <a [routerLink]="['/detail', article.id]" id="lire-suite"> → Lire la suite</a>
   </div>
 </div>
