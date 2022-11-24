@@ -13,9 +13,7 @@ export class NavBarComponent {
   user$ = this.usersService.currentUserProfile$;
 
   constructor(
-    private authService: AuthService,
     public usersService: UsersService,
-    private router: Router
   ) {}
 
  

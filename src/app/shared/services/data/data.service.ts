@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Article } from 'src/app/model/article';
+import { Article } from 'src/app/model/article.model';
+
 
 
 @Injectable({
