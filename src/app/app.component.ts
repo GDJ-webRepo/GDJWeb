@@ -1,3 +1,4 @@
+import { transition } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './shared/services/auth/auth.service';
