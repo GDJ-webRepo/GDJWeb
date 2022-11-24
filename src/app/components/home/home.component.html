@@ -4,21 +4,21 @@
     <span class="lead fw-normal" style="color:black; font-size:15px">C’est quoi les Ydays ?<br><br>
 
       La réponse est simple, ce projet relie toutes les filières de notre école. Les Market Com, les Informatiques et les Créa design, toute année confondue, sont réunis tous ensemble afin de mener un projet qui durera toute l’année.<br><br>
-      
-      
+
+
       On est tous réunis pour le projet <strong>“Guides Des Jeunes”</strong>.<br><br>
-      
-      
+
+
       Comme son nom l’indique, on est un guide pour les jeunes ;<br>
       On va répondre à des questions que peuvent se poser les jeunes.<br>
       Notre but est de les aider dans la vie de tous les jours. Étant nous-même des jeunes étudiants, on est les mieux placé pour vous comprendre et pour vous aider.<br><br>
-      
+
       Vous pouvez nous retrouver sur Instagram “guide.des.jeunes”.<br>
       Vous y trouverez les résumés de nos articles, mais aussi des story hyper utiles.<br><br>
-      
+
       GDJ est plus qu’un simple endroit où vous trouverez des infos.<br>
       Notre équipe a pour mission d’améliorer la vie des jeunes en répondant à vos questions, mais aussi en étant en contact direct avec vous.<br><br>
-      
+
       N’hésitez pas à nous poser des questions sur Instagram, à interagir avec les autres dans l’espace commentaire.<br>
       Restez connecté ! La prise de RDV sera bientôt disponible.<br>
     </span>
@@ -28,8 +28,39 @@
 </div>
 
 <div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;" *ngIf="booli">
-  <mdb-carousel [controls]="true" [indicators]="true">
-  <mdb-carousel-item *ngFor="let article of articles | slice:0:6; ">
+  <div *ngIf="articles?.length == 1">
+      <div *ngFor="let article of articles">
+        <img
+          src="../../../assets/images/ordi.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div id='caroussel-content' class="carousel-caption d-none d-md-block">
+          <h5 id='caroussel-title'>{{ article.title }}</h5>
+          <p id='caroussel-body'>{{ article.body }}</p>
+        </div>
+      </div>
+  </div>
+  <div *ngIf="articles?.length != 1 && articles?.length != 0">
+    <mdb-carousel [controls]="true" [indicators]="true">
+      <mdb-carousel-item *ngFor="let article of articles | slice:0:6;">
+        <img
+          src="../../../assets/images/ordi.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div id='caroussel-content' class="carousel-caption d-none d-md-block">
+          <h5 id='caroussel-title'>{{ article.title }}</h5>
+          <p id='caroussel-body'>{{ article.body }}</p>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+  <div *ngIf="articles?.length == 0" style="text-align: center; font-size: 20px; padding: 5%;">Aucun article pour le moment !</div>
+</div>
+
+<!-- <mdb-carousel [controls]="true" [indicators]="true">
+  <mdb-carousel-item *ngFor="let article of articles | slice:0:6;">
     <img
       src="../../../assets/images/ordi.jpg"
       class="d-block w-100"
@@ -40,8 +71,7 @@
       <p style="font-size:18px; background-color: black">{{ article.body }}</p>
     </div>
   </mdb-carousel-item>
-</mdb-carousel>
-</div>
+</mdb-carousel> -->
 
 <div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
   <div class="row justify-content-center">

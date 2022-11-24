@@ -8,7 +8,7 @@
 }
 
 .centrage{
-display:flex; 
+display:flex;
 align-items: center;
 justify-content:center;
 min-height:90px;
@@ -30,7 +30,7 @@ min-height:90px;
   -webkit-transform : scale(1.25);
   -o-transform : scale(1.25);
   -ms-transform : scale(1.25);
-} 
+}
 
 .imageSponsor{
 width: 60%;
@@ -48,4 +48,27 @@ width: 400px;
 border-radius: 6px;
 margin-bottom:2px;
 border:solid 3px #AEAEAE;
+}
+
+#caroussel-title {
+  font-size: 20px;
+}
+
+#caroussel-body {
+  font-size: 18px;
+}
+
+#caroussel-content {
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  border-radius: 30px;
+  transition: all .5s;
+  padding-top: 2%;
+}
+
+#caroussel-content:hover {
+  background-color: #3a3a3acb;
+  color:whitesmoke;
+  transition: all .5s;
 }
