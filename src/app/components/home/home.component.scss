@@ -52,19 +52,28 @@ border:solid 3px #AEAEAE;
 
 #caroussel-title {
   font-size: 20px;
+  font-weight: bold;
 }
 
 #caroussel-body {
   font-size: 18px;
+  font-weight: 100;
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space:normal;
 }
 
 #caroussel-content {
   justify-content: center;
   text-align: center;
   color: #000000;
+  background-color: whitesmoke;
   border-radius: 30px;
   transition: all .5s;
-  padding-top: 2%;
+  padding: 2%;
+
 }
 
 #caroussel-content:hover {

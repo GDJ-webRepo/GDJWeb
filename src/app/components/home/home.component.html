@@ -27,33 +27,35 @@
   <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
 
-<div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;" *ngIf="booli">
+<div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; cursor: pointer;" *ngIf="booli">
   <div *ngIf="articles?.length == 1">
-      <div *ngFor="let article of articles">
+      <div *ngFor="let article of articles" [routerLink]="['/detail', article.id]">
         <img
           src="{{article.imageUrl}}"
           class="d-block w-100"
           alt="..."
           height="850"
           width="500"
+          style="object-fit: cover;"
         />
-        <div id='caroussel-content' class="carousel-caption d-none d-md-block">
+        <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
           <h5 id='caroussel-title'>{{ article.title }}</h5>
           <p id='caroussel-body'>{{ article.body }}</p>
         </div>
       </div>
   </div>
   <div *ngIf="articles?.length != 1 && articles?.length != 0">
-    <mdb-carousel [controls]="true" [indicators]="true">
-      <mdb-carousel-item *ngFor="let article of articles | slice:0:6;">
+    <mdb-carousel [controls]="true" [indicators]="true" [dark]="true">
+      <mdb-carousel-item *ngFor="let article of articles | slice:0:6;" [routerLink]="['/detail', article.id]">
         <img
           src="{{article.imageUrl}}"
           class="d-block w-100"
           alt="..."
           height="950"
           width="900"
+          style="object-fit: cover;"
         />
-        <div id='caroussel-content' class="carousel-caption d-none d-md-block">
+        <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
           <h5 id='caroussel-title'>{{ article.title }}</h5>
           <p id='caroussel-body'>{{ article.body }}</p>
         </div>

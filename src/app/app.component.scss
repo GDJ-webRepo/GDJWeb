@@ -19,10 +19,10 @@ html { scroll-behavior: smooth; }
   font-weight: bolder;
   width: 60px;
   height: 60px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 #backtop:hover {
-  background-color: #555;
-  transition: all 0.5s; /* Add a dark-grey background on hover */
+  background-color: rgb(226, 226, 226);
+  transition: all 0.2s; /* Add a dark-grey background on hover */
 }

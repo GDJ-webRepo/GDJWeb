@@ -5,7 +5,7 @@
      overflow: hidden; */
 
   /* methode 2 */
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -25,6 +25,12 @@
   min-height: 20vh;
   text-overflow: ellipsis;
   overflow-x: hidden;
+  transition: all 0.5s;
+}
+
+.card:hover{
+  width: 46vw;
+  transition: all 0.5s;
 }
 
 .card-img-top {
@@ -34,3 +40,24 @@
   border-radius: 3%;
 }
 
+#lire-suite{
+  display:flex;
+  justify-content: right;
+  text-decoration: none;
+   color:#F6A762;
+   transition: all 0.2s;
+   font-weight: bold;
+}
+
+#lire-suite:hover{
+  color:#be824c;
+  transition: all 0.2s;
+}
+
+.card-title {
+  font-family: Noteworthy;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
