@@ -8,10 +8,12 @@
 
   <div class="card-body"  >
     <p  class="card-title" [routerLink]="['/detail', article.id]">{{ article.title }}</p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-      {{ article.body }}
+    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap" [innerHTML]= article.body >
+   
     </p>
 
     <a [routerLink]="['/detail', article.id]" id="lire-suite"> → Lire la suite</a>
+    <i *ngIf="user$ | async as user" class="bi bi-trash" (click)="deleteArticle(article)"></i>
+    <app-article-update *ngIf="user$ | async as user" [article]="article"></app-article-update>
   </div>
 </div>

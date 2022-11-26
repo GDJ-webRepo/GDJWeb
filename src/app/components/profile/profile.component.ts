@@ -4,13 +4,10 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { switchMap, tap } from 'rxjs';
-import { User } from 'src/app/model/user';
+import { Roles, User } from 'src/app/model/user';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ImageUploadService } from 'src/app/shared/services/user/image-upload.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
-
-
-
 
 @UntilDestroy()
 @Component({
@@ -66,13 +63,12 @@ export class ProfileComponent implements OnInit {
           this.usersService.updateUser({
             uid,
             photoURL,
-            roles: {subscriber: true}
+            roles: { subscriber: true },
           })
         )
       )
       .subscribe();
   }
-
 
   saveProfile() {
     const { uid, ...data } = this.profileForm.value;
@@ -81,18 +77,21 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.usersService
-      .updateUser({
-        uid, ...data,
-        roles: {subscriber:true}
-      })
-      .pipe(
-        this.toast.observe({
-          loading: 'Saving profile data...',
-          success: 'Profile updated successfully',
-          error: 'There was an error in updating the profile',
+    this.user$.subscribe((user) => {
+      this.usersService
+        .updateUser({
+          uid,
+          ...data,
+          roles: user?.roles,
         })
-      )
-      .subscribe();
+        .pipe(
+          this.toast.observe({
+            loading: 'Saving profile data...',
+            success: 'Profile updated successfully',
+            error: 'There was an error in updating the profile',
+          })
+        )
+        .subscribe();
+    });
   }
 }

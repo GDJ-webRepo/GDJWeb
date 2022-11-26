@@ -11,5 +11,5 @@ export interface User {
     lastName?: string;
     emailVerified?: boolean;
     photoURL?: string;
-    roles: Roles;
+    roles?: Roles;
 }

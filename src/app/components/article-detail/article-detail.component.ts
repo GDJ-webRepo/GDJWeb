@@ -22,7 +22,7 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
     this.sub = this._Activatedroute.paramMap.subscribe((params) => {
       console.log(params);
       this.id = params.get('id');
-      this.retrieveArticles();
+      // this.retrieveArticles();
       // let article = this.articles.find((p) => p.id == this.id);
       // if (article) {
       //   this.article.id = article.id
@@ -37,22 +37,22 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
 
 
 
-  retrieveArticles(): void {
-    this.articleService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.articles = data;
-      for( var i = 0; i < data.length; i=i+1){
-        if (data[i].id == this.id ){
-          this.article= data[i];
-        }
-      }
-    });
-  }
+  // retrieveArticles(): void {
+  //   this.articleService.getAll().snapshotChanges().pipe(
+  //     map(changes =>
+  //       changes.map(c =>
+  //         ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+  //       )
+  //     )
+  //   ).subscribe(data => {
+  //     this.articles = data;
+  //     for( var i = 0; i < data.length; i=i+1){
+  //       if (data[i].id == this.id ){
+  //         this.article= data[i];
+  //       }
+  //     }
+  //   });
+  // }
 
   ngOnDestroy() {
     if (this.sub) this.sub.unsubscribe();

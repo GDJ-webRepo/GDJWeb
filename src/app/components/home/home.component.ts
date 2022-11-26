@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   articles?: Article[];
   booli = false;
   user$ = this.usersService.currentUserProfile$;
-
+  articlesData: Article[] = [];
   constructor(
     private articleService: ArticleService,
     private usersService: UsersService,
@@ -23,24 +23,15 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.retrieveArticles();
+    this.getAllArticles()
   }
 
-  retrieveArticles(): void {
-    this.articleService
-      .getAll()
-      .snapshotChanges()
-      .pipe(
-        map((changes) =>
-          changes.map((c) => ({
-            id: c.payload.doc.id,
-            ...c.payload.doc.data(),
-          }))
-        )
-      )
-      .subscribe((data) => {
-        this.articles = data;
-        this.booli = true;
-      });
+  getAllArticles(){
+
+    this.articleService.getArticles().subscribe((res:Article[]) => {
+      console.log(res);
+      this.articlesData = res
+      this.booli = true;
+    })
   }
 }

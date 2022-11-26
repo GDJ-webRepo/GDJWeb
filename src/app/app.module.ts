@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +41,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { ArticleUpdateComponent } from './components/article-update/article-update.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+
 
 @NgModule({
   declarations: [
@@ -59,6 +64,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     FaqComponent,
     NotFoundComponent,
     ArticleDetailComponent,
+    ArticleUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,11 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     AngularFireDatabaseModule,
     HotToastModule.forRoot(),
     MatMenuModule,
+    EditorModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
