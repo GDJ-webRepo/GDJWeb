@@ -22,6 +22,12 @@ export class ArticleUpdateComponent implements OnInit {
     imageUrl: '',
     author: '',
     actif: true,
+    fileMeta: {
+      id:'',
+      name:'',
+      url:'',
+      size:0
+    },
     date: new Date(),
   };
 
@@ -74,17 +80,20 @@ export class ArticleUpdateComponent implements OnInit {
   }
 
   getAllDetails() {
-    console.log('ok' + this.article);
+    console.log('get all details' );
+    console.log(this.article);
     this.articleDetails = this.article;
     this.preview = this.article.imageUrl!;
   }
 
   updateArticle() {
     const { value } = this.editForm;
-
     this.articleObj.id = this.article.id;
     this.articleObj.title = value.edit_title;
     this.articleObj.body = value.edit_body;
+    console.log("obj update + value")
+    console.log(value)
+    console.log(this.articleObj)
     if (this.selectedFiles) {
       console.log("update avec img")
       this.currentFileUpload = new FileMetaData(this.selectedFiles![0]);
@@ -93,7 +102,6 @@ export class ArticleUpdateComponent implements OnInit {
         .pushFileToStorage(
           this.currentFileUpload,
           this.articleObj,
-          this.article,
           true
         )
         .subscribe({
@@ -107,7 +115,41 @@ export class ArticleUpdateComponent implements OnInit {
         });
     } else {
       console.log("update sans img")
-      this.articleService.updateArticle(this.article,this.articleObj)
+      this.articleObj.fileMeta = this.article.fileMeta
+      this.articleService.updateArticle( this.articleObj)
     }
   }
 }
+
+
+// const { value } = this.editForm;
+// this.articleObj.id = this.article.id;
+// this.articleObj.title = value.edit_title;
+// this.articleObj.body = value.edit_body;
+// console.log("obj update + value")
+// console.log(value)
+// console.log(this.articleObj)
+// if (this.selectedFiles) {
+//   console.log("update avec img")
+//   this.currentFileUpload = new FileMetaData(this.selectedFiles![0]);
+//   const path = 'articleImg/' + this.currentFileUpload.file.name;
+//   this.fileService
+//     .pushFileToStorage(
+//       this.currentFileUpload,
+//       this.articleObj,
+//       true
+//     )
+//     .subscribe({
+//       next: (percentage: number) =>
+//         (this.percentage = Math.round(percentage ? percentage : 0)),
+//       error: (err: any) => console.error(err),
+//       complete: () => {
+//         // alert("L'article à bien été ajouté");
+//         this.editForm.reset();
+//       },
+//     });
+// } else {
+//   console.log("update sans img")
+//   this.articleObj.fileMeta = this.article.fileMeta
+//   this.articleService.updateArticle( this.articleObj)
+// }

@@ -27,17 +27,5 @@ export class BlogComponent implements OnInit {
     })
   }
  
-  // retrieveArticles(): void {
-  //   this.articleService.getAll().snapshotChanges().pipe(
-  //     map(changes =>
-  //       changes.map(c =>
-  //         ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-  //       )
-  //     )
-  //   ).subscribe(data => {
-  //     this.articles = data;
-  //   });
-  // }
-
 }
 

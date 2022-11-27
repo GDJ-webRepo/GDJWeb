@@ -25,11 +25,11 @@
         <form [formGroup]="editForm">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Titre:</label>
-            <input type="text" class="form-control" id="recipient-name" formControlName="edit_title" [value]="articleDetails?.title">
+            <input type="text" class="form-control" id="recipient-name" formControlName="edit_title" [value]="articleDetails.title">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Body:</label>
-            <textarea class="form-control" id="message-text" formControlName="edit_body" [value]="articleDetails?.body"></textarea>
+            <textarea class="form-control" id="message-text" formControlName="edit_body" [value]="articleDetails.body"></textarea>
           </div>
         </form>
       </div>

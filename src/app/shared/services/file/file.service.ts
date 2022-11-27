@@ -22,7 +22,6 @@ export class FileService {
   pushFileToStorage(
     fileUpload: FileMetaData,
     articleObj: Article,
-    article: Article,
     update: boolean
   ): Observable<number> | any {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
@@ -38,13 +37,9 @@ export class FileService {
             fileUpload.name = fileUpload.file.name;
             fileUpload.id = '';
             fileUpload.size = fileUpload.file.size;
-            this.saveMetaDataOfFile(fileUpload);
             articleObj.imageUrl = downloadURL;
-            if (!update) {
-              this.articleService.addArticle(articleObj)
-            }else{
-              this.articleService.updateArticle(article, articleObj)
-            }
+            this.saveMetaDataOfFile(fileUpload, articleObj, update);
+           
           });
         })
       )
@@ -54,7 +49,7 @@ export class FileService {
   }
 
   // save meta data of file to firestore
-  saveMetaDataOfFile(fileObj: FileMetaData) {
+  saveMetaDataOfFile(fileObj: FileMetaData, articleObj: Article, update:boolean ) {
     const fileMeta = {
       id: '',
       name: fileObj.name,
@@ -63,6 +58,12 @@ export class FileService {
     };
 
     fileMeta.id = this.fireStore.createId();
+    articleObj.fileMeta = fileMeta;
+    if (!update) {
+      this.articleService.addArticle(articleObj)
+    }else{
+      this.articleService.updateArticle(articleObj)
+    }
 
     this.fireStore.collection('/articleImg').add(fileMeta);
   }

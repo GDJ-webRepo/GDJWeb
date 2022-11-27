@@ -1,50 +1,73 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { addDoc, collection, deleteDoc, doc, Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  Firestore,
+  setDoc,
+  updateDoc,
+} from '@angular/fire/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { map, Observable } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { AuthService } from '../auth/auth.service';
-
+import { FileService } from '../file/file.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
   currentUser: any;
-  articleRef: AngularFirestoreCollection<Article>
-  constructor(private db: Firestore, private afAuth: AngularFireAuth, private authService: AuthService, private afs: AngularFirestore) {
-    this.articleRef = afs.collection("/articles")
-    this.afAuth.authState.subscribe(user => this.currentUser = user!)
+  articleRef: AngularFirestoreCollection<Article>;
+  constructor(
+    private db: Firestore,
+    private afAuth: AngularFireAuth,
+    private authService: AuthService,
+    private afs: AngularFirestore,
+    private fireStore: AngularFirestore,
+    private fireStorage: AngularFireStorage
+  ) {
+    this.articleRef = afs.collection('/articles');
+    this.afAuth.authState.subscribe((user) => (this.currentUser = user!));
   }
 
   //Add Article
   addArticle(article: Article) {
-    article.author= this.currentUser.displayName;
-    const articlesRef = collection(this.db, "articles");
+    article.author = this.currentUser.displayName;
+    const articlesRef = collection(this.db, 'articles');
     article.id = doc(collection(this.db, 'articles')).id;
     article.date = new Date();
-    return setDoc(doc(articlesRef,article.id), article);
+    return setDoc(doc(articlesRef, article.id), article);
   }
 
   //Get all articles from Firestore
   getArticles(): Observable<any> {
-    return this.afs.collection<any>('articles', ref => ref.orderBy('date', 'desc')).snapshotChanges()
-    .pipe(
-      map(actions => {
-        return actions.map(item => {
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data()
-        };
-      });
-    })
-  )
+    return this.afs
+      .collection<any>('articles', (ref) => ref.orderBy('date', 'desc'))
+      .snapshotChanges()
+      .pipe(
+        map((actions) => {
+          return actions.map((item) => {
+            return {
+              id: item.payload.doc.id,
+              ...item.payload.doc.data(),
+            };
+          });
+        })
+      );
   }
 
   //Delete Article
   deleteArticle(article: Article) {
+    this.fireStore.collection('/articleImg').doc(article.fileMeta!.id).delete();
+    this.fireStorage.ref('/articleImg/' + article.fileMeta!.name).delete();
     let articleRef = doc(this.db, `articles/${article.id}`);
     return deleteDoc(articleRef).catch((error) => {
       console.log(error);
@@ -52,9 +75,8 @@ export class ArticleService {
   }
 
   //Update Article
-  updateArticle(article: Article, articles: any) {
-    let articleRef = doc(this.db, `articles/${article.id}`);
-    console.log(articles)
+  updateArticle(articles: any) {
+    let articleRef = doc(this.db, `articles/${articles.id}`);
     return updateDoc(articleRef, articles);
   }
 }

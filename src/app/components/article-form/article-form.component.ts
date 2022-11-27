@@ -83,7 +83,7 @@ export class ArticleFormComponent implements OnInit {
     this.currentFileUpload = new FileMetaData(this.selectedFiles![0]);
     const path = 'articleImg/' + this.currentFileUpload.file.name;
     this.fileService
-      .pushFileToStorage(this.currentFileUpload, this.articleObj, this.articleObj, false)
+      .pushFileToStorage(this.currentFileUpload, this.articleObj, true)
       .subscribe({
         next: (percentage: number) =>
           (this.percentage = Math.round(percentage ? percentage : 0)),
