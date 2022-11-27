@@ -38,8 +38,8 @@ export class ArticleUpdateComponent implements OnInit {
   imageInfos?: Observable<any>;
   currentFileUpload!: FileMetaData;
   percentage: number = 0;
-
   editForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
@@ -83,6 +83,8 @@ export class ArticleUpdateComponent implements OnInit {
     console.log('get all details' );
     console.log(this.article);
     this.articleDetails = this.article;
+    this.editForm.controls['edit_title'].setValue(this.article.title);
+    this.editForm.controls['edit_body'].setValue(this.article.body);
     this.preview = this.article.imageUrl!;
   }
 
@@ -91,6 +93,7 @@ export class ArticleUpdateComponent implements OnInit {
     this.articleObj.id = this.article.id;
     this.articleObj.title = value.edit_title;
     this.articleObj.body = value.edit_body;
+    this.articleObj.author = this.article.author
     console.log("obj update + value")
     console.log(value)
     console.log(this.articleObj)
@@ -109,15 +112,38 @@ export class ArticleUpdateComponent implements OnInit {
             (this.percentage = Math.round(percentage ? percentage : 0)),
           error: (err: any) => console.error(err),
           complete: () => {
-            // alert("L'article à bien été ajouté");
-            this.editForm.reset();
+            this.reset();
           },
         });
     } else {
       console.log("update sans img")
+      this.articleObj.imageUrl= this.article.imageUrl
       this.articleObj.fileMeta = this.article.fileMeta
       this.articleService.updateArticle( this.articleObj)
+      this.reset();
     }
+  }
+
+
+  reset(){
+    this.articleObj ={
+      id: '',
+      title: '',
+      body: '',
+      imageUrl: '',
+      author: '',
+      actif: true,
+      fileMeta: {
+        id:'',
+        name:'',
+        url:'',
+        size:0
+      },
+      date: new Date(),
+    };
+    this.editForm.reset();
+    this.percentage = 0;
+  
   }
 }
 

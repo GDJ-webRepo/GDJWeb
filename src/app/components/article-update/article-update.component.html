@@ -5,7 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modifier un article</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reset()"></button>
       </div>
       <div *ngIf="currentFileUpload" class="progress mt-2">
         <div
@@ -25,16 +25,16 @@
         <form [formGroup]="editForm">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Titre:</label>
-            <input type="text" class="form-control" id="recipient-name" formControlName="edit_title" [value]="articleDetails.title">
+            <input type="text" class="form-control" id="recipient-name" formControlName="edit_title" >
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Body:</label>
-            <textarea class="form-control" id="message-text" formControlName="edit_body" [value]="articleDetails.body"></textarea>
+            <textarea class="form-control" id="message-text" formControlName="edit_body" ></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Fermer</button>
         <button type="button" class="btn btn-primary" [disabled]="!editForm.valid" (click)="updateArticle()">Enregistrer</button>
       </div>
     </div>
