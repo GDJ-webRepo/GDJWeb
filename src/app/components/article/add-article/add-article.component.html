@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Ajouter un article</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <input
+    type="file"
+    #selectImage
+    style="display: none"
+    (change)="selectFile($event)"
+    accept=".png,.jpg,.jpeg"
+  />
+  <div
+    style="
+      width: 85%;
+      height: 200px;
+      border-radius: 8%;
+      background: grey;
+      margin: 20px;
+      text-align: center;
+    "
+    (click)="selectImage.click()"
+  >
+    <img
+      src="{{ preview }}"
+      alt="Cliquer pour ajouter une image"
+      style="object-fit: cover; width: 100%; height: 200px"
+    />
+  </div>
+  <form
+    fxLayout="row wrap"
+    [formGroup]="addArticleForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Titre</mat-label>
+      <input
+        type="type"
+        matInput
+        formControlName="title"
+        placeholder="Entez un titre"
+      />
+      <mat-error *ngIf="title?.hasError('required')">
+        Entrer un titre s'il vous plait!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Body</mat-label>
+      <input
+        type="textarea"
+        matInput
+        formControlName="body"
+        placeholder="Body"
+      />
+      <mat-error *ngIf="body?.hasError('required')">
+        Entrer un titre s'il vous plait!
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-flat-button color="primary" [disabled]="!imgVerif">
+      Enregister les modifications
+    </button>
+  </form>
+</div>

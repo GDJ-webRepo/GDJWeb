@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/data/articles.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
+import { AddArticleComponent } from '../article/add-article/add-article.component';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -12,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class BlogComponent implements OnInit {
   articlesData: Article[] = [];
   user$ = this.usersService.currentUserProfile$;
-  constructor(private articleService: ArticleService,  private usersService: UsersService, private spinner: NgxSpinnerService) { }
+  constructor(private articleService: ArticleService,  private usersService: UsersService, private spinner: NgxSpinnerService, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.getAllArticles()
@@ -26,6 +28,13 @@ export class BlogComponent implements OnInit {
       this.spinner.hide();
     })
   }
+
+  editArticleDialog(): void {
+    this.dialog.open(AddArticleComponent, {
+      width: '40rem',
+    });
+  }
+
  
 }
 

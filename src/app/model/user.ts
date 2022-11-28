@@ -10,6 +10,6 @@ export interface User {
     firstName?: string;
     lastName?: string;
     emailVerified?: boolean;
-    photoURL?: string;
+    imgProfil?: string;
     roles?: Roles;
 }

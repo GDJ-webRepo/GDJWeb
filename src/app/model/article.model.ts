@@ -1,4 +1,3 @@
-import { FileMetaData } from "./file-meta-data";
 
 export interface Article {
   id? : string;
@@ -8,10 +7,5 @@ export interface Article {
   author? : string;
   actif? : boolean;
   date? : Date;
-  fileMeta? : {
-    id: string,
-    name: string,
-    url: string,
-    size: number,
-  };
+  imgArticle?: string;
 }

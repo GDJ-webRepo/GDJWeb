@@ -1,8 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RdvComponent } from './components/rdv/rdv.component';
@@ -13,8 +12,9 @@ import {
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
@@ -42,6 +42,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+
   },
   {
     path: 'blog',
@@ -54,6 +55,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+
     ...canActivate(redirectUnauthorizedToLogin),
   },
   {

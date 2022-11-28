@@ -18,7 +18,6 @@ import { collectionData } from 'rxfire/firestore';
 import { map, Observable } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { AuthService } from '../auth/auth.service';
-import { FileService } from '../file/file.service';
 
 @Injectable({
   providedIn: 'root',
@@ -66,8 +65,7 @@ export class ArticleService {
 
   //Delete Article
   deleteArticle(article: Article) {
-    this.fireStore.collection('/articleImg').doc(article.fileMeta!.id).delete();
-    this.fireStorage.ref('/articleImg/' + article.fileMeta!.name).delete();
+    this.fireStorage.ref('articleImg/' + article.title).delete();
     let articleRef = doc(this.db, `articles/${article.id}`);
     return deleteDoc(articleRef).catch((error) => {
       console.log(error);

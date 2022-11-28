@@ -13,6 +13,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -20,8 +21,19 @@ import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 })
 export class AuthService {
   currentUser$ = authState(this.auth);
-
-  constructor(private auth: Auth) {}
+  userData: any; 
+  constructor(private auth: Auth, public afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
+  }
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
