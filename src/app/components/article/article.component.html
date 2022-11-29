@@ -2,21 +2,39 @@
   <img
     src="{{ article.imageUrl }}"
     class="card-img-top"
-    alt= ""
-    style="cursor: pointer;"
+    alt=""
+    style="cursor: pointer"
   />
 
-  <div class="card-body"  >
-    <p  class="card-title">{{ article.title }}</p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap" [innerHTML]= article.body >
+  <div class="card-body">
+    <p class="card-title">{{ article.title }}</p>
+    <p
+      class="card-text"
+      style="
+        font-family: Acumin Variable Concept;
+        font-size: 19px;
+        white-space: pre-wrap;
+      "
+      [innerHTML]="article.body"
+    ></p>
 
-    </p>
-
-    <a id="lire-suite" [routerLink]="['/detail']" [state]="article" > → Lire la suite</a>
+    <a id="lire-suite" [routerLink]="['/detail']" [state]="article">
+      → Lire la suite</a
+    >
     <div *ngIf="user$ | async as user">
-      <i *ngIf = user.roles?.admin   class="bi bi-pencil-square" style="color: orange; font-size: 30px; padding: 2%; cursor: pointer;" (click)="editArticleDialog(article)"></i>
+      <i
+        *ngIf="user.roles?.admin"
+        class="bi bi-pencil-square"
+        style="color: orange; font-size: 30px; padding: 2%; cursor: pointer"
+        (click)="editArticleDialog(article)"
+      ></i>
 
-      <i *ngIf = user.roles?.admin class="bi bi-trash" style="color: red; font-size: 30px; cursor: pointer;"(click)="deleteArticle(article)"></i>
+      <i
+        *ngIf="user.roles?.admin"
+        class="bi bi-trash"
+        style="color: red; font-size: 30px; cursor: pointer"
+        (click)="deleteArticle(article)"
+      ></i>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@ import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
-import { switchMap } from 'rxjs';
+import { AsyncSubject, Subject, switchMap } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { ArticleService } from 'src/app/shared/services/data/articles.service';
 import { ImageUploadService } from 'src/app/shared/services/user/image-upload.service';
@@ -17,7 +17,7 @@ import { ImageUploadService } from 'src/app/shared/services/user/image-upload.se
 })
 export class AddArticleComponent implements OnInit {
 
-
+ private editorSubject: Subject<any> = new AsyncSubject();
   isImageLoading = false;
   preview = '';
   file: any
@@ -42,6 +42,11 @@ export class AddArticleComponent implements OnInit {
 
   get body(): AbstractControl | null {
     return this.addArticleForm.get('body');
+  }
+
+  handleEditorInit(e: { editor: any; }) {
+  this.editorSubject.next(e.editor);
+  this.editorSubject.complete();
   }
 
 

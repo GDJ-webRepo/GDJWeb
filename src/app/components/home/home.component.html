@@ -28,8 +28,8 @@
 </div>
 
 <div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; cursor: pointer;" *ngIf="booli">
-  <div *ngIf="articlesData?.length == 1">
-      <div *ngFor="let article of articlesData" [routerLink]="['/detail', article.id]">
+  <div *ngIf="articles?.length == 1">
+      <div *ngFor="let article of articles" [routerLink]="['/detail']" [state]="article">
         <img
           src="{{article.imageUrl}}"
           class="d-block w-100"
@@ -44,9 +44,9 @@
         </div>
       </div>
   </div>
-  <div *ngIf="articlesData?.length != 1 && articlesData?.length != 0">
+  <div *ngIf="articles?.length != 1 && articles?.length != 0">
     <mdb-carousel [controls]="true" [indicators]="true" [dark]="true">
-      <mdb-carousel-item *ngFor="let article of articles | slice:0:6;" [routerLink]="['/detail', article.id]">
+      <mdb-carousel-item *ngFor="let article of articles | slice:0:6;" [routerLink]="['/detail']" [state]="article">
         <img
           src="{{article.imageUrl}}"
           class="d-block w-100"
