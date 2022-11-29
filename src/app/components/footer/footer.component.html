@@ -9,31 +9,31 @@
       <div class="row">
         <div class="col-md-7">
           <div class="container px-5 my-5">
-              <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+              <form id="contactForm" #contactForm="ngForm" (ngSubmit)="onSubmitForm(contactForm)">
                   <div class="form-floating mb-3 shadow bg-white rounded">
-                      <input class="form-control" id="nomPrenom" type="text" placeholder="Nom &amp; Prénom" data-sb-validations="required" />
+                      <input class="form-control" id="nomPrenom" type="text" name="userName" [(ngModel)]="userName" placeholder="Nom &amp; Prénom"/>
                       <label for="nomPrenom">Nom &amp; Prénom</label>
-                      <div class="invalid-feedback" data-sb-feedback="nomPrenom:required">Nom &amp; Prénom is required.</div>
+                      <!-- <div class="invalid-feedback" data-sb-feedback="nomPrenom:required">Nom &amp; Prénom is required.</div> -->
                   </div>
                   <div class="form-floating mb-3 shadow bg-white rounded">
-                      <input class="form-control" id="email" type="email" placeholder="Email" data-sb-validations="required,email" />
+                      <input class="form-control" id="email" type="email" name="userEmail" [(ngModel)]="userEmail" placeholder="Email"/>
                       <label for="email">Email</label>
-                      <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
-                      <div class="invalid-feedback" data-sb-feedback="email:email">Email Email is not valid.</div>
+                      <!-- <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
+                      <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div> -->
                   </div>
                   <div class="form-floating mb-3 shadow bg-white rounded">
-                      <textarea class="form-control" id="votreMessageQuestion" type="text" placeholder="Votre message, question …" style="height: 10rem;" data-sb-validations="required"></textarea>
+                      <textarea class="form-control" id="votreMessageQuestion" type="text" name="userMessage" [(ngModel)]="userMessage" placeholder="Votre message, question …" style="height: 10rem;"></textarea>
                       <label for="votreMessageQuestion">Votre message, question …</label>
-                      <div class="invalid-feedback" data-sb-feedback="votreMessageQuestion:required">ce champ est requis.</div>
+                      <!-- <div class="invalid-feedback" data-sb-feedback="votreMessageQuestion:required">ce champ est requis.</div> -->
                   </div>
-                  <div class="d-none" id="submitSuccessMessage">
+                  <!-- <div class="d-none" id="submitSuccessMessage">
                       <div class="text-center mb-3">
                           <div class="fw-bolder">Form submission successful!</div>
                       </div>
                   </div>
                   <div class="d-none" id="submitErrorMessage">
                       <div class="text-center text-danger mb-3">Error sending message!</div>
-                  </div>
+                  </div> -->
                   <div class="d-grid">
                       <button class="btn btn-primary btn-lg shadow rounded" id="submitButton" type="submit">Submit</button>
                   </div>
