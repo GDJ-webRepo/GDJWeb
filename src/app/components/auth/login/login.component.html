@@ -1,4 +1,45 @@
-<div class="container-fluid h-custom">
+<div class="container" style="display: flex; justify-content: center; padding: 3%">
+  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+    <div class="justify-content-center">
+      <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+      class="img-fluid"
+      alt="Sample image"
+      />
+  </div>
+  <article class="card-body">
+    <h2 style="text-align: center; padding: 3%;">Connexion</h2>
+    <div style="text-align: center;">
+      <button class="btn btn-block btn-outline-dark" style="margin: 3%;" (click)="googleAuth()"> <i class="fab fa-google"></i> Login via Google</button>
+      <button class="btn btn-block btn-outline-primary" (click)="facebookAuth()"> <i class="fab fa-facebook-f" ></i> Login via facebook</button>
+    </div>
+    <hr>
+    <form style="padding: 1%;" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="form-group" style="margin: 2%;">
+        <input class="form-control" matInput formControlName="email" placeholder="Email" type="email">
+      </div>
+      <div class="form-group" style="margin: 2%;">
+          <input class="form-control" matInput
+          type="password"
+          placeholder="Mot de passe"
+          formControlName="password">
+      </div>
+      <div class="row">
+        <div class="" style="text-align: right;">
+          <a class="small" routerLink="/forgot-password">Mot de passe oublié ?</a>
+        </div>
+        <div>
+          <button type="submit" mat-raised-button class="btn btn-primary btn-block" style="margin: 2%; width: 95%;"> Connexion  </button>
+          <button class="btn btn-block btn-outline-primary" style="width: 95%;" routerLink="/sign-up">Inscription</button>
+        </div>
+      </div>
+    </form>
+  </article>
+  </div>
+</div>
+
+
+<!-- <div class="container-fluid h-custom">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-md-9 col-lg-6 col-xl-5">
       <img
@@ -7,8 +48,7 @@
         alt="Sample image"
       />
     </div>
-    <h1>Connexion</h1>
-
+    <h2 style="text-align: center; padding: 3%;">Connexion</h2>
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="form-outline mb-4">
@@ -31,14 +71,14 @@
           >
             Connexion
           </button>
-          
+
         <a routerLink="/forgot-password"><button
           type="submit"
           mat-raised-button
           color="primary"
           class="btn btn-primary btn-block mb-4"
         >Mot de passe oublié</button></a>
-        
+
         </div>
         <div class="text-center">
           <p>
@@ -65,4 +105,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
