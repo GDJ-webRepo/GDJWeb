@@ -40,7 +40,7 @@
         />
         <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
           <h5 id='caroussel-title'>{{ article.title }}</h5>
-          <p id='caroussel-body'>{{ article.body }}</p>
+          <p id='caroussel-body' [innerHTML]="article.body" >{{ article.body }}</p>
         </div>
       </div>
   </div>
@@ -57,7 +57,7 @@
         />
         <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
           <h5 id='caroussel-title'>{{ article.title }}</h5>
-          <p id='caroussel-body'>{{ article.body }}</p>
+          <p id='caroussel-body' [innerHTML]="article.body">{{ article.body }}</p>
         </div>
       </mdb-carousel-item>
     </mdb-carousel>

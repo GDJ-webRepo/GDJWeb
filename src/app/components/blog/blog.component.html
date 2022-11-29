@@ -7,5 +7,6 @@
 
 <div class="grid">
   <app-article *ngFor="let article of articlesData | slice:0:6; " [article]=article></app-article>
+  <div *ngIf="articlesData?.length == 0" style="text-align: center; font-size: 20px; padding: 5%;">Aucun article pour le moment !</div>
 </div>
 
