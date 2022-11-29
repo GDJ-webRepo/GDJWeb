@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -24,13 +25,15 @@ export class EditProfileComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: {
       userData: User;
+      router: Route
     },
     private formBuilder: UntypedFormBuilder,
     private storage: AngularFireStorage,
     private imageUploadService: ImageUploadService,
     private us: UsersService,
     private toast: HotToastService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route:ActivatedRoute,private router:Router
   ) {}
 
   editUserForm = this.formBuilder.group({
@@ -62,7 +65,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.isImageLoading)
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
-        const filePath = `profilImage/${this.data.userData.uid}_${this.data.userData.displayName}`;
+        const filePath = `profilImage/${this.data.userData.uid}`;
         this.imageUploadService.uploadImage(file, filePath).pipe(
           this.toast.observe({
             loading: 'Uploading profile image...',
@@ -74,7 +77,6 @@ export class EditProfileComponent implements OnInit {
           )
         ).subscribe();
         this.isImageLoading = false;
-        console.log(this.isImageLoading)
       }
     }
   }
@@ -99,5 +101,11 @@ export class EditProfileComponent implements OnInit {
       this.us.updateUserProfilInfo(userInfo, this.data.userData.uid);
       this.dialog.closeAll();
     }
+  }
+
+  deleteUser(){
+    this.us.deleteUser(this.data.userData)
+    this.dialog.closeAll();
+    this.router.navigate(['/home']);
   }
 }

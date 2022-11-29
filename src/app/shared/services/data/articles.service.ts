@@ -65,7 +65,7 @@ export class ArticleService {
 
   //Delete Article
   deleteArticle(article: Article) {
-    this.fireStorage.ref('articleImg/' + article.title).delete();
+    this.fireStorage.ref('articleImg/' + article.id).delete();
     let articleRef = doc(this.db, `articles/${article.id}`);
     return deleteDoc(articleRef).catch((error) => {
       console.log(error);
