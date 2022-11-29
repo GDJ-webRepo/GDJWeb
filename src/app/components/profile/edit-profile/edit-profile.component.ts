@@ -90,7 +90,6 @@ export class EditProfileComponent implements OnInit {
         displayName: this.editUserForm.get('displayName')?.value,
         email: this.editUserForm.get('email')?.value,
       };
-      console.log(userInfo);
       this.us.updateUserProfilInfo(userInfo, this.data.userData.uid);
       this.dialog.closeAll();
     }
