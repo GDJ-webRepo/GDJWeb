@@ -6,7 +6,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {ImageUploadService} from "../../../shared/services/user/image-upload.service";
 import {UsersService} from "../../../shared/services/user/users.service";
 import {HotToastService} from "@ngneat/hot-toast";
-import {switchMap} from "rxjs";
+import {AsyncSubject, Subject, switchMap} from "rxjs";
 import {Article} from "../../../model/article.model";
 import {ArticleService} from "../../../shared/services/data/articles.service";
 
@@ -17,6 +17,8 @@ import {ArticleService} from "../../../shared/services/data/articles.service";
 })
 export class EditArticleComponent implements OnInit {
 
+
+ private editorSubject: Subject<any> = new AsyncSubject();
   isImageLoading = false;
   preview = '';
   file: any
@@ -53,6 +55,10 @@ export class EditArticleComponent implements OnInit {
     return this.editArticleForm.get('body');
   }
 
+  handleEditorInit(e: { editor: any; }) {
+    this.editorSubject.next(e.editor);
+    this.editorSubject.complete();
+    }
 
   async selectFile(event: any): Promise<void> {
     if (event.target.files) {
