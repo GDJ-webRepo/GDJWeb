@@ -66,7 +66,7 @@ export class EditArticleComponent implements OnInit {
       console.log(this.isImageLoading)
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
-        const filePath = `articleImg/${this.data.articleData.title}`;
+        const filePath = `articleImg/${this.data.articleData.id}`;
         this.imageUploadService.uploadImage(file, filePath).pipe(
           this.toast.observe({
             loading: 'Uploading profile image...',

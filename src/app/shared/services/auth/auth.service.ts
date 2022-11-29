@@ -12,6 +12,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
+  deleteUser,
 } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
@@ -62,5 +63,9 @@ export class AuthService {
 
   logout(): Observable<any> {
     return from(this.auth.signOut());
+  }
+
+  deletUser(){
+    return from(deleteUser(this.userData))
   }
 }

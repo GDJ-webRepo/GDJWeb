@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {
   collection,
   doc,
@@ -18,7 +19,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class UsersService {
   userCollection: AngularFirestoreCollection<User>;
-  constructor(private afs: AngularFirestore, private authService: AuthService,private firestore: Firestore) {
+  constructor(private afs: AngularFirestore, private authService: AuthService,private firestore: Firestore, private fireStorage: AngularFireStorage) {
     this.userCollection = this.afs.collection('users');
   }
 
@@ -41,6 +42,12 @@ export class UsersService {
   newUser(user: User): Promise<void> {
     const userDoc = this.userCollection.doc(`${user.uid}`);
     return userDoc.set(user);
+  }
+
+  deleteUser(user: User){
+    this.authService.deletUser();
+    this.fireStorage.ref('profilImage/' + user.uid).delete();
+    return this.userCollection.doc(user.uid).delete
   }
 
   updateUserProfileImg(urlImg: string, userID?: string): Promise<void> {

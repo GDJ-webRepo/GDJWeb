@@ -62,7 +62,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.isImageLoading)
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
-        const filePath = `profilImage/${this.data.userData.uid}_${this.data.userData.displayName}`;
+        const filePath = `profilImage/${this.data.userData.uid}`;
         this.imageUploadService.uploadImage(file, filePath).pipe(
           this.toast.observe({
             loading: 'Uploading profile image...',
