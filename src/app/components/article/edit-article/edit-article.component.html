@@ -38,12 +38,12 @@
         placeholder="Entez un titre"
       />
       <mat-error *ngIf="title?.hasError('required')">
-        Entrer un titre s'il vous plait!
+        Le titre est requis
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="100">
-      <mat-label>Body</mat-label>
+      <mat-label>Corps</mat-label>
       <input
         type="textarea"
         matInput
@@ -51,7 +51,7 @@
         placeholder="Body"
       />
       <mat-error *ngIf="body?.hasError('required')">
-        Entrer un body s'il vous plait!
+        Le corps du texte est requis
       </mat-error>
     </mat-form-field>
 

@@ -28,15 +28,15 @@
   ></app-user-profil-img>
   <form fxLayout="row wrap" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" fxFlex="100">
-      <mat-label>Display Name</mat-label>
+      <mat-label>Pseudo</mat-label>
       <input
         type="type"
         matInput
         formControlName="displayName"
-        placeholder="Entez votre nom ou votre pre-nom"
+        placeholder="Entez votre Pseudo"
       />
       <mat-error *ngIf="displayName?.hasError('required')">
-        Completer votre nom s'il vous plait !
+        Le Pseudo est requis
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" fxFlex="100">
@@ -45,10 +45,10 @@
         type="type"
         matInput
         formControlName="firstName"
-        placeholder="Entez votre nom ou votre pre-nom"
+        placeholder="Entez votre prénom"
       />
       <mat-error *ngIf="firstName?.hasError('required')">
-        Completer votre nom s'il vous plait !
+        Le prénom est requis
       </mat-error>
     </mat-form-field>
 
@@ -58,7 +58,7 @@
         type="email"
         matInput
         formControlName="lastName"
-        placeholder="Entrez votre post-nom"
+        placeholder="Entrez votre nom de famille"
       />
     </mat-form-field>
 
@@ -68,7 +68,7 @@
         type="email"
         matInput
         formControlName="email"
-        placeholder="Adresse mail"
+        placeholder="Entrez votre adresse mail"
       />
       <mat-error
         *ngIf="email?.hasError('email') && !email?.hasError('required')"
@@ -76,7 +76,7 @@
         Email invalide
       </mat-error>
       <mat-error *ngIf="email?.hasError('required')">
-        Email est <strong>recommandé</strong>
+        Votre Email est <strong>obligatoire</strong>
       </mat-error>
     </mat-form-field>
     <button

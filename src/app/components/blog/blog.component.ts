@@ -6,45 +6,47 @@ import { UsersService } from 'src/app/shared/services/user/users.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { AddArticleComponent } from '../article/add-article/add-article.component';
-import {User} from "../../model/user";
+import { User } from '../../model/user';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  styleUrls: ['./blog.component.scss'],
 })
 export class BlogComponent implements OnInit {
   articlesData: Article[] = [];
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
-  constructor(private articleService: ArticleService,  private usersService: UsersService, private spinner: NgxSpinnerService, private dialog: MatDialog,) { }
+  constructor(
+    private articleService: ArticleService,
+    private usersService: UsersService,
+    private spinner: NgxSpinnerService,
+    private dialog: MatDialog
+  ) {}
 
   async ngOnInit(): Promise<void> {
     if (this.user$) {
       await this.user$.subscribe((user) => {
-        this.userData = user
-      })
+        this.userData = user;
+      });
     }
-    this.getAllArticles()
+    this.getAllArticles();
   }
 
-  getAllArticles(){
+  getAllArticles() {
     this.spinner.show();
-    this.articleService.getArticles().subscribe((res:Article[]) => {
+    this.articleService.getArticles().subscribe((res: Article[]) => {
       console.log(res);
-      this.articlesData = res
+      this.articlesData = res;
       this.spinner.hide();
-    })
+    });
   }
 
   editArticleDialog(): void {
     this.dialog.open(AddArticleComponent, {
       width: '40rem',
       data: {
-        userData: this.userData
+        userData: this.userData,
       },
     });
   }
-
-
 }
-

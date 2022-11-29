@@ -19,7 +19,7 @@
       <div
         fxHide.xs
         class="img-border"
-       
+
       ></div>
       <div class="user-profil-actions" fxLayoutAlign="end">
         <button mat-flat-button color="primary" (click)="editUserDialog()">
@@ -35,7 +35,7 @@
           {{ (user$ | async)?.lastName }}
         </h1>
         <h2>{{ (user$| async)?.email }}</h2>
-       
+
       </div>
     </div>
   </div>
@@ -78,10 +78,11 @@
                 <hr class="mt-0 mb-4" />
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    <h6 *ngIf="(user$ | async)?.roles?.admin">Admin</h6>
-                    <h6 *ngIf="(user$ | async)?.roles?.subscriber">Subcriber</h6>
+                    <h6 *ngIf="(user$ | async)?.roles?.admin">Administrateur</h6>
+                    <h6 *ngIf="(user$ | async)?.roles?.subscriber">Utilisateur</h6>
                   </div>
-                  <div class="col-6 mb-3">
+                </div>
+                  <div class="" style="text-align: center;">
                     <button mat-flat-button color="primary" style="margin : 3px" (click)="editUserDialog()">
                       Editer le profil
                     </button>
@@ -89,7 +90,6 @@
                       Se déconnecter
                     </button>
                   </div>
-                </div>
               </div>
             </div>
           </div>

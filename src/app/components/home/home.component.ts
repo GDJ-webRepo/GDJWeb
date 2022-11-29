@@ -23,15 +23,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllArticles()
+    this.getAllArticles();
   }
 
-  getAllArticles(){
-
-    this.articleService.getArticles().subscribe((res:Article[]) => {
+  getAllArticles() {
+    this.articleService.getArticles().subscribe((res: Article[]) => {
       console.log(res);
-      this.articlesData = res
+      this.articlesData = res;
       this.booli = true;
-    })
+    });
   }
 }
