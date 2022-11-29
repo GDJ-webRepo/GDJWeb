@@ -17,8 +17,7 @@
     <div class="card-body" >
       <a id="retour" [routerLink]="['/blog']">← Retour</a>
         <p class="card-title"><br/>{{ article.title }}</p>
-        <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-          {{ article.body }}
+        <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap"  [innerHTML]="article.body">
         </p>
     </div>
   </div>

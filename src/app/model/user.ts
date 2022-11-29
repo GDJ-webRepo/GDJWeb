@@ -12,4 +12,5 @@ export interface User {
     emailVerified?: boolean;
     imgProfil?: string;
     roles?: Roles;
+    auth?: boolean
 }
