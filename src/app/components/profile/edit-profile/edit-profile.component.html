@@ -62,7 +62,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="outline" fxFlex="100">
+    <mat-form-field appearance="outline" fxFlex="100" *ngIf="data.userData.auth == true">
       <mat-label>Email</mat-label>
       <input
         type="email"

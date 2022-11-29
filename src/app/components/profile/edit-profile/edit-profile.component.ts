@@ -34,10 +34,10 @@ export class EditProfileComponent implements OnInit {
   ) {}
 
   editUserForm = this.formBuilder.group({
-    displayName: [this.data.userData.displayName, Validators.required],
-    firstName: [this.data.userData.firstName, Validators.required],
+    displayName: [this.data.userData.displayName],
+    firstName: [this.data.userData.firstName],
     lastName: [this.data.userData.lastName],
-    email: [this.data.userData.email, [Validators.required, Validators.email]],
+    email: [this.data.userData.email, [Validators.email]],
   });
 
   get displayName(): AbstractControl | null {
@@ -83,13 +83,19 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit(): void {
     if (this.editUserForm.valid) {
-      const userInfo: User = {
+      const userInfo: User = this.data.userData.auth == true ?{
         uid: this.data.userData.uid,
         firstName: this.editUserForm.get('firstName')?.value,
         lastName: this.editUserForm.get('lastName')?.value,
         displayName: this.editUserForm.get('displayName')?.value,
-        email: this.editUserForm.get('email')?.value,
-      };
+        email: this.editUserForm.get('email')?.value 
+      }: {
+        uid: this.data.userData.uid,
+        firstName: this.editUserForm.get('firstName')?.value,
+        lastName: this.editUserForm.get('lastName')?.value,
+        displayName: this.editUserForm.get('displayName')?.value,
+        auth: false
+      }
       this.us.updateUserProfilInfo(userInfo, this.data.userData.uid);
       this.dialog.closeAll();
     }
