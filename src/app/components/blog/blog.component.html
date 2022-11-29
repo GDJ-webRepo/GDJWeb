@@ -1,8 +1,11 @@
+<ngx-spinner size="medium" color="#fff" [fullScreen]="true" type="ball-scale-mulitple"><p style="font-size : 20px; color: white">Chargement....</p></ngx-spinner>
 <div *ngIf="user$ | async as user">
-  <app-article-form *ngIf=user.roles.admin></app-article-form>
+  <button mat-flat-button color="primary" (click)="editArticleDialog()" *ngIf = user.roles?.admin >
+    Ajouter un article
+  </button>
 </div>
 
 <div class="grid">
-  <app-article *ngFor="let article of articles | slice:0:6; " [article]=article></app-article>
+  <app-article *ngFor="let article of articlesData | slice:0:6; " [article]=article></app-article>
 </div>
 

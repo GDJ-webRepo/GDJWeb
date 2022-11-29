@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import {
   collection,
   doc,
@@ -16,7 +17,12 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  userCollection: AngularFirestoreCollection<User>;
+  constructor(private afs: AngularFirestore, private authService: AuthService,private firestore: Firestore) {
+    this.userCollection = this.afs.collection('users');
+  }
+
+  getUser = (userid?: string) => this.userCollection.doc(userid).valueChanges();
 
   get currentUserProfile$(): Observable<User | null> {
     return this.authService.currentUser$.pipe(
@@ -24,20 +30,27 @@ export class UsersService {
         if (!user?.uid) {
           return of(null);
         }
-
         const ref = doc(this.firestore, 'users', user?.uid);
         return docData(ref) as Observable<User>;
       })
     );
   }
 
-  addUser(user: User): Observable<void> {
-    const ref = doc(this.firestore, 'users', user.uid);
-    return from(setDoc(ref, user));
+
+  // Sauvegade des données de nouveau utilisateur dans firestore
+  newUser(user: User): Promise<void> {
+    const userDoc = this.userCollection.doc(`${user.uid}`);
+    return userDoc.set(user);
   }
 
-  updateUser(user: User): Observable<void> {
-    const ref = doc(this.firestore, 'users', user.uid);
-    return from(updateDoc(ref, { ...user }));
+  updateUserProfileImg(urlImg: string, userID?: string): Promise<void> {
+    return this.userCollection.doc(userID).update({ imgProfil: urlImg });
   }
+
+  async updateUserProfilInfo(userInfo: User, userID?: string): Promise<void> {
+    await this.authService.updateEmail(userInfo.email!)
+    return this.userCollection.doc(userID).update(userInfo);
+  }
+
+
 }

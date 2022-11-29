@@ -1,4 +1,5 @@
-export class Article {
+
+export interface Article {
   id? : string;
   title? : string;
   body? : string;
@@ -6,4 +7,5 @@ export class Article {
   author? : string;
   actif? : boolean;
   date? : Date;
+  imgArticle?: string;
 }

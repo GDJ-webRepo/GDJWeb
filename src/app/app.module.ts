@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +15,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AuthService } from './shared/services/auth/auth.service';
 import { BlogComponent } from './components/blog/blog.component';
-import { ArticleFormComponent } from './components/article-form/article-form.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import {
   AngularFireAuth,
@@ -38,9 +36,21 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { UserProfilImgComponent } from './components/profile/user-profil-img/user-profil-img.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatDialogModule } from '@angular/material/dialog';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { EditArticleComponent } from './components/article/edit-article/edit-article.component';
+import { AddArticleComponent } from './components/article/add-article/add-article.component';
+
 
 @NgModule({
   declarations: [
@@ -50,15 +60,18 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     ForgotPasswordComponent,
     HomeComponent,
     ProfileComponent,
+    UserProfilImgComponent,
+    EditProfileComponent,
     NavBarComponent,
     BlogComponent,
-    ArticleFormComponent,
     FooterComponent,
     ArticleComponent,
     RdvComponent,
     FaqComponent,
     NotFoundComponent,
     ArticleDetailComponent,
+    EditArticleComponent,
+    AddArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +96,14 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     AngularFireDatabaseModule,
     HotToastModule.forRoot(),
     MatMenuModule,
+    EditorModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    FlexLayoutModule,
+    MatDialogModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })

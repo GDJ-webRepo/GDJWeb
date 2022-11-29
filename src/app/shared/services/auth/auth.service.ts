@@ -13,15 +13,28 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
+import {updateEmail} from "@firebase/auth";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   currentUser$ = authState(this.auth);
-
-  constructor(private auth: Auth) {}
+  userData: any;
+  constructor(private auth: Auth, public afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
+  }
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -41,6 +54,10 @@ export class AuthService {
 
   FacebookAuth(){
     return signInWithPopup(this.auth, new FacebookAuthProvider());
+  }
+
+  updateEmail(email: string){
+    return from(updateEmail(this.userData, email))
   }
   // Auth logic to run auth providers
 
