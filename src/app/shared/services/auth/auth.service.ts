@@ -59,20 +59,6 @@ export class AuthService {
   updateEmail(email: string){
     return from(updateEmail(this.userData, email))
   }
-  // Auth logic to run auth providers
-
-
-
-  // updateProfile(profileData: Partial<UserInfo>): Observable<any> {
-  //   const user = this.auth.currentUser;
-  //   return of(user).pipe(
-  //     concatMap((user) => {
-  //       if (!user) throw new Error('Not authenticated');
-
-  //       return updateProfile(user, profileData);
-  //     })
-  //   );
-  // }
 
   logout(): Observable<any> {
     return from(this.auth.signOut());

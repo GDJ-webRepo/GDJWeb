@@ -4,10 +4,11 @@
     class="card-img-top"
     alt=""
     style="cursor: pointer"
+    [routerLink]="['/detail']" [state]="article"
   />
 
   <div class="card-body">
-    <p class="card-title">{{ article.title }}</p>
+    <p class="card-title" [routerLink]="['/detail']" [state]="article" >{{ article.title }}</p>
     <p
       class="card-text"
       style="
