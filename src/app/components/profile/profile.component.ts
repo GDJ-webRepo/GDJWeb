@@ -19,9 +19,6 @@ import { UsersService } from 'src/app/shared/services/user/users.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userID = '';
-
-  currentUserData?: Observable<User | undefined>;
   userData?: User | null;
   user$ = this.usersService.currentUserProfile$;
   constructor(
@@ -56,5 +53,5 @@ export class ProfileComponent implements OnInit {
 
   deconnexion = () => this.authService.logout().subscribe(() => {
     this.router.navigate(['/']);
-  });;
+  });
 }

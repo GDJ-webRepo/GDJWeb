@@ -18,6 +18,7 @@ import { collectionData } from 'rxfire/firestore';
 import { map, Observable } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { AuthService } from '../auth/auth.service';
+import {User} from "../../../model/user";
 
 @Injectable({
   providedIn: 'root',
@@ -72,10 +73,12 @@ export class ArticleService {
     });
   }
 
-  //Update Article
-  updateArticle(articles: any) {
-    let articleRef = doc(this.db, `articles/${articles.id}`);
-    return updateDoc(articleRef, articles);
+  updateArticleImg(urlImg: string, articleID?: string): Promise<void> {
+    return this.articleRef.doc(articleID).update({ imgArticle: urlImg });
+  }
+
+  updateArticleInfo(articleInfo: Article, articleID?: string): Promise<void> {
+    return this.articleRef.doc(articleID).update(articleInfo);
   }
 }
 

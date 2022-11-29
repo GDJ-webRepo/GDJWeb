@@ -22,10 +22,7 @@ export class AddArticleComponent implements OnInit {
   preview = '';
   file: any
   imgVerif = false
-  constructor(@Inject(MAT_DIALOG_DATA)
-  public data: {
-    userData: User;
-  }, private formBuilder: UntypedFormBuilder,
+  constructor( private formBuilder: UntypedFormBuilder,
     private storage: AngularFireStorage,
     private dialog: MatDialog, private as: ArticleService,  private imageUploadService: ImageUploadService, private toast: HotToastService) { }
 
