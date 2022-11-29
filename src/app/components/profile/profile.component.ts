@@ -43,10 +43,11 @@ export class ProfileComponent implements OnInit {
   editUserDialog(): void {
     console.log("user")
     console.log(this.userData)
-    this.dialog.open(EditProfileComponent, {
+    const dialogRef = this.dialog.open(EditProfileComponent, {
       width: '40rem',
       data: {
         userData: this.userData,
+        router: this.router
       },
     });
   }
