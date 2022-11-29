@@ -87,6 +87,7 @@ export class EditArticleComponent implements OnInit {
         id: this.data.articleData.id,
         title: this.editArticleForm.get('title')?.value,
         body: this.editArticleForm.get('body')?.value,
+        author: this.data.userData.displayName!
       };
       console.log(articleInfo);
       this.as.updateArticleInfo(articleInfo, this.data.articleData.id);

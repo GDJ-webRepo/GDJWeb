@@ -15,13 +15,14 @@ import {
 } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
+import {updateEmail} from "@firebase/auth";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   currentUser$ = authState(this.auth);
-  userData: any; 
+  userData: any;
   constructor(private auth: Auth, public afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -53,6 +54,10 @@ export class AuthService {
 
   FacebookAuth(){
     return signInWithPopup(this.auth, new FacebookAuthProvider());
+  }
+
+  updateEmail(email: string){
+    return from(updateEmail(this.userData, email))
   }
   // Auth logic to run auth providers
 

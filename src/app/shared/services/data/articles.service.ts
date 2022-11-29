@@ -40,7 +40,6 @@ export class ArticleService {
 
   //Add Article
   addArticle(article: Article) {
-    article.author = this.currentUser.displayName;
     const articlesRef = collection(this.db, 'articles');
     article.id = doc(collection(this.db, 'articles')).id;
     article.date = new Date();

@@ -49,7 +49,7 @@ const routes: Routes = [
     component: BlogComponent,
   },
   {
-    path: 'detail/:id',
+    path: 'detail',
     component: ArticleDetailComponent,
   },
   {

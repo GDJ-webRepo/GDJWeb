@@ -22,7 +22,9 @@ export class AddArticleComponent implements OnInit {
   preview = '';
   file: any
   imgVerif = false
-  constructor( private formBuilder: UntypedFormBuilder,
+  constructor( @Inject(MAT_DIALOG_DATA)
+               public data: {
+    userData: User} , private formBuilder: UntypedFormBuilder,
     private storage: AngularFireStorage,
     private dialog: MatDialog, private as: ArticleService,  private imageUploadService: ImageUploadService, private toast: HotToastService) { }
 
@@ -69,6 +71,7 @@ export class AddArticleComponent implements OnInit {
         title: this.addArticleForm.get('title')?.value,
         body: this.addArticleForm.get('body')?.value,
         date: new Date(),
+        author: this.data.userData.displayName!,
         actif: true,
       };
       const filePath = `articleImg/${article.title}`;

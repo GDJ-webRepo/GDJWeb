@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/shared/services/user/users.service';
 import {AddArticleComponent} from "./add-article/add-article.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditArticleComponent} from "./edit-article/edit-article.component";
+import {ActivatedRoute, Route} from "@angular/router";
 
 @Component({
   selector: 'app-article',
@@ -16,7 +17,7 @@ export class ArticleComponent implements OnInit {
   @Input() article: Article = {}
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
-  constructor(private articleService: ArticleService, private usersService: UsersService, private dialog: MatDialog) { }
+  constructor(private articleService: ArticleService, private usersService: UsersService, private dialog: MatDialog, private router: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
     if (this.user$) {
@@ -42,5 +43,7 @@ export class ArticleComponent implements OnInit {
     }
     );
   }
+
+
 
 }

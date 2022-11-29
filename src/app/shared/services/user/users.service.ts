@@ -30,7 +30,6 @@ export class UsersService {
         if (!user?.uid) {
           return of(null);
         }
-
         const ref = doc(this.firestore, 'users', user?.uid);
         return docData(ref) as Observable<User>;
       })
@@ -48,9 +47,10 @@ export class UsersService {
     return this.userCollection.doc(userID).update({ imgProfil: urlImg });
   }
 
-  updateUserProfilInfo(userInfo: User, userID?: string): Promise<void> {
+  async updateUserProfilInfo(userInfo: User, userID?: string): Promise<void> {
+    await this.authService.updateEmail(userInfo.email!)
     return this.userCollection.doc(userID).update(userInfo);
   }
 
-  
+
 }
