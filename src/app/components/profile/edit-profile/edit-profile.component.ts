@@ -90,7 +90,7 @@ export class EditProfileComponent implements OnInit {
         firstName: this.editUserForm.get('firstName')?.value,
         lastName: this.editUserForm.get('lastName')?.value,
         displayName: this.editUserForm.get('displayName')?.value,
-        email: this.editUserForm.get('email')?.value 
+        email: this.editUserForm.get('email')?.value
       }: {
         uid: this.data.userData.uid,
         firstName: this.editUserForm.get('firstName')?.value,
@@ -104,8 +104,11 @@ export class EditProfileComponent implements OnInit {
   }
 
   deleteUser(){
-    this.us.deleteUser(this.data.userData)
-    this.dialog.closeAll();
-    this.router.navigate(['/home']);
+    let decision = confirm('Voulez-vous vraiment supprimer cet article ?');
+    if (decision) {
+      this.us.deleteUser(this.data.userData)
+      this.dialog.closeAll();
+      this.router.navigate(['/home']);
+    }
   }
 }

@@ -47,8 +47,8 @@ export class UsersService {
 
   deleteUser(user: User){
     this.authService.deletUser();
-    this.fireStorage.ref('profilImage/' + user.uid).delete();
     this.userCollection.doc(user.uid).delete();
+    this.fireStorage.ref('profilImage/' + user.uid).delete();
   }
 
   updateUserProfileImg(urlImg: string, userID?: string): Promise<void> {
