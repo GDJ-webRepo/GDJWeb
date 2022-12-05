@@ -1,69 +1,149 @@
 <div class="d-flex justify-content-center p-5">
   <h2>Besoin de précisions ?</h2>
 </div>
+<div style="text-align: center; padding: 2%" *ngIf="user$ | async as user">
+  <button
+    class="btn btn-block btn-outline-primary"
+    style="font-size: 25px"
+    (click)="addFaqDialog()"
+    *ngIf="user.roles?.admin"
+  >
+    Ajouter un article
+  </button>
+</div>
 
 <div class="d-flex justify-content-start p-5">
   <h4>Questions fréquentes...</h4>
 </div>
 <div class="grid p-5">
-  <div class="card" >
-    <p class="card-title" style="font-family: Noteworthy; font-size: 24px; font-weight: bold;">Quelles sont vos études ?</p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-      Nous sommes un groupe de 8 étudiants issus de filières et d’années différentes.
-Morgane et Suzy, les chefs de projets sont en 2ème année de marketing et communication.
-Célian et Quentin sont en dernière année de bachelor d’informatique avec la spécialité développement web.
-	Anthony est en première année d’informatique.  
-	Isaure est en première année de création design 
-	Pauline est en dernière année de formation de création design avec la spécialité UI/UX. <br/>
-Nous avons un point commun : nous sommes tous à Ynov Campus Lyon. En effet, cette école met en place des Ydays, le but créer un groupe avec différentes compétences qui ont pour but de porter un projet en commun.
+  <div class="card" *ngFor="let faq of faqsData">
+    <p
+      class="card-title"
+      style="font-family: Noteworthy; font-size: 24px; font-weight: bold"
+    >
+      {{faq.title}}
+    </p>
+    <p
+      class="card-text"
+      style="
+        font-family: Acumin Variable Concept;
+        font-size: 19px;
+        white-space: pre-wrap;
+      "
+      [innerHTML]="faq.body"
+    >
 
     </p>
 
     <div id="container" class="d-flex justify-content-end">
       <a [routerLink]="" class="" id="button">En savoir plus</a>
     </div>
+    <div *ngIf="user$ | async as user">
+      <i
+        *ngIf="user.roles?.admin"
+        class="bi bi-pencil-square"
+        style="color: rgb(255, 255, 255); font-size: 30px; padding: 2%; cursor: pointer"
+        (click)="editFaqDialog(faq)"
+      ></i>
+
+      <i
+        *ngIf="user.roles?.admin"
+        class="bi bi-trash"
+        style="color: red; font-size: 30px; cursor: pointer"
+        (click)="deleteFaq(faq)"
+      ></i>
+    </div>
   </div>
-  <div class="card" >
-    <p class="card-title" style="font-family: Noteworthy; font-size: 24px; font-weight: bold;">D'où vient l'idée du Guide des jeunes ?
+  <!-- <div class="card">
+    <p
+      class="card-title"
+      style="font-family: Noteworthy; font-size: 24px; font-weight: bold"
+    >
+      D'où vient l'idée du Guide des jeunes ?
     </p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-      Le projet était parti d’une discussion entre 2 copines au bord d’une piscine au sud. <br/>
-      L’idée est simple, Suzy a dû apprendre seule à devenir une « adulte », a géré le travail, l’alternance, une réorientation, et Morgane est arrivée dans une grande ville, sans personne, et ne savait pas comment gérer sa vie.
-      On était venu à la conclusion que tout ce que nous avons vécu et vivons actuellement était aussi le cas pour les autres jeunes. Et c’est là que nous entrons en jeux : « Guides Des Jeunes »
-      Contrairement à ce que beaucoup pense, être étudiant n’est pas simple, c’est pourquoi on avait eu l’idée de vous aider.
-      
+    <p
+      class="card-text"
+      style="
+        font-family: Acumin Variable Concept;
+        font-size: 19px;
+        white-space: pre-wrap;
+      "
+    >
+      Le projet était parti d’une discussion entre 2 copines au bord d’une
+      piscine au sud. <br />
+      L’idée est simple, Suzy a dû apprendre seule à devenir une « adulte », a
+      géré le travail, l’alternance, une réorientation, et Morgane est arrivée
+      dans une grande ville, sans personne, et ne savait pas comment gérer sa
+      vie. On était venu à la conclusion que tout ce que nous avons vécu et
+      vivons actuellement était aussi le cas pour les autres jeunes. Et c’est là
+      que nous entrons en jeux : « Guides Des Jeunes » Contrairement à ce que
+      beaucoup pense, être étudiant n’est pas simple, c’est pourquoi on avait eu
+      l’idée de vous aider.
     </p>
 
     <div class="d-flex justify-content-end">
       <a [routerLink]="" class="" id="button">En savoir plus</a>
     </div>
-  </div>
-  <div class="card" >
-    <p class="card-title" style="font-family: Noteworthy; font-size: 24px; font-weight: bold;">Quel est le rythme de la sortie des articles ? </p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-Notez dans vos agendas que le Guide Des
-Jeunes postera 1 article par semaine chaque mercredi.<br/>
-Vous pourrez toujours retrouver les points clefs de chaque article sur notre Instagram, tous les mercredi a 17h !
+  </div> -->
+  <!-- <div class="card">
+    <p
+      class="card-title"
+      style="font-family: Noteworthy; font-size: 24px; font-weight: bold"
+    >
+      Quel est le rythme de la sortie des articles ?
+    </p>
+    <p
+      class="card-text"
+      style="
+        font-family: Acumin Variable Concept;
+        font-size: 19px;
+        white-space: pre-wrap;
+      "
+    >
+      Notez dans vos agendas que le Guide Des Jeunes postera 1 article par
+      semaine chaque mercredi.<br />
+      Vous pourrez toujours retrouver les points clefs de chaque article sur
+      notre Instagram, tous les mercredi a 17h !
     </p>
 
     <div class="d-flex justify-content-end">
       <a [routerLink]="" class="" id="button">En savoir plus</a>
     </div>
-  </div>
+  </div> -->
 
-  <div class="card" >
-    <p class="card-title" style="font-family: Noteworthy; font-size: 24px; font-weight: bold;">Pouvons-nous vous contactez ?</p>
-    <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px; white-space: pre-wrap">
-Si vous souhaitez nous contacter, nos DM sur @guide.des.jeunes sont ouverts. Sinon vous pouvez nous laissez un commentaire dans l’espace commentaire, nous sommes hyper rapide pour vous répondre ! 
-Une nouveauté arrive dans très peu de temps, vous pourrez prendre rendez-vous en réel avec nous ou en distanciel si vous n’êtes pas sur Lyon. Le but c’est de vous offrir la possibilité de vous confiez à un autre jeune. Suite à ce rendez vous, nous vous aiderons à régler votre problème en faisant les recherches à votre place ou en vous redirigeant sur des professionnels compétents.
-Si vous souhaitez nous contacter pour un projet pro je vous laisse envoyer un mail à cette adresse mail suzy.patras@ynov.com . 
-
+  <!-- <div class="card">
+    <p
+      class="card-title"
+      style="font-family: Noteworthy; font-size: 24px; font-weight: bold"
+    >
+      Pouvons-nous vous contactez ?
+    </p>
+    <p
+      class="card-text"
+      style="
+        font-family: Acumin Variable Concept;
+        font-size: 19px;
+        white-space: pre-wrap;
+      "
+    >
+      Si vous souhaitez nous contacter, nos DM sur @guide.des.jeunes sont
+      ouverts. Sinon vous pouvez nous laissez un commentaire dans l’espace
+      commentaire, nous sommes hyper rapide pour vous répondre ! Une nouveauté
+      arrive dans très peu de temps, vous pourrez prendre rendez-vous en réel
+      avec nous ou en distanciel si vous n’êtes pas sur Lyon. Le but c’est de
+      vous offrir la possibilité de vous confiez à un autre jeune. Suite à ce
+      rendez vous, nous vous aiderons à régler votre problème en faisant les
+      recherches à votre place ou en vous redirigeant sur des professionnels
+      compétents. Si vous souhaitez nous contacter pour un projet pro je vous
+      laisse envoyer un mail à cette adresse mail suzy.patras@ynov.com .
     </p>
     <div class="d-flex justify-content-end">
       <a [routerLink]="" class="" id="button">En savoir plus</a>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="" id="div-other">
-  <span style="font-weight: bold">D'autres questions ? <a id="other-button">Cliquez ici</a></span>
+  <span style="font-weight: bold"
+    >D'autres questions ? <a id="other-button">Cliquez ici</a></span
+  >
 </div>

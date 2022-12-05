@@ -1,9 +1,8 @@
-<h1 mat-dialog-title>Modifier un article</h1>
+<h1 mat-dialog-title>Ajouter un article</h1>
 <div fxLayout="column" fxLayoutAlign="center center">
-
   <form
     fxLayout="row wrap"
-    [formGroup]="editArticleForm"
+    [formGroup]="addFaqForm"
     (ngSubmit)="onSubmit()"
   >
     <mat-form-field appearance="outline" fxFlex="100">
@@ -19,9 +18,9 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- <mat-form-field appearance="outline" fxFlex="100">
-      <mat-label>Corps</mat-label>
-      <input
+    <!-- <mat-form-field appearance="outline" fxFlex="100"> -->
+      <!-- <mat-label>Corps</mat-label> -->
+      <!-- <input
         type="textarea"
         matInput
         formControlName="body"
@@ -49,12 +48,8 @@
       </mat-error>
     </mat-form-field> -->
 
-    <button
-      type="submit"
-      mat-flat-button
-      color="primary"
-    >
-      Enregister les modifications
+    <button type="submit" mat-flat-button color="primary" [disabled]="!addFaqForm.valid">
+      Envoyer
     </button>
   </form>
 </div>
