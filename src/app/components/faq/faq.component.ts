@@ -8,6 +8,7 @@ import { FaqService } from 'src/app/shared/services/data/faq.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
 import { AddFaqComponent } from './add-faq/add-faq.component';
 import { EditFaqComponent } from './edit-faq/edit-faq.component';
+import { FaqDetailComponent } from './faq-detail/faq-detail.component';
 
 @Component({
   selector: 'app-faq',
@@ -62,6 +63,17 @@ export class FaqComponent implements OnInit {
       width: '40rem',
       data: {
         userData: this.userData,
+        faqData: faq,
+      },
+    });
+  }
+
+  detailDialog(faq: FAQ): void{
+    this.dialog.open(FaqDetailComponent, {
+      width: '40rem',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
+      data: {
         faqData: faq,
       },
     });

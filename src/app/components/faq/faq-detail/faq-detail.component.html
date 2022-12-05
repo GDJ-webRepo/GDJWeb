@@ -1,0 +1,9 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<h1 mat-dialog-title>{{data.faqData.title}}</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+   <p mat-dialog-content [innerHTML]="data.faqData.body"></p>
+</div>
+
+

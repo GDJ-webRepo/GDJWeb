@@ -1,6 +1,4 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { MatMenuModule } from '@angular/material/menu';
@@ -36,7 +34,6 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
@@ -52,6 +49,9 @@ import { EditArticleComponent } from './components/article/edit-article/edit-art
 import { AddArticleComponent } from './components/article/add-article/add-article.component';
 import { EditFaqComponent } from './components/faq/edit-faq/edit-faq.component';
 import { AddFaqComponent } from './components/faq/add-faq/add-faq.component';
+import { FaqDetailComponent } from './components/faq/faq-detail/faq-detail.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -76,11 +76,11 @@ import { AddFaqComponent } from './components/faq/add-faq/add-faq.component';
     AddArticleComponent,
     EditFaqComponent,
     AddFaqComponent,
+    FaqDetailComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     MdbCarouselModule,
     MatToolbarModule,
@@ -102,10 +102,10 @@ import { AddFaqComponent } from './components/faq/add-faq/add-faq.component';
     MatMenuModule,
     EditorModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
