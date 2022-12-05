@@ -79,38 +79,8 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-    this.authService
-      .signUp(email, password)
-      .pipe(
-        switchMap(({ user: { uid } }) =>
-          this.usersService.newUser({ uid, email, displayName: name, roles:{ subscriber: true} })
-        ),
-        this.toast.observe({
-          success: 'Congrats! You are all signed up',
-          loading: 'Signing up...',
-          error: ({ message }) => `${message}`,
-        })
-      )
-      .subscribe(() => {
-        this.router.navigate(['/home']);
-      });
+    this.authService.SignUp(email, password, name)
   }
 
-  googleAuth(){
-    this.authService.GoogleAuth().then(
-      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
-    )
-    .catch((error) => {
-      this.toast.show(error);
-    });
-  }
-
-  facebookAuth(){
-    this.authService.FacebookAuth().then(
-      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
-    )
-    .catch((error) => {
-      this.toast.show(error);
-    });
-  }
+  
 }

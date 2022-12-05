@@ -1,32 +1,30 @@
 import { Injectable, NgZone } from '@angular/core';
-
-import {
-  Auth,
-  signInWithEmailAndPassword,
-  authState,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  UserInfo,
-  UserCredential,
-  sendPasswordResetEmail,
-  GoogleAuthProvider,
-  signInWithPopup,
-  FacebookAuthProvider,
-  deleteUser,
-} from '@angular/fire/auth';
+import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { concatMap, from, Observable, of, switchMap } from 'rxjs';
-import {updateEmail} from "@firebase/auth";
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { Auth, authState } from '@angular/fire/auth';
 import { User } from 'src/app/model/user';
-import { UsersService } from '../user/users.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser$ = authState(this.auth)
-  userData: any;
-  constructor(private auth: Auth, public afAuth: AngularFireAuth) {
+
+  currentUser$ = authState(this.auth);
+  userData: any; // Save logged in user data
+  constructor(
+    private auth: Auth,
+    public afs: AngularFirestore, // Inject Firestore service
+    public afAuth: AngularFireAuth, // Inject Firebase auth service
+    public router: Router,
+    public ngZone: NgZone // NgZone service to remove outside scope warning
+  ) {
+    /* Saving user data in localstorage when 
+    logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -38,61 +36,111 @@ export class AuthService {
       }
     });
   }
-
-  signUp(email: string, password: string): Observable<UserCredential> {
-    return from(createUserWithEmailAndPassword(this.auth, email, password));
+  // Sign in with email/password
+  Login(email: string, password: string) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.SetUserData(result.user);
+        this.afAuth.authState.subscribe((user) => {
+          if (user) {
+            this.router.navigate(['home']);
+          }
+        });
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
+  // Sign up with email/password
+  SignUp(email: string, password: string, displayName: string) {
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        /* Call the SendVerificaitonMail() function when new user sign 
+        up and returns promise */
+        this.SendVerificationMail();
+        this.SetUserData(result.user, displayName);
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
+  // Send email verfificaiton when new user sign up
+  SendVerificationMail() {
+    return this.afAuth.currentUser
+      .then((u: any) => u.sendEmailVerification())
+      .then(() => {
+        this.router.navigate(['verify-email-address']);
+      });
+  }
+  // Reset Forggot password
+  ForgotPassword(passwordResetEmail: string) {
+    return this.afAuth
+      .sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
+  }
+  // Returns true when user is looged in and email is verified
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null && user.emailVerified !== false ? true : false;
+  }
+  // Sign in with Google
+  GoogleAuth() {
+    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      this.router.navigate(['dashboard']);
+    });
+  }
+  // Auth logic to run auth providers
+  AuthLogin(provider: any) {
+    return this.afAuth
+      .signInWithPopup(provider)
+      .then((result) => {
+        this.router.navigate(['dashboard']);
+        this.SetUserData(result.user);
+      })
+      .catch((error) => {
+        window.alert(error);
+      });
   }
 
-  login(email: string, password: string): Observable<any> {
-    return from(signInWithEmailAndPassword(this.auth, email, password));
+  SetUserData(user: any, displayName='') {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: displayName != '' ? displayName : user.displayName,
+      imgProfil: user.photoURL != '' ? user.photoURL: '',
+      firstName: '',
+      lastName: '', 
+      auth: displayName === '' ? false : true,
+      roles: {subscriber: true} 
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
   }
-
-  forgotPassword(email: string): Observable<any>{
-    return from(sendPasswordResetEmail(this.auth, email));
+  // Sign out
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['home']);
+    });
   }
-
-  async GoogleAuth() {
-    try {
-      console.log("authservice google")
-      const result =  await signInWithPopup(this.auth, new GoogleAuthProvider());
-      console.log(result);
-      const user = this.updateUserDate(result);
-      return user;
-  } catch (err: any) {
-      throw new Error(err);
-  }
-   
-    
-  }
-
-  updateUserDate(u: UserCredential):User {
-   
-        const newUser: User = {
-            uid: u.user.uid,
-            email: u.user.email!,
-            displayName: u.user.displayName!,
-            lastName: '',
-            firstName:'',
-            emailVerified: u.user.emailVerified,
-            imgProfil: u.user.photoURL!,
-            roles:{subscriber: true},
-            auth:false,}
-        return newUser;
-}
-
-  FacebookAuth(){
-    return signInWithPopup(this.auth, new FacebookAuthProvider());
-  }
-
-  updateEmail(email: string){
-    return from(updateEmail(this.userData, email))
-  }
-
-  logout(): Observable<any> {
-    return from(this.auth.signOut());
-  }
-
   deletUser(){
-    return from(deleteUser(this.userData))
+    this.afAuth.currentUser.then(user => user?.delete()).then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['home']);
+    });
+  }
+  updateEmail(email:string){
+    return this.afAuth.currentUser.then(user => user?.updateEmail(email))
   }
 }

@@ -9,7 +9,6 @@ export interface User {
     displayName?: string;
     firstName?: string;
     lastName?: string;
-    emailVerified?: boolean;
     imgProfil?: string;
     roles?: Roles;
     auth?: boolean

@@ -7,7 +7,9 @@ import { BlogComponent } from './components/blog/blog.component';
 import { RdvComponent } from './components/rdv/rdv.component';
 import { FaqComponent } from './components/faq/faq.component';
 import {
+  AuthGuardModule,
   canActivate,
+  emailVerified,
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
@@ -15,8 +17,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+
 
 const routes: Routes = [
   {
@@ -27,22 +33,22 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    ...canActivate(redirectLoggedInToHome),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
-    ...canActivate(redirectLoggedInToHome),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
-    ...canActivate(redirectLoggedInToHome),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
+  { path: 'verify-email-address', component: VerifyEmailComponent},
   {
     path: 'home',
     component: HomeComponent,
-
   },
   {
     path: 'blog',
@@ -51,17 +57,19 @@ const routes: Routes = [
   {
     path: 'detail',
     component: ArticleDetailComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'profile',
     component: ProfileComponent,
-
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
+    // ...canActivate(redirectUnauthorizedToLogin),
   },
+
   {
     path: 'rdv',
     component: RdvComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'faq',
@@ -72,7 +80,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),  provideAuth(() => getAuth()),
+    AuthGuardModule,],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

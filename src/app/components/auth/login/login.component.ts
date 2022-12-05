@@ -40,35 +40,8 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService
-      .login(email, password)
-      .pipe(
-        this.toast.observe({
-          success: 'Logged in successfully',
-          loading: 'Logging in...',
-          error: ({ message }) => `There was an error: ${message} `,
-        })
-      )
-      .subscribe(() => {
-        this.router.navigate(['/home']);
-      });
+    this.authService.Login(email, password)
   }
 
-  googleAuth(){
-    this.authService.GoogleAuth().then(
-      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
-    )
-    .catch((error) => {
-      this.toast.show(error);
-    });
-  }
-
-  facebookAuth(){
-    this.authService.FacebookAuth().then(
-      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
-    )
-    .catch((error) => {
-      this.toast.show(error);
-    });
-  }
+  
 }

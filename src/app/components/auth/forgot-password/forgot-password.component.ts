@@ -31,10 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
       return;
     }
 
-    this.authService.forgotPassword(email).subscribe({
-      error: (err: Error) => console.error('Observer got an error: ' + err),
-      complete: () => {this.toast.show('Un email vous a été envoyé à l\'adresse suivante : '+email);this.emailSubmitted = true},
-    });
+   this.authService.ForgotPassword(email)
   }
 }
 
