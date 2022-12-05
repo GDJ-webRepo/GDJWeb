@@ -36,7 +36,7 @@
     </p>
 
     <div id="container" class="d-flex justify-content-end">
-      <a [routerLink]="" class="" id="button">En savoir plus</a>
+      <a class="" id="button"  (click)="detailDialog(faq)">En savoir plus</a>
     </div>
     <div *ngIf="user$ | async as user">
       <i
