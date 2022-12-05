@@ -52,7 +52,5 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  deconnexion = () => this.authService.logout().subscribe(() => {
-    this.router.navigate(['/']);
-  });
+  deconnexion = () => this.authService.logout();
 }
