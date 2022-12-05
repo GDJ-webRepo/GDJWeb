@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   user$ = this.usersService.currentUserProfile$;
   constructor(
     private dialog: MatDialog,
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private us: UsersService,
     private usersService: UsersService,

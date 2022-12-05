@@ -61,6 +61,9 @@
                 fxLayoutAlign="center center"
                 [userData]="user$ | async"
               ></app-user-profil-img>
+              <div class="row" *ngIf="authService.userData as user">
+                <h5 *ngIf="!user.emailVerified">Veuillez valider votre adresse mail</h5>
+              </div>
               <h5>  {{ (user$ | async)?.firstName }}   {{ (user$ | async)?.lastName }}</h5>
               <p>  {{ (user$ | async)?.displayName }}</p>
             </div>

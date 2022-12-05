@@ -5,9 +5,9 @@
         <div class="formGroup" *ngIf="authService.userData as user">
           <p class="text-center">Nous avons envoyé un email de vérification à cette adresse <strong>{{user.email}}</strong>.</p>
           <p class="text-center">SVP regarde ton email pelo et click sur le liens il est top 👍.</p>
+          <p class="text-center">Une fois votre email confirmé, vous pourrez réactualiser la page et avoir pleinement accès au site 👻.</p>
         </div>
         
-        <!-- Calling SendVerificationMail() method using authService Api -->
         <div class="formGroup">
           <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
             <i class="fas fa-redo-alt"></i>
