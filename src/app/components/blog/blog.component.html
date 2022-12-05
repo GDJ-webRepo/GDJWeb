@@ -1,6 +1,6 @@
 <ngx-spinner size="medium" color="#fff" [fullScreen]="true" type="ball-scale-mulitple"><p style="font-size : 20px; color: white">Chargement....</p></ngx-spinner>
 <div style="text-align: center; padding: 2%;" *ngIf="user$ | async as user">
-  <button class="btn btn-block btn-outline-primary" style="font-size: 25px"(click)="editArticleDialog()" *ngIf = user.roles?.admin >
+  <button class="btn btn-block btn-outline-primary" style="font-size: 25px"(click)="addArticleDialog()" *ngIf = user.roles?.admin >
     Ajouter un article
   </button>
 </div>

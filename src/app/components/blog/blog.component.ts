@@ -41,7 +41,7 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  editArticleDialog(): void {
+  addArticleDialog(): void {
     this.dialog.open(AddArticleComponent, {
       width: '40rem',
       data: {

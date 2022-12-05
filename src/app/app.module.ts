@@ -50,6 +50,8 @@ import { ForgotPasswordComponent } from './components/auth/forgot-password/forgo
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { EditArticleComponent } from './components/article/edit-article/edit-article.component';
 import { AddArticleComponent } from './components/article/add-article/add-article.component';
+import { EditFaqComponent } from './components/faq/edit-faq/edit-faq.component';
+import { AddFaqComponent } from './components/faq/add-faq/add-faq.component';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import { AddArticleComponent } from './components/article/add-article/add-articl
     ArticleDetailComponent,
     EditArticleComponent,
     AddArticleComponent,
+    EditFaqComponent,
+    AddFaqComponent,
   ],
   imports: [
     BrowserModule,
