@@ -44,6 +44,7 @@ export class BlogComponent implements OnInit {
   addArticleDialog(): void {
     this.dialog.open(AddArticleComponent, {
       width: '40rem',
+      height: '90%',
       data: {
         userData: this.userData,
       },
