@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { user } from 'rxfire/auth';
 import { switchMap } from 'rxjs/operators';
+import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
 
@@ -97,8 +98,9 @@ export class SignUpComponent implements OnInit {
   }
 
   googleAuth(){
+    console.log("google auth")
     this.authService.GoogleAuth().then(
-      (result)=>{this.toast.show('Vous êtes connecté'),  this.router.navigate(['/home']);}
+      (result)=>{this.usersService.newUser(result); this.toast.show('Vous êtes connecté'); }
     )
     .catch((error) => {
       this.toast.show(error);
@@ -113,4 +115,7 @@ export class SignUpComponent implements OnInit {
       this.toast.show(error);
     });
   }
+
+  
+
 }

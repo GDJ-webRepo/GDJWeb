@@ -17,12 +17,14 @@ import {
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 import {updateEmail} from "@firebase/auth";
+import { User } from 'src/app/model/user';
+import { UsersService } from '../user/users.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser$ = authState(this.auth);
+  currentUser$ = authState(this.auth)
   userData: any;
   constructor(private auth: Auth, public afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((user) => {
@@ -49,9 +51,34 @@ export class AuthService {
     return from(sendPasswordResetEmail(this.auth, email));
   }
 
-  GoogleAuth() {
-    return  signInWithPopup(this.auth, new GoogleAuthProvider());
+  async GoogleAuth() {
+    try {
+      console.log("authservice google")
+      const result =  await signInWithPopup(this.auth, new GoogleAuthProvider());
+      console.log(result);
+      const user = this.updateUserDate(result);
+      return user;
+  } catch (err: any) {
+      throw new Error(err);
   }
+   
+    
+  }
+
+  updateUserDate(u: UserCredential):User {
+   
+        const newUser: User = {
+            uid: u.user.uid,
+            email: u.user.email!,
+            displayName: u.user.displayName!,
+            lastName: '',
+            firstName:'',
+            emailVerified: u.user.emailVerified,
+            imgProfil: u.user.photoURL!,
+            roles:{subscriber: true},
+            auth:false,}
+        return newUser;
+}
 
   FacebookAuth(){
     return signInWithPopup(this.auth, new FacebookAuthProvider());
