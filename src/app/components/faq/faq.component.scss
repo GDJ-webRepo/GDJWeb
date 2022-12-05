@@ -18,7 +18,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  white-space:normal;
+  white-space: normal;
 }
 
 .card.no-shrink {
@@ -28,11 +28,11 @@
 .card {
   background-color: #F6A762;
   border-radius: 15px;
-  width: 40vw;
+  width: 45%;
   padding: 2%;
-  height: 20vw;
-  min-width: 45vh;
-  min-height: 20vh;
+  height: 20%;
+  min-width: 45%;
+  min-height: 20%;
   text-overflow: ellipsis;
   overflow-x: hidden;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px;
@@ -45,6 +45,7 @@
 
 $color: #FFFBED;
 
+
 #button {
   display: inline-block;
   padding: .75rem 1.25rem;
@@ -53,7 +54,7 @@ $color: #FFFBED;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1rem;
-  letter-spacing: .25rem;
+  letter-spacing: .15rem;
   transition: all .3s;
   position: relative;
   overflow: hidden;
