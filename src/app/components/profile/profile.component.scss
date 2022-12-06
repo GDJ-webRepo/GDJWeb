@@ -13,4 +13,12 @@ app-user-profil-img {
   border-radius: 50%;
 }
 
+#mail {
+  text-decoration:none; color:white;
+  transition: all 0.1s;
+}
 
+#mail:hover{
+  color: rgb(240, 240, 240);
+  transition: all 0.1s
+}

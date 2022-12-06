@@ -1,22 +1,25 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Merci de vous êtres enregistré</h3>
-        <div class="formGroup" *ngIf="authService.userData as user">
-          <p class="text-center">Nous avons envoyé un email de vérification à cette adresse <strong>{{user.email}}</strong>.</p>
-          <p class="text-center">SVP regarde ton email pelo et click sur le liens il est top 👍.</p>
-          <p class="text-center">Une fois votre email confirmé, vous pourrez réactualiser la page et avoir pleinement accès au site 👻.</p>
+<div class="container" style="display: flex; justify-content: center; padding: 3%">
+  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+  <div class="displayTable">
+      <div class="displayTableCell">
+        <div class="authBlock">
+          <article class="card-body">
+          <h3 style="padding:2%">Merci de ton inscription !</h3>
+          <div class="formGroup" *ngIf="authService.userData as user">
+            <p class="text-center">Nous avons envoyé un email de vérification à cette adresse <strong>{{user.email}}</strong>.</p><br/>
+            <p class="text-center">Clique sur le lien reçu dans ton mail. N'oublie pas de vérifier tes spams 👍</p>
+            <p class="text-center">Une fois ton email confirmé, tu pourras actualisé la page et avoir pleinement accès au site 👻</p><br/>
+          </div>
+          
+          <div class="formGroup">
+            <button type="button" id="mail" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
+              <i class="fas fa-redo-alt"></i>
+              Je n'ai pas reçu le mail
+            </button>
+          </div>
+        </article>
         </div>
-        
-        <div class="formGroup">
-          <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
-            <i class="fas fa-redo-alt"></i>
-            Renvoyer un email
-          </button>
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span>Retour<span class="redirect" routerLink="/login">Connexion</span></span>
       </div>
     </div>
   </div>
+</div>
