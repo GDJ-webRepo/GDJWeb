@@ -15,7 +15,7 @@ export class AuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if(this.authService.isLoggedIn !== true) {
-      this.router.navigate(['login'])
+      this.router.navigate(['connexion'])
     }
     return true;
   }

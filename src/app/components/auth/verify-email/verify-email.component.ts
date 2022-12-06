@@ -16,7 +16,7 @@ export class VerifyEmailComponent implements OnInit {
     this.afAuth.authState.subscribe((user) => {
       console.log("hop")
       if (user?.emailVerified) {
-        this.router.navigate(['home']);
+        this.router.navigate(['accueil']);
       } 
     }) }
 

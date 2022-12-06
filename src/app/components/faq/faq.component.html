@@ -16,7 +16,7 @@
   <h4>Questions fréquentes...</h4>
 </div>
 <div class="grid p-5">
-  <div class="card" *ngFor="let faq of faqsData">
+  <div class="card" *ngFor="let faq of faqsData | slice:0:nbr">
     <p
       class="card-title"
       style="font-family: Noteworthy; font-size: 24px; font-weight: bold"
@@ -144,6 +144,6 @@
 </div>
 <div class="" id="div-other">
   <span style="font-weight: bold"
-    >D'autres questions ? <a id="other-button">Cliquez ici</a></span
+    >D'autres questions ? <a id="other-button" (click)="augList()" >Cliquez ici</a></span
   >
 </div>

@@ -16,13 +16,16 @@ import { FaqDetailComponent } from './faq-detail/faq-detail.component';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
+  nbr : number;
   faqsData: FAQ[] = [];
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
   constructor(  private faqService: FaqService,
     private usersService: UsersService,
     private spinner: NgxSpinnerService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) {
+      this.nbr = 4;
+     }
 
   async ngOnInit(): Promise<void> {
     if (this.user$) {
@@ -78,4 +81,10 @@ export class FaqComponent implements OnInit {
       },
     });
   }
+
+  augList(){
+    this.nbr += 4;
+  }
+
+
 }

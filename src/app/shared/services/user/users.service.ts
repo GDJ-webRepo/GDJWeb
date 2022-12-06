@@ -40,10 +40,10 @@ export class UsersService {
 
 
   // Sauvegade des données de nouveau utilisateur dans firestore
-  newUser(user: User): Promise<void> {
-    const userDoc = this.userCollection.doc(`${user.uid}`);
-    return userDoc.set(user);
-  }
+  // newUser(user: User): Promise<void> {
+  //   const userDoc = this.userCollection.doc(`${user.uid}`);
+  //   return userDoc.set(user);
+  // }
 
   deleteUser(user: User){
     this.authService.deletUser();
