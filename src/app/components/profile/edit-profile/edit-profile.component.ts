@@ -11,6 +11,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/user';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ImageUploadService } from 'src/app/shared/services/user/image-upload.service';
 import { UsersService } from 'src/app/shared/services/user/users.service';
 
@@ -33,7 +34,8 @@ export class EditProfileComponent implements OnInit {
     private us: UsersService,
     private toast: HotToastService,
     private dialog: MatDialog,
-    private route:ActivatedRoute,private router:Router
+    private route:ActivatedRoute,private router:Router,
+    private authService: AuthService
   ) {}
 
   editUserForm = this.formBuilder.group({
@@ -106,9 +108,8 @@ export class EditProfileComponent implements OnInit {
   deleteUser(){
     let decision = confirm('Voulez-vous vraiment supprimer cet article ?');
     if (decision) {
-      this.us.deleteUser(this.data.userData)
+      this.authService.deletUser(this.data.userData)
       this.dialog.closeAll();
-      this.router.navigate(['/home']);
     }
   }
 }

@@ -3,18 +3,23 @@ import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
+  AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { User } from 'src/app/model/user';
 import { HotToastService, Toast } from '@ngneat/hot-toast';
+import { UsersService } from '../user/users.service';
+import { user } from 'rxfire/auth';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
+  userCollection: AngularFirestoreCollection<User>;
   currentUser$ = authState(this.auth);
   userData: any; // Save logged in user data
   constructor(
@@ -24,7 +29,9 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning,
     private toast: HotToastService,
+    private fireStorage: AngularFireStorage
   ) {
+    this.userCollection = this.afs.collection('users');
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -46,7 +53,7 @@ export class AuthService {
         this.afAuth.authState.subscribe((user) => {
           if (user) {
             this.toast.show('Vous êtes connecté 👍');
-            this.router.navigate(['home']);
+            this.router.navigate(['accueil']);
           }
         });
       })
@@ -96,7 +103,7 @@ export class AuthService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['home']);
+      this.router.navigate(['accueil']);
     });
   }
   // Auth logic to run auth providers
@@ -137,10 +144,14 @@ export class AuthService {
       this.router.navigate(['accueil']);
     });
   }
-  deletUser(){
+  deletUser(user: User){
     this.afAuth.currentUser.then(user => user?.delete()).then(() => {
       localStorage.removeItem('user');
+      this.userCollection.doc(user.uid).delete();
+      this.fireStorage.ref('profilImage/' + user.uid).delete();
       this.router.navigate(['accueil']);
+    }).catch((error)=> {
+      window.alert(error)
     });
   }
   updateEmail(email:string){

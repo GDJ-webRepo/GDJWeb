@@ -22,3 +22,26 @@ app-user-profil-img {
   color: rgb(240, 240, 240);
   transition: all 0.1s
 }
+
+#edit-button {
+  transition: all 0.2s;
+  margin : 3px;
+  background-color: #bde0d5; 
+  color: white;
+}
+
+#edit-button:hover {
+  transition: all 0.2s;
+  background-color: #93cbb9;
+} 
+
+#logout-button {
+  transition: all 0.2s;
+  background-color:red; 
+  color:white
+}
+
+#logout-button:hover {
+  transition: all 0.2s;
+  background-color: rgb(206, 1, 1); 
+}
