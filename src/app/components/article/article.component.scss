@@ -61,3 +61,19 @@
   cursor: pointer;
   transition: all 0.2s;
 }
+
+#edit{
+  color: orange; font-size: 30px; padding: 2%; cursor: pointer
+}
+
+#edit:hover {
+  color: rgb(197, 128, 0);
+}
+
+#trash {
+  color: red; font-size: 30px; cursor: pointer
+}
+
+#trash:hover {
+  color: rgb(206, 1, 1);
+}

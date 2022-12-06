@@ -111,3 +111,19 @@ $color: #FFFBED;
   transition: all 0.5s;
 }
 
+
+#edit {
+  color: rgb(255, 255, 255); font-size: 30px; padding: 2%; cursor: pointer
+}
+
+#trash {
+  color: red; font-size: 30px; cursor: pointer
+}
+
+#edit:hover {
+  color: rgb(211, 211, 211);
+}
+
+#trash:hover {
+  color: rgb(206, 1, 1);
+}

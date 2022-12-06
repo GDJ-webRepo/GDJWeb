@@ -42,14 +42,14 @@
       <i
         *ngIf="user.roles?.admin"
         class="bi bi-pencil-square"
-        style="color: rgb(255, 255, 255); font-size: 30px; padding: 2%; cursor: pointer"
+        id="edit"
         (click)="editFaqDialog(faq)"
       ></i>
 
       <i
         *ngIf="user.roles?.admin"
         class="bi bi-trash"
-        style="color: red; font-size: 30px; cursor: pointer"
+        id="trash"
         (click)="deleteFaq(faq)"
       ></i>
     </div>
