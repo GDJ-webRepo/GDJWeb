@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { User } from 'src/app/model/user';
+import { HotToastService, Toast } from '@ngneat/hot-toast';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning,
+    private toast: HotToastService,
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -41,9 +43,9 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
+            this.toast.show('Vous êtes connecté 👍');
             this.router.navigate(['home']);
           }
         });
@@ -68,6 +70,7 @@ export class AuthService {
   }
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
+    this.toast.show('Un email de vérifdication vous a été envoyé 📬');
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
@@ -79,7 +82,7 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        window.alert('Un email de réinitialisation a été envoyé.');
       })
       .catch((error) => {
         window.alert(error);
@@ -93,7 +96,7 @@ export class AuthService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['home']);
     });
   }
   // Auth logic to run auth providers
@@ -101,7 +104,7 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['home']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
