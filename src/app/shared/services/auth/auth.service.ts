@@ -70,11 +70,11 @@ export class AuthService {
   }
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
-    this.toast.show('Un email de vérifdication vous a été envoyé 📬');
+    this.toast.show('Un email de vérification vous a été envoyé 📬');
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['verification-email']);
       });
   }
   // Reset Forggot password
@@ -104,7 +104,7 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['accueil']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
@@ -134,13 +134,13 @@ export class AuthService {
   logout() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['home']);
+      this.router.navigate(['accueil']);
     });
   }
   deletUser(){
     this.afAuth.currentUser.then(user => user?.delete()).then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['home']);
+      this.router.navigate(['accueil']);
     });
   }
   updateEmail(email:string){

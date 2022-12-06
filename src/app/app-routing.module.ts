@@ -20,8 +20,8 @@ import { ForgotPasswordComponent } from './components/auth/forgot-password/forgo
 import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
 
 
 const routes: Routes = [
@@ -31,23 +31,23 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'login',
+    path: 'connexion',
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
   {
-    path: 'sign-up',
+    path: 'inscription',
     component: SignUpComponent,
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
   {
-    path: 'forgot-password',
+    path: 'mot-de-passe-oublié',
     component: ForgotPasswordComponent,
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
   },
-  { path: 'verify-email-address', component: VerifyEmailComponent},
+  { path: 'verification-email', component: VerifyEmailComponent},
   {
-    path: 'home',
+    path: 'accueil',
     component: HomeComponent,
   },
   {
@@ -60,7 +60,7 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
-    path: 'profile',
+    path: 'profil',
     component: ProfileComponent,
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
     // ...canActivate(redirectUnauthorizedToLogin),
