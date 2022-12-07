@@ -1,6 +1,30 @@
 <h1 mat-dialog-title>Modifier un article</h1>
 <div fxLayout="column" fxLayoutAlign="center center">
-
+  <input
+  type="file"
+  #selectImage
+  style="display: none"
+  (change)="selectFile($event)"
+  accept=".png,.jpg,.jpeg"
+/>
+<div
+  style="
+    width: 85%;
+    height: 200px;
+    border-radius: 15px;
+    background: rgba(182, 182, 182, 0.567);
+    margin: 20px;
+    text-align: center;
+  "
+  (click)="selectImage.click()"
+  
+>
+  <img
+    src="{{ data.articleData.imageUrl }}"
+    alt="Cliquer pour ajouter une image"
+    style="object-fit: cover; width: 100%; height: 200px"
+  />
+</div>
   <form
     fxLayout="row wrap"
     [formGroup]="editArticleForm"

@@ -65,15 +65,15 @@ export class ArticleService {
 
   //Delete Article
   deleteArticle(article: Article) {
-    this.fireStorage.ref('articleImg/' + article.id).delete();
+    this.fireStorage.ref('articleImg/' + article.imgName).delete();
     let articleRef = doc(this.db, `articles/${article.id}`);
     return deleteDoc(articleRef).catch((error) => {
       console.log(error);
     });
   }
 
-  updateArticleImg(urlImg: string, articleID?: string): Promise<void> {
-    return this.articleRef.doc(articleID).update({ imgArticle: urlImg });
+  updateArticleImg(urlImg: string, imgName: string, articleID?: string): Promise<void> {
+    return this.articleRef.doc(articleID).update({ imageUrl: urlImg, imgName: imgName });
   }
 
   updateArticleInfo(articleInfo: Article, articleID?: string): Promise<void> {

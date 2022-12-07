@@ -7,5 +7,5 @@ export interface Article {
   author? : string;
   actif? : boolean;
   date? : Date;
-  imgArticle?: string;
+  imgName?: string;
 }
