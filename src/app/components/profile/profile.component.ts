@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.userData)
     const dialogRef = this.dialog.open(EditProfileComponent, {
       width: '40rem',
+      height: '90%',
       data: {
         userData: this.userData,
         router: this.router
