@@ -1,9 +1,3 @@
-<!-- <div>
-    <img src={{article.imageUrl}} alt="">
-    <h1>{{article.title}}</h1>
-    <p>{{article.body}}</p>
-</div> -->
-
 <div class="card">
   <div class="card-image">
   <img
@@ -20,5 +14,11 @@
         <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px"  [innerHTML]="article.body">
         </p>
     </div>
+
+  </div>
+  <h3>Espace Commentaire</h3>
+  <button type="button" class="btn" style="background-color: #bde0d5" (click)="addComment()">Ajouter un commentaire</button>
+  <div *ngFor="let comment of commentTable  ">
+    <h4>{{comment.body}}</h4>
   </div>
 </div>

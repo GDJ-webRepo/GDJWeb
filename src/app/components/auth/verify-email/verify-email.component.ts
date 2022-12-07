@@ -14,7 +14,7 @@ export class VerifyEmailComponent implements OnInit {
   constructor(public authService: AuthService, private afAuth: AngularFireAuth, public router: Router) { 
    
     this.afAuth.authState.subscribe((user) => {
-      console.log("hop")
+
       if (user?.emailVerified) {
         this.router.navigate(['accueil']);
       } 

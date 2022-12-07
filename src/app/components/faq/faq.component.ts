@@ -39,7 +39,7 @@ export class FaqComponent implements OnInit {
   getAllFaqs() {
     this.spinner.show();
     this.faqService.getAllFaq().subscribe((res: FAQ[]) => {
-      console.log(res);
+
       this.faqsData = res;
       this.spinner.hide();
     });

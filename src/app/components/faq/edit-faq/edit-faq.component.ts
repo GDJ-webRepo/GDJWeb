@@ -66,7 +66,7 @@ export class EditFaqComponent implements OnInit {
         body: this.editFaqForm.get('body')?.value,
         author: this.data.userData.displayName!
       };
-      console.log(faqInfo);
+
       this.as.updateFaqInfo(faqInfo, this.data.faqData.id);
       this.dialog.closeAll();
     }
