@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gdj-dev": {
+      "hosting": {
+        "GDJ-web": [
+          "guidedesjeunes"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gdj-dev"
+  }
+}
