@@ -1,0 +1,61 @@
+<header>
+  <nav
+    class="navbar navbar-expand-lg navbar-light"
+    style="
+      background-color: #bde0d5;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    "
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="../../../assets/images/Logo.png" alt="..." height="70" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto" style="font-size: 20px">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="accueil"
+              >Accueil</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="rdv"
+              >Prise de rendez-vous</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="faq">FAQ</a>
+          </li>
+          <li *ngIf="user$ | async as user; else loginButton">
+            <a class="nav-link" aria-current="page" routerLink="profil"
+              >Profil</a
+            >
+          </li>
+        </ul>
+        <ng-template #loginButton>
+          <button
+            class="btn btn-outline-dark me-2"
+            type="button"
+            routerLink="connexion"
+          >
+            Connexion
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+</header>

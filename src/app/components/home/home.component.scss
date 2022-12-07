@@ -1,0 +1,83 @@
+.Id{
+    color: chocolate;
+}
+
+.poste  {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+}
+
+.centrage{
+display:flex;
+align-items: center;
+justify-content:center;
+min-height:90px;
+}
+
+.membre-anim {
+  transition: all .5s;
+  -moz-transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  -ms-transition: all .5s;
+}
+.membre-anim:hover{
+  padding: 17px;
+  position: relative;
+  overflow: hidden;
+  transform : scale(1.25);
+  -moz-transform : scale(1.25);
+  -webkit-transform : scale(1.25);
+  -o-transform : scale(1.25);
+  -ms-transform : scale(1.25);
+}
+
+.imageSponsor{
+width: 60%;
+padding:5px;
+}
+/* --------------------- */
+
+
+.contenue {
+padding:0;
+margin:0;
+list-style:none;
+text-align: center;
+width: 400px;
+border-radius: 6px;
+margin-bottom:2px;
+border:solid 3px #AEAEAE;
+}
+
+#caroussel-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#caroussel-body {
+  font-size: 18px;
+  font-weight: 100;
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space:normal;
+}
+
+#caroussel-content {
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  background-color: whitesmoke;
+  border-radius: 30px;
+  transition: all .5s;
+  padding: 2%;
+
+}
+
+#caroussel-content:hover {
+  background-color: #3a3a3acb;
+  color:whitesmoke;
+  transition: all .5s;
+}

@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Ajouter un article</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <form
+    fxLayout="row wrap"
+    [formGroup]="addFaqForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Titre</mat-label>
+      <input
+        type="type"
+        matInput
+        formControlName="title"
+        placeholder="Entez un titre"
+      />
+      <mat-error *ngIf="title?.hasError('required')">
+        Le titre est requis
+      </mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline" fxFlex="100"> -->
+      <!-- <mat-label>Corps</mat-label> -->
+      <!-- <input
+        type="textarea"
+        matInput
+        formControlName="body"
+        placeholder="Body"
+      /> -->
+      <editor
+      fxFlex="100"
+        apiKey="xhe4unt6ydvae52gg9uh4wkyjje2d7e34hrmkhtqtbd5gf51"
+        matInput
+        formControlName="body"
+        class="mat-elevation-z1"
+        (onInit)="handleEditorInit($event)"
+        [init]="{
+            icons: 'material',
+            skin: 'borderless',
+            plugins: 'wordcount emoticons lists visualblocks wordcount checklist tinymcespellchecker tableofcontents footnotes mergetags image',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            menubar: false,
+            min_height: 150
+        }"
+   
+    ></editor>
+      <!-- <mat-error *ngIf="body?.hasError('required')">
+        Le corps du texte est requis
+      </mat-error>
+    </mat-form-field> -->
+
+    <button type="submit" mat-flat-button color="primary" [disabled]="!addFaqForm.valid">
+      Envoyer
+    </button>
+  </form>
+</div>

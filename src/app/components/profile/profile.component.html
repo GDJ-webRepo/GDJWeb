@@ -1,0 +1,103 @@
+<!-- <div class="profile-container">
+  <div class="cover-container"></div>
+  <div fxLayoutAlign="center center">
+    <div
+      class="profile-content"
+      fxFlex.lg="80"
+      fxFlex.md="90"
+      fxFlex.sm="95"
+      fxFlex.xs="98"
+      fxLayout.xs="column"
+      fxLayoutAlign.xs="center center"
+    >
+      <app-user-profil-img
+        marginTop="10%"
+        fontSize="2rem"
+        fxLayoutAlign="center center"
+        [userData]="user$ | async"
+      ></app-user-profil-img>
+      <div
+        fxHide.xs
+        class="img-border"
+
+      ></div>
+      <div class="user-profil-actions" fxLayoutAlign="end">
+        <button mat-flat-button color="primary" (click)="editUserDialog()">
+          Editer le profil
+        </button>
+        <button mat-flat-button color="accent" (click)="deconnexion()">
+          Se déconnecter
+        </button>
+      </div>
+      <div class="user-info">
+        <h1>
+          {{ (user$ | async)?.firstName }}
+          {{ (user$ | async)?.lastName }}
+        </h1>
+        <h2>{{ (user$| async)?.email }}</h2>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: 0.5rem">
+          <div class="row g-0">
+            <div
+              class="col-md-4 text-center text-white"
+              style="
+                border-top-left-radius: 0.5rem;
+                border-bottom-left-radius: 0.5rem;
+                background-color: #bde0d5;
+              "
+            >
+              <app-user-profil-img
+                marginTop="10%"
+                fontSize="2rem"
+                fxLayoutAlign="center center"
+                [userData]="user$ | async"
+              ></app-user-profil-img>
+              <div class="row" *ngIf="authService.userData as user">
+                <h5 *ngIf="!user.emailVerified"><a id="mail"routerLink="/verify-email-address">Veuillez valider votre adresse mail</a></h5>
+              </div>
+              <h5>  {{ (user$ | async)?.firstName }}   {{ (user$ | async)?.lastName }}</h5>
+              <p>  {{ (user$ | async)?.displayName }}</p>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Informations</h6>
+                <hr class="mt-0 mb-4" />
+                <div class="row pt-1">
+                  <div class="col-8 mb-3">
+                    <h6>Email</h6>
+                    <p [ngClass]= "(user$ | async)?.auth == true ? 'text' : 'text-muted' " >  {{ (user$ | async)?.email }}</p>
+                  </div>
+                </div>
+                <h6>Roles</h6>
+                <hr class="mt-0 mb-4" />
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6 *ngIf="(user$ | async)?.roles?.admin">Administrateur</h6>
+                    <h6 *ngIf="(user$ | async)?.roles?.subscriber">Utilisateur</h6>
+                  </div>
+                </div>
+                  <div class="" style="text-align: center;">
+                    <button mat-flat-button id="edit-button" (click)="editUserDialog()">
+                      Editer le profil
+                    </button>
+                    <button mat-flat-button id="logout-button" (click)="deconnexion()">
+                      Se déconnecter
+                    </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

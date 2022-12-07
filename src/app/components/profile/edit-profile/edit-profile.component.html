@@ -1,0 +1,105 @@
+<h1 mat-dialog-title>Modifier votre profil</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <input
+    type="file"
+    #selectImage
+    style="display: none"
+    (change)="selectFile($event)"
+    accept=".png,.jpg,.jpeg"
+  />
+  <div
+    *ngIf="isImageLoading"
+    class="imageLoadingProcess"
+    fxLayoutAlign="center center"
+  >
+    <mat-progress-spinner
+      mode="indeterminate"
+      strokeWidth="2.5"
+      diameter="40"
+    ></mat-progress-spinner>
+  </div>
+  <app-user-profil-img
+    *ngIf="!isImageLoading"
+    fontSize="4rem"
+    fxLayoutAlign="center center"
+    marginTop="15%"
+    [userData]="data.userData"
+    (click)="selectImage.click()"
+  ></app-user-profil-img>
+  <form fxLayout="row wrap" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Pseudo</mat-label>
+      <input
+        type="type"
+        matInput
+        formControlName="displayName"
+        placeholder="Entez votre Pseudo"
+        required
+      />
+      <mat-error *ngIf="displayName?.hasError('required')">
+        Le Pseudo est requis
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Prénom</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstName"
+        placeholder="Entez votre prénom"
+      />
+      <mat-error *ngIf="firstName?.hasError('required')">
+        Le prénom est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Nom de Famille</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastName"
+        placeholder="Entrez votre nom de famille"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" fxFlex="100" *ngIf="data.userData.auth == true">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Entrez votre adresse mail"
+        required
+      />
+      <mat-error
+        *ngIf="email?.hasError('email') && !email?.hasError('required')"
+      >
+        Email invalide
+      </mat-error>
+      <mat-error *ngIf="email?.hasError('required')">
+        Votre Email est <strong>obligatoire</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="container">
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+
+    >
+      Enregistrer les modifications
+    </button>
+  </div>
+  </form>
+  <div class="container">
+  <button
+  mat-flat-button
+  class="delete"
+  style="background-color:red; color:white"
+  (click)="deleteUser()"
+>
+  Supprimer mon compte
+</button>
+</div>
+</div>

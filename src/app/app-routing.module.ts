@@ -1,10 +1,87 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { RdvComponent } from './components/rdv/rdv.component';
+import { FaqComponent } from './components/faq/faq.component';
+import {
+  AuthGuardModule,
+  canActivate,
+  emailVerified,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent,
+  },
+  {
+    path: 'connexion',
+    component: LoginComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
+  },
+  {
+    path: 'inscription',
+    component: SignUpComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
+  },
+  {
+    path: 'mot-de-passe-oublié',
+    component: ForgotPasswordComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome}
+  },
+  { path: 'verification-email', component: VerifyEmailComponent},
+  {
+    path: 'accueil',
+    component: HomeComponent,
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
+  },
+  {
+    path: 'detail',
+    component: ArticleDetailComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'profil',
+    component: ProfileComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
+    // ...canActivate(redirectUnauthorizedToLogin),
+  },
+
+  {
+    path: 'rdv',
+    component: RdvComponent,
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'faq',
+    component: FaqComponent,
+  },
+  { path: '**', component: NotFoundComponent },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [RouterModule.forRoot(routes),  provideAuth(() => getAuth()),
+    AuthGuardModule,],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

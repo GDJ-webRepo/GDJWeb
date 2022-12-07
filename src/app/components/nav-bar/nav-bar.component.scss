@@ -1,0 +1,19 @@
+.navbar-brand  img{
+  -webkit-transition:-webkit-transform .9s;
+  -moz-transition:-moz-transform .9s;
+  -o-transition:-o-transform .9s;
+  -ms-transition:-ms-transform .9s;
+  transition:transform 1s;
+  padding-left: 30px;
+}
+  .navbar-brand  img:hover{
+  -webkit-transform:rotate(360deg);
+  -moz-transform:rotate(360deg);
+  -o-transform:rotate(360deg);
+  -ms-transform:rotate(360deg);
+  transform:rotate(360deg);
+}
+
+#navbarSupportedContent{
+  padding-right: 30px;
+}

@@ -1,0 +1,131 @@
+
+<div class="container" style="display: flex; justify-content: center; padding: 3%">
+  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+    <div class="justify-content-center">
+      <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+      class="img-fluid"
+      alt="Sample image"
+      />
+  </div>
+    <article class="card-body">
+    <h2 style="text-align: center; padding: 3%;">Création de Compte</h2>
+    <div style="text-align: center;">
+      <!-- <button class="btn btn-block btn-outline-dark" style="margin: 3%;" (click)="googleAuth()"> <i class="fab fa-google"></i> Login via Google</button>
+      <button class="btn btn-block btn-outline-primary" (click)="facebookAuth()"> <i class="fab fa-facebook-f" ></i> Login via facebook</button> -->
+    </div>
+    <p class="divider-text">
+      <span class="bg-light">OU</span>
+    </p>
+    <hr>
+    <form style="padding: 1%;" [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <div class="form-group input-group" style="padding-bottom: 2%;">
+      <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input class="form-control" formControlName="name" placeholder="Pseudo" type="text">
+      </div>
+      <div class="form-group input-group" style="padding-bottom: 2%;">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+          <input type="email" class="form-control" placeholder="Adresse mail" formControlName="email" #userEmail
+          required>
+      </div>
+      <div class="form-group input-group" style="padding-bottom: 2%;">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+      <input class="form-control" formControlName="password"
+          #userPwd
+          required placeholder="Mot de passe" type="password">
+        </div>
+      <div class="form-group input-group" style="padding-bottom: 2%;">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+          <input class="form-control" formControlName="confirmPassword" placeholder="Confirmation du mot de passe" type="password">
+      </div>
+      <div class="form-group" style="padding: 3%;">
+        <button type="submit" class="btn btn-primary btn-block" style="width:90%"> Créer un compte  </button>
+      </div>
+      <p class="text-center">Déjà un compte ? <a routerLink="/connexion">Connexion</a> </p>
+  </form>
+</article>
+ </div>
+</div>
+
+<!-- <div class="tab-content">
+  <div
+    class="tab-pane fade show active"
+    id="pills-login"
+    role="tabpanel"
+    aria-labelledby="tab-login"
+  >
+    <form  [formGroup]="signUpForm" (ngSubmit)="submit()">
+      <div class="text-center mb-3">
+        <p>S'enregistrer avec:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1" (click)="facebookAuth()">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1" (click)="googleAuth()">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+      <p class="text-center">ou:</p>
+
+
+       <div class="form-outline mb-4">
+          <input matInput placeholder="Name" formControlName="name" class="form-control" />
+
+       </div>
+
+        <div class="form-outline mb-4">
+          <input matInput placeholder="Email address" formControlName="email" class="form-control"  #userEmail
+          required />
+
+        </div>
+
+       <div class="form-outline mb-4">
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            class="form-control"
+            #userPwd
+            required
+          />
+
+       </div>
+
+
+       <div class="form-outline mb-4">
+          <input
+            matInput
+            type="password"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+            class="form-control"
+          />
+
+       </div>
+
+
+      <div class="center margin-top">
+        <button type="submit" mat-raised-button color="primary" >
+          S'enregistrer!
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->

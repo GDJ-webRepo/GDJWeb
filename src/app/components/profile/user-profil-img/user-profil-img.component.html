@@ -1,0 +1,16 @@
+<div
+  class="profile-img-container"
+  [fxLayoutAlign]="fxLayoutAlign"
+  [style.background]="background"
+>
+  <img [src]="userData?.imgProfil" *ngIf="userData?.imgProfil" alt="Image de profil" />
+  <h1
+    class="profile-text"
+    [style.font-size]="fontSize"
+    [style.margin-top]="marginTop"
+    [style.color]="textColor"
+    *ngIf="!userData?.imgProfil"
+  >
+    {{ userData?.displayName?.substring(0, 1)?.toUpperCase() }}
+  </h1>
+</div>
