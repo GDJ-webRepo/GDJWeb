@@ -42,6 +42,7 @@ export class ArticleComponent implements OnInit {
   editArticleDialog(article: Article): void {
     this.dialog.open(EditArticleComponent, {
       width: '40rem',
+      height: '90%',
       data: {
         userData: this.userData,
         articleData: article,

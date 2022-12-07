@@ -64,6 +64,7 @@ export class FaqComponent implements OnInit {
   editFaqDialog(faq: FAQ): void {
     this.dialog.open(EditFaqComponent, {
       width: '40rem',
+      height: '90%',
       data: {
         userData: this.userData,
         faqData: faq,
@@ -74,6 +75,7 @@ export class FaqComponent implements OnInit {
   detailDialog(faq: FAQ): void{
     this.dialog.open(FaqDetailComponent, {
       width: '40rem',
+      height: '90%',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms',
       data: {

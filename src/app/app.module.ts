@@ -53,6 +53,7 @@ import { FaqDetailComponent } from './components/faq/faq-detail/faq-detail.compo
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
+import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { VerifyEmailComponent } from './components/auth/verify-email/verify-emai
     AddFaqComponent,
     FaqDetailComponent,
     VerifyEmailComponent,
+    ConditionsUtilisationComponent,
   ],
   imports: [
     BrowserModule,
