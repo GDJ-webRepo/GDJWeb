@@ -66,15 +66,15 @@ export class EditArticleComponent implements OnInit {
       console.log(this.isImageLoading)
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
-        const filePath = `articleImg/${this.file.name}`;
+        const filePath = `articleImg/${this.data.articleData.imgName}`;
         this.imageUploadService.uploadImage(file, filePath).pipe(
           this.toast.observe({
-            loading: 'Uploading profile image...',
+            loading: 'Updating article image...',
             success: 'Image uploaded successfully',
             error: 'There was an error in uploading the image',
           }),
           switchMap((url) =>{
-            this.as.updateArticleImg(url, this.data.articleData.id)
+            this.as.updateArticleImg(url, this.data.articleData.imgName! ,this.data.articleData.id)
             return this.preview = url
           }
           )

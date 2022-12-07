@@ -78,11 +78,12 @@ export class AddArticleComponent implements OnInit {
         date: new Date(),
         author: this.data.userData.displayName!,
         actif: true,
+        imgName: this.file.name
       };
       const filePath = `articleImg/${this.file.name}`;
       this.imageUploadService.uploadImage(this.file, filePath).pipe(
         this.toast.observe({
-          loading: 'Uploading profile image...',
+          loading: 'Uploading article image...',
           success: 'Image uploaded successfully',
           error: 'There was an error in uploading the image',
         }),
