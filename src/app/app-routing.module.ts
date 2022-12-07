@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './components/auth/forgot-password/forgo
 import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
 
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: 'faq',
     component: FaqComponent,
+  },
+  {
+    path:'conditions-utilisation',
+    component:ConditionsUtilisationComponent
   },
   { path: '**', component: NotFoundComponent },
 ];
