@@ -1,5 +1,5 @@
 <ngx-spinner size="medium" color="#fff" [fullScreen]="true" type="ball-scale-mulitple"><p style="font-size : 20px; color: white">Chargement....</p></ngx-spinner>
-<div class="card">
+<div class="card" *ngIf="article !== null ">
   <div class="card-image">
   <img
     src= "{{ article!.imageUrl }}"
