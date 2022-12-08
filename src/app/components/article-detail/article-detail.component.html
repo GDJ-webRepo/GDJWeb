@@ -16,9 +16,29 @@
     </div>
 
   </div>
-  <h3>Espace Commentaire</h3>
-  <button type="button" class="btn" style="background-color: #bde0d5" (click)="addComment()">Ajouter un commentaire</button>
-  <div *ngFor="let comment of commentTable  ">
-    <h4>{{comment.body}}</h4>
+
+  <div>
+    <h3 style="text-align: center; padding: 3%">Espace Commentaire</h3>
+    <div style="text-align:center">
+      <button type="button" class="btn" style="background-color: #bde0d5; width: max-content; color: white" (click)="addComment()">Ajouter un commentaire</button>
+      <div *ngIf="commentTable.length > 0 else ElseBlock">
+      <div class="comments-container">
+          <div class="comments" *ngFor="let comment of commentTable">
+            <p style="opacity: 60%; font-size: 14px">{{ comment.author }}</p>
+            <p style="font-size: 19px">{{ comment.body }}</p>
+            <i
+            *ngIf="userData?.uid == comment.userUid"
+            class="bi bi-trash"
+            id="trash"
+            style="cursor: pointer;"
+            (click)="removeComment(comment)"
+          ></i>
+          </div>
+        </div>
+      </div>
+      <ng-template #ElseBlock>
+        <p style="text-align: center; font-size: 20px; padding: 5%;">Aucun commentaire pour le moment !</p>
+      </ng-template>
+    </div>
   </div>
 </div>

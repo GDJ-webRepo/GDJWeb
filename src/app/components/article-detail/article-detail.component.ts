@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { Commentary } from 'src/app/model/comment.model';
+import { User } from 'src/app/model/user';
 import { ArticleService } from 'src/app/shared/services/data/articles.service';
+import { UsersService } from 'src/app/shared/services/user/users.service';
 import { EditCommentComponent } from './edit-comment/edit-comment.component';
 
 @Component({
@@ -14,16 +16,24 @@ import { EditCommentComponent } from './edit-comment/edit-comment.component';
 })
 export class ArticleDetailComponent implements OnInit, OnDestroy {
   editDialogRef!: MatDialogRef<EditCommentComponent>;
+  user$ = this.usersService.currentUserProfile$;
+  userData?: User | null;
   constructor(
-    private Activatedroute: ActivatedRoute,private articleService: ArticleService, private router:Router, private dialog: MatDialog
+    private Activatedroute: ActivatedRoute,private articleService: ArticleService, private router:Router, private usersService: UsersService, private dialog: MatDialog
   ) {}
 
 
   sub: Subscription | undefined;
   article!: Article;
   commentTable: Commentary[] = []
-  ngOnInit() {
+  async ngOnInit() {
   
+    if (this.user$) {
+      await this.user$.subscribe((user) => {
+        this.userData = user;
+      });
+    }
+    
     this.article=history.state;
 
     if ( this.article.id === undefined) {
@@ -64,12 +74,15 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
   }
 
   removeComment(comment: Commentary): void {
-    const indexOfObject = this.commentTable.findIndex(object => {
-      return object.id === comment.id;
-    });
-    
-    this.commentTable.splice(indexOfObject, 1);
-    this.articleService.updateComment(this.article, this.article.comment!)
+    let decision = confirm('Voulez-vous vraiment supprimer ce commentaire ?')
+    if(decision) {
+      const indexOfObject = this.commentTable.findIndex(object => {
+        return object.id === comment.id;
+      });
+      
+      this.commentTable.splice(indexOfObject, 1);
+      this.articleService.updateComment(this.article, this.commentTable!)
+    }
   }
 }
 
