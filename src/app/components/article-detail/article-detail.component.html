@@ -1,7 +1,8 @@
+<ngx-spinner size="medium" color="#fff" [fullScreen]="true" type="ball-scale-mulitple"><p style="font-size : 20px; color: white">Chargement....</p></ngx-spinner>
 <div class="card">
   <div class="card-image">
   <img
-    src="{{ article.imageUrl }}"
+    src= "{{ article!.imageUrl }}"
     class="card-img-top"
     alt= ""
   />
@@ -10,8 +11,8 @@
   <div class="container-body">
     <div class="card-body" >
       <a id="retour" [routerLink]="['/blog']">← Retour</a>
-        <p class="card-title"><br/>{{ article.title }}</p>
-        <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px"  [innerHTML]="article.body">
+        <p class="card-title"><br/>{{ article!.title }}</p>
+        <p class="card-text" style="font-family: Acumin Variable Concept; font-size: 19px"  [innerHTML]="article!.body">
         </p>
     </div>
 
@@ -21,9 +22,9 @@
     <h3 style="text-align: center; padding: 3%">Espace Commentaire</h3>
     <div style="text-align:center">
       <button type="button" class="btn" style="background-color: #bde0d5; width: max-content; color: white" (click)="addComment()">Ajouter un commentaire</button>
-      <div *ngIf="commentTable.length > 0 else ElseBlock">
+      <div *ngIf="article.comment!.length > 0 else ElseBlock">
       <div class="comments-container">
-          <div class="comments" *ngFor="let comment of commentTable">
+          <div class="comments" *ngFor="let comment of article.comment!">
             <p style="opacity: 60%; font-size: 14px">{{ comment.author }}</p>
             <p style="font-size: 19px">{{ comment.body }}</p>
             <i

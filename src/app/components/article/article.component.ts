@@ -14,7 +14,7 @@ import { ActivatedRoute, Route } from '@angular/router';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
-  @Input() article: Article = {};
+  @Input() article!: Article;
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
   constructor(
