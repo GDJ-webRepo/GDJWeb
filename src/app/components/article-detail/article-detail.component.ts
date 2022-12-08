@@ -61,15 +61,17 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
     });
 
     this.editDialogRef.afterClosed().subscribe((component: Commentary) => {
-      console.log(component)
-      if (this.article.comment! !== undefined) {
-        this.article.comment!.push(component);
-      }else {
-        this.article.comment! = []
-        this.article.comment.push(component)
+      if (component !== undefined) {
+          console.log(component)
+        if (this.article.comment! !== undefined) {
+          this.article.comment!.push(component);
+        }else {
+          this.article.comment! = []
+          this.article.comment.push(component)
+        }
+        this.commentTable.push(component)
+        this.articleService.updateComment(this.article, this.article.comment!)
       }
-      this.commentTable.push(component)
-      this.articleService.updateComment(this.article, this.article.comment!)
     })
   }
 
