@@ -14,10 +14,9 @@
       style="
         font-family: Acumin Variable Concept;
         font-size: 19px;
-        white-space: pre-wrap;
+        white-space: normal;
       "
-      [innerHTML]="article.body"
-    ></p>
+    >{{ article.previewText }}</p>
 
     <a id="lire-suite" [routerLink]="['/detail']" [state]="article">
       → Lire la suite</a

@@ -19,6 +19,19 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Preview</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="previewText"
+        placeholder="Entez un preview"
+      />
+      <mat-error *ngIf="previewText?.hasError('required')">
+        La preview est requise
+      </mat-error>
+    </mat-form-field>
+
     <!-- <mat-form-field appearance="outline" fxFlex="100">
       <mat-label>Corps</mat-label>
       <input

@@ -3,6 +3,7 @@ import { Commentary } from "./comment.model";
 export interface Article {
   id? : string;
   title? : string;
+  previewText?: string;
   body? : string;
   imageUrl? : string;
   author? : string;
