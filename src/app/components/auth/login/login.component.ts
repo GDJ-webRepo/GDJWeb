@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private toast: HotToastService,
     private router: Router,
     private fb: NonNullableFormBuilder

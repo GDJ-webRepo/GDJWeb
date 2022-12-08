@@ -31,11 +31,16 @@ export class AddFaqComponent implements OnInit {
 
   addFaqForm = this.formBuilder.group({
     title: ['', Validators.required],
+    previewText: ['', Validators.required],
     body: ['', Validators.required],
   });
 
   get title(): AbstractControl | null {
     return this.addFaqForm.get('title');
+  }
+
+  get previewText(): AbstractControl | null {
+    return this.addFaqForm.get('previewText');
   }
 
   get body(): AbstractControl | null {
@@ -52,6 +57,7 @@ export class AddFaqComponent implements OnInit {
     if (this.addFaqForm.valid) {
       const faq: FAQ = {
         title: this.addFaqForm.get('title')?.value,
+        previewText: this.addFaqForm.get('previewText')?.value,
         body: this.addFaqForm.get('body')?.value,
         date: new Date(),
         author: this.data.userData.displayName!,

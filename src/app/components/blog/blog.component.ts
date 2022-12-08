@@ -35,7 +35,7 @@ export class BlogComponent implements OnInit {
   getAllArticles() {
     this.spinner.show();
     this.articleService.getArticles().subscribe((res: Article[]) => {
-      console.log(res);
+
       this.articlesData = res;
       this.spinner.hide();
     });

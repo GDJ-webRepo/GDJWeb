@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
     private dialog: MatDialog,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private us: UsersService,
     private usersService: UsersService,
     private router: Router
   ) {
@@ -41,8 +40,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editUserDialog(): void {
-    console.log("user")
-    console.log(this.userData)
+
     const dialogRef = this.dialog.open(EditProfileComponent, {
       width: '40rem',
       height: '90%',

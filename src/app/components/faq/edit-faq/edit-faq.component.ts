@@ -38,11 +38,16 @@ export class EditFaqComponent implements OnInit {
 
   editFaqForm = this.formBuilder.group({
     title: [this.data.faqData.title, Validators.required],
+    previewText: [this.data.faqData.previewText, Validators.required],
     body: [this.data.faqData.body, Validators.required],
   });
 
   get title(): AbstractControl | null {
     return this.editFaqForm.get('title');
+  }
+
+  get previewText(): AbstractControl | null {
+    return this.editFaqForm.get('previewText');
   }
 
   get body(): AbstractControl | null {
@@ -63,10 +68,11 @@ export class EditFaqComponent implements OnInit {
       const faqInfo: FAQ = {
         id: this.data.faqData.id,
         title: this.editFaqForm.get('title')?.value,
+        previewText: this.editFaqForm.get('previewText')?.value,
         body: this.editFaqForm.get('body')?.value,
         author: this.data.userData.displayName!
       };
-      console.log(faqInfo);
+
       this.as.updateFaqInfo(faqInfo, this.data.faqData.id);
       this.dialog.closeAll();
     }

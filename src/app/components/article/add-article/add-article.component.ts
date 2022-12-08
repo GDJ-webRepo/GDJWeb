@@ -33,11 +33,16 @@ export class AddArticleComponent implements OnInit {
 
   addArticleForm = this.formBuilder.group({
     title: ['', Validators.required],
+    previewText: ['', Validators.required],
     body: ['', Validators.required],
   });
 
   get title(): AbstractControl | null {
     return this.addArticleForm.get('title');
+  }
+
+  get previewText(): AbstractControl | null {
+    return this.addArticleForm.get('previewText');
   }
 
   get body(): AbstractControl | null {
@@ -74,6 +79,7 @@ export class AddArticleComponent implements OnInit {
     if (this.addArticleForm.valid) {
       const article: Article = {
         title: this.addArticleForm.get('title')?.value,
+        previewText: this.addArticleForm.get('previewText')?.value,
         body: this.addArticleForm.get('body')?.value,
         date: new Date(),
         author: this.data.userData.displayName!,

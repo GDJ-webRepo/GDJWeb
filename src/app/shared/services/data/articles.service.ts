@@ -19,6 +19,7 @@ import { map, Observable } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { AuthService } from '../auth/auth.service';
 import {User} from "../../../model/user";
+import { Commentary } from 'src/app/model/comment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -63,12 +64,16 @@ export class ArticleService {
       );
   }
 
+  updateComment(article: Article, comment: Commentary[]){
+    return this.articleRef.doc(article.id).update({ comment: comment});
+  }
+
   //Delete Article
   deleteArticle(article: Article) {
     this.fireStorage.ref('articleImg/' + article.imgName).delete();
     let articleRef = doc(this.db, `articles/${article.id}`);
     return deleteDoc(articleRef).catch((error) => {
-      console.log(error);
+        alert(error.message);
     });
   }
 

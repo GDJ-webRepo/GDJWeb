@@ -1,0 +1,26 @@
+
+<h1 mat-dialog-title>Ajouter un commentaire</h1>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <form
+    fxLayout="row wrap"
+    [formGroup]="editCommentForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Commentaire</mat-label>
+      <textarea
+        matInput
+        formControlName="body"
+        placeholder="Entez votre commentaire"
+      ></textarea>
+      <mat-error *ngIf="body?.hasError('required')">
+        Un commentaire est requis
+      </mat-error>
+    </mat-form-field>
+
+
+    <button type="submit" mat-flat-button color="primary" [disabled]="!editCommentForm.valid">
+      Envoyer
+    </button>
+  </form>
+</div>

@@ -64,7 +64,7 @@ export class EditProfileComponent implements OnInit {
   async selectFile(event: any): Promise<void> {
     if (event.target.files) {
       this.isImageLoading = true;
-      console.log(this.isImageLoading)
+ 
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
         const filePath = `profilImage/${this.data.userData.uid}`;

@@ -54,6 +54,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerifyEmailComponent } from './components/auth/verify-email/verify-email.component';
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
+import { EditCommentComponent } from './components/article-detail/edit-comment/edit-comment.component';
+import { ObjectToArray} from './pipe/object-to-array.pipe';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { ConditionsUtilisationComponent } from './components/conditions-utilisat
     FaqDetailComponent,
     VerifyEmailComponent,
     ConditionsUtilisationComponent,
+    EditCommentComponent,
+    ObjectToArray,
   ],
   imports: [
     BrowserModule,
