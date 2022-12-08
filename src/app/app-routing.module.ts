@@ -56,9 +56,8 @@ const routes: Routes = [
     component: BlogComponent,
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     component: ArticleDetailComponent,
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'profil',

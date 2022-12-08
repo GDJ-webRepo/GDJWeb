@@ -4,11 +4,11 @@
     class="card-img-top"
     alt=""
     style="cursor: pointer"
-    [routerLink]="['/detail']" [state]="article"
+    [routerLink]="['/detail', article.id]"
   />
 
   <div class="card-body">
-    <p class="card-title" [routerLink]="['/detail']" [state]="article" >{{ article.title }}</p>
+    <p class="card-title" [routerLink]="['/detail', article.id]" >{{ article.title }}</p>
     <p
       class="card-text"
       style="
@@ -18,7 +18,7 @@
       "
     >{{ article.previewText }}</p>
 
-    <a id="lire-suite" [routerLink]="['/detail']" [state]="article">
+    <a id="lire-suite" [routerLink]="['/detail', article.id]">
       → Lire la suite</a
     >
     <div *ngIf="user$ | async as user">
