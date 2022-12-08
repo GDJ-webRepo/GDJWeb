@@ -62,6 +62,15 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
       this.articleService.updateComment(this.article, this.article.comment!)
     })
   }
+
+  removeComment(comment: Commentary): void {
+    const indexOfObject = this.commentTable.findIndex(object => {
+      return object.id === comment.id;
+    });
+    
+    this.commentTable.splice(indexOfObject, 1);
+    this.articleService.updateComment(this.article, this.article.comment!)
+  }
 }
 
   
