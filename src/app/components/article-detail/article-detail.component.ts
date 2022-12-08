@@ -25,24 +25,23 @@ export class ArticleDetailComponent implements OnInit {
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService
-  ) {}
+  ) {
+    this.article.comment = [];
+  }
 
   article: Article = {};
-  commentTable: Commentary[] = [];
   id!: string;
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    console.log(this.user$)
     if (this.user$) {
       await this.user$.subscribe((user) => {
         this.userData = user;
       });
     }
+
     await this.getArticleDetails();
-    if (this.article!.comment !== undefined) {
-      for (let i = 0; this.article!.comment.length > i; i++) {
-        this.commentTable.push(this.article!.comment[i]);
-      }
+    if (this.article!.comment === undefined) {
+      this.article!.comment = []
     }
   }
 
