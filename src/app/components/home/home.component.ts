@@ -28,10 +28,8 @@ export class HomeComponent implements OnInit {
 
   getAllArticles() {
     this.articleService.getArticles().subscribe((res) => {
-      console.log(res);
       this.articles = res;
       this.booli= true
-      console.log(this.booli)
     });
   }
 }

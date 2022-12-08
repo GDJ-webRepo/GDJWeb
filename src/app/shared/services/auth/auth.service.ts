@@ -106,6 +106,12 @@ export class AuthService {
       this.router.navigate(['accueil']);
     });
   }
+
+  FacebookAuth(){
+    return this.AuthLogin(new auth.FacebookAuthProvider()).then((res: any) => {
+      this.router.navigate(['accueil']);
+    });
+  }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
     return this.afAuth

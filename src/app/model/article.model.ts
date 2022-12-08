@@ -1,3 +1,4 @@
+import { Commentary } from "./comment.model";
 
 export interface Article {
   id? : string;
@@ -8,4 +9,5 @@ export interface Article {
   actif? : boolean;
   date? : Date;
   imgName?: string;
+  comment?: Array<Commentary>;
 }

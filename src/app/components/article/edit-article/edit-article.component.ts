@@ -63,7 +63,7 @@ export class EditArticleComponent implements OnInit {
   async selectFile(event: any): Promise<void> {
     if (event.target.files) {
       this.isImageLoading = true;
-      console.log(this.isImageLoading)
+
       for (let i = 0; i < File.length; i++) {
         const file = event.target.files[i];
         const filePath = `articleImg/${this.data.articleData.imgName}`;
@@ -80,7 +80,7 @@ export class EditArticleComponent implements OnInit {
           )
         ).subscribe();
         this.isImageLoading = false;
-        console.log(this.isImageLoading)
+
       }
     }
   }
@@ -95,7 +95,7 @@ export class EditArticleComponent implements OnInit {
         body: this.editArticleForm.get('body')?.value,
         author: this.data.userData.displayName!,
       };
-      console.log(articleInfo);
+
       this.as.updateArticleInfo(articleInfo, this.data.articleData.id);
       this.dialog.closeAll();
     }

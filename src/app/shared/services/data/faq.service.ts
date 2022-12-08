@@ -65,7 +65,7 @@ export class FaqService {
   deleteFaq(faq: FAQ) {
     let articleRef = doc(this.db, `faqs/${faq.id}`);
     return deleteDoc(articleRef).catch((error) => {
-      console.log(error);
+      alert(error.message);
     });
   }
 
