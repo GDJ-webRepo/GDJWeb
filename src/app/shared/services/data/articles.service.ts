@@ -64,6 +64,20 @@ export class ArticleService {
       );
   }
 
+  getOneArticle(id: string): Observable<any> {
+    return this.afs.collection<any>('articles', (ref) => ref.where('id',  '==', id )).snapshotChanges()
+    .pipe(
+      map((actions) => {
+        return actions.map((item) => {
+          return {
+            id: item.payload.doc.id,
+            ...item.payload.doc.data(),
+          };
+        });
+      })
+    );
+  }
+
   updateComment(article: Article, comment: Commentary[]){
     return this.articleRef.doc(article.id).update({ comment: comment});
   }
