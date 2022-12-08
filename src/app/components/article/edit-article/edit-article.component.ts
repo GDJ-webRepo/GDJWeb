@@ -44,11 +44,16 @@ export class EditArticleComponent implements OnInit {
 
   editArticleForm = this.formBuilder.group({
     title: [this.data.articleData.title, Validators.required],
+    previewText: [this.data.articleData.previewText, Validators.required],
     body: [this.data.articleData.body, Validators.required],
   });
 
   get title(): AbstractControl | null {
     return this.editArticleForm.get('title');
+  }
+
+  get previewText(): AbstractControl | null {
+    return this.editArticleForm.get('previewText');
   }
 
   get body(): AbstractControl | null {
@@ -92,6 +97,7 @@ export class EditArticleComponent implements OnInit {
       const articleInfo: Article = {
         id: this.data.articleData.id,
         title: this.editArticleForm.get('title')?.value,
+      previewText: this.editArticleForm.get('previewText')?.value,
         body: this.editArticleForm.get('body')?.value,
         author: this.data.userData.displayName!,
       };
