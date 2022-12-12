@@ -81,6 +81,7 @@ export class AddArticleComponent implements OnInit {
         title: this.addArticleForm.get('title')?.value,
         previewText: this.addArticleForm.get('previewText')?.value,
         body: this.addArticleForm.get('body')?.value,
+        comment: [],
         date: new Date(),
         author: this.data.userData.displayName!,
         actif: true,
