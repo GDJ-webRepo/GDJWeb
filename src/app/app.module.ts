@@ -57,6 +57,7 @@ import { ConditionsUtilisationComponent } from './components/conditions-utilisat
 import { EditCommentComponent } from './components/article-detail/edit-comment/edit-comment.component';
 import { ObjectToArray} from './pipe/object-to-array.pipe';
 import {NgcCookieConsentModule} from 'ngx-cookieconsent';
+import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import {NgcCookieConsentModule} from 'ngx-cookieconsent';
     ConditionsUtilisationComponent,
     EditCommentComponent,
     ObjectToArray,
+    PolitiqueConfidentialiteComponent,
   ],
   imports: [
     BrowserModule,
