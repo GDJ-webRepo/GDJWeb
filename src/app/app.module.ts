@@ -56,7 +56,7 @@ import { VerifyEmailComponent } from './components/auth/verify-email/verify-emai
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
 import { EditCommentComponent } from './components/article-detail/edit-comment/edit-comment.component';
 import { ObjectToArray} from './pipe/object-to-array.pipe';
-
+import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 
 @NgModule({
   declarations: [
@@ -114,6 +114,7 @@ import { ObjectToArray} from './pipe/object-to-array.pipe';
     FlexLayoutModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    NgcCookieConsentModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],

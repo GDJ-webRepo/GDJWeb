@@ -38,6 +38,16 @@ padding:5px;
 }
 /* --------------------- */
 
+@media (max-width: 600px) {
+  .carrousel{
+    display: none;
+  }
+  .presentation{
+    height: 400px;
+    overflow: scroll !important;
+  }
+}
+
 
 .contenue {
 padding:0;
