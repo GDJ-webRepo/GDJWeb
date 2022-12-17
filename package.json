@@ -30,6 +30,7 @@
     "firebase": "^9.12.1",
     "jquery": "^3.6.1",
     "mdb-angular-ui-kit": "^3.0.0",
+    "ngx-cookieconsent": "^4.0.1",
     "ngx-permissions": "^14.0.0",
     "ngx-spinner": "^14.0.0",
     "rxfire": "^6.0.0",

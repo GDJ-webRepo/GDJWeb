@@ -1,5 +1,5 @@
 <div class="position-relative overflow-hidden" style='background-image: url("../../../assets/images/fond.png"); background-size: cover;'>
-  <div class="card mx-auto" style="margin: 5%; padding: 3%; background-color:rgba(255, 255, 255, 0.6); width:65%;">
+  <div class="card mx-auto presentation" style="margin: 5%; padding: 3%; background-color:rgba(255, 255, 255, 0.6); width:65%">
     <h2 class="text-center" style="color:black;"><strong>Explication du projet</strong></h2>
     <span class="lead fw-normal" style="color:black; font-size:15px">C’est quoi les Ydays ?<br><br>
 
@@ -27,7 +27,7 @@
   <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
 
-<div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; cursor: pointer;" *ngIf="booli">
+<div class="card mx-auto w-75 carrousel" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; cursor: pointer;" *ngIf="booli">
   <div *ngIf="articles?.length == 1">
       <div *ngFor="let article of articles" [routerLink]="['/detail', article.id]">
         <img
