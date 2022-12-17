@@ -22,6 +22,7 @@ import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path:'conditions-utilisation',
     component:ConditionsUtilisationComponent
+  },
+  {
+    path:'politique-de-confidentialité',
+    component:PolitiqueConfidentialiteComponent
   },
   { path: '**', component: NotFoundComponent },
 ];
