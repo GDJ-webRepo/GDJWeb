@@ -21,8 +21,27 @@ import { VerifyEmailComponent } from './components/auth/verify-email/verify-emai
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
+import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'https://guidedesjeunes.com', 
+  },
+  palette: {
+    popup: {
+      text:"black",
+      background: 'white'
+    },
+    button: {
+      background: '#bde0d5'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
 
 
 const routes: Routes = [
@@ -84,7 +103,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),NgcCookieConsentModule.forRoot(cookieConfig),],
   exports: [RouterModule],
 })
+
+
 export class AppRoutingModule {}
