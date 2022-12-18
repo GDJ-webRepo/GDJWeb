@@ -24,10 +24,15 @@ app-user-profil-img {
 }
 
 #edit-button {
+  text-align: center; 
+  padding: 0px;
+  width: 150px;
+  height: 25px;
   transition: all 0.2s;
-  margin : 3px;
+  margin-right : 10px;
   background-color: #bde0d5; 
   color: white;
+  border-radius: 8px;
 }
 
 #edit-button:hover {
@@ -36,12 +41,18 @@ app-user-profil-img {
 } 
 
 #logout-button {
+  text-align: center; 
+  padding: 0px;
+  width: 150px;
+  height: 25px;
+  margin-left : 10px;
   transition: all 0.2s;
-  background-color:red; 
-  color:white
+  background-color:#F6A762; 
+  color:white;
+  border-radius: 8px;
 }
 
 #logout-button:hover {
   transition: all 0.2s;
-  background-color: rgb(206, 1, 1); 
+  background-color: #f7923b; 
 }
