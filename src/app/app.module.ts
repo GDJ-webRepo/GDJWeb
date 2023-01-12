@@ -58,6 +58,7 @@ import { EditCommentComponent } from './components/article-detail/edit-comment/e
 import { ObjectToArray} from './pipe/object-to-array.pipe';
 import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
+import { AnalyticsModule } from '@angular/fire/analytics'
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { PolitiqueConfidentialiteComponent } from './components/politique-confid
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    AnalyticsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
