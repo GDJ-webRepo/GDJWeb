@@ -20,7 +20,7 @@ export const environment = {
   
     appId: "1:1061303624385:web:cd2f82c779c5a1930eea40",
   
-    measurementId: "G-M1KM4G0EL4"
+    measurementId: "G-NTD6TLY47F"
   
   }
   
