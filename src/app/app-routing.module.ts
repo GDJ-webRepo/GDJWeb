@@ -30,18 +30,33 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
     domain: 'https://guidedesjeunes.com', 
+    secure: true
   },
-  palette: {
-    popup: {
-      text:"black",
-      background: 'white'
+  "position": "bottom",
+  "theme": "edgeless",
+  "palette": {
+    "popup": {
+      "background": "#ffffff",
+      "text": "#000000",
+      "link": "#000000"
     },
-    button: {
-      background: '#bde0d5'
+    "button": {
+      "background": "#bde0d5",
+      "text": "#000000",
+      "border": "transparent"
     }
   },
-  theme: 'edgeless',
-  type: 'opt-out'
+  "type": "info",
+  "content": {
+    "message": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
+    "dismiss": "Accepter !",
+    "deny": "Refuser",
+    "close": "Fermer",
+    "link": "En savoir plus",
+    "href": "https://cookiesandyou.com",
+    "policy": "Cookie Policy"
+  },
+  dismissOnScroll: true,
 };
 
 
