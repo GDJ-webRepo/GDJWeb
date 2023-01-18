@@ -28,8 +28,8 @@ export class AppComponent implements OnInit, OnDestroy {
   //When the user scrolls down 20px from the top of the document, show the button
   scrollFunction() {
     if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
+      document.body.scrollTop > 13 ||
+      document.documentElement.scrollTop > 13
     ) {
       document.getElementById('backtop')!.style.display = 'block';
     } else {
