@@ -47,7 +47,7 @@ export class SignUpComponent implements OnInit {
   );
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private toast: HotToastService,
     private usersService: UsersService,

@@ -19,7 +19,7 @@
                 [userData]="user$ | async"
               ></app-user-profil-img>
               <div class="row" *ngIf="authService.userData as user">
-                <h5 *ngIf="!user.emailVerified" style="color: black;"><a id="mail"routerLink="/verify-email-address">Veuillez valider votre adresse mail</a></h5>
+                <h5 *ngIf="!user.emailVerified && user.auth == true" style="color: black;"><a id="mail"routerLink="/verification-email">Veuillez valider votre adresse mail</a></h5>
               </div>
               <h5 style="color: black;">  {{ (user$ | async)?.firstName }}   {{ (user$ | async)?.lastName }}</h5>
               <p style="color: black;">  {{ (user$ | async)?.displayName }}</p>

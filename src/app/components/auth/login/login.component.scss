@@ -1,17 +1,24 @@
-#btn_signlog{
+.btn_signlog{
     background-color: #F6A762;
     color: #000000;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-#orange{
-     color: #F6A762;
-     position: relative;
-     right: 2.5%;
-     
+.btn_signlog:hover {
+    background-color: #FFFBED
 }
-#auth_btn{
-    background-color: #bee0d57d;
- }
- #bottom_left{
+.width-100{
+    width: 100%;
+    // background-color: #bee0d57d;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px !important;
+    background-color: #bee0d57d !important;
+    color: #0000007d;
+    text-underline-offset: none !important;
+}
+.forgot_pass{
+    color: #F6A762;
     position: relative;
-    left: 30%;
+    right: 2.5%;
+    text-decoration: none;
 }
