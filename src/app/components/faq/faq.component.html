@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center p-5">
-  <h2>Besoin de précisions ?</h2>
+  <h2 style="font-family:'Noteworthy' !important">Besoin de précisions ?</h2>
 </div>
 <div style="text-align: center; padding: 1%" *ngIf="user$ | async as user">
   <button
@@ -13,7 +13,7 @@
 </div>
 
 <div class="d-flex justify-content-start" style="padding:2%">
-  <h4>Questions fréquentes...</h4>
+  <h4 style="font-family:'Noteworthy' !important">Questions fréquentes...</h4>
 </div>
 <div class="grid p-5">
   <div class="card" *ngFor="let faq of faqsData | slice:0:nbr">
@@ -142,7 +142,7 @@
   </div> -->
 </div>
 <div class="" id="div-other">
-  <span style="font-weight: bold"
+  <span style="font-weight: bold; font-family: 'Noteworthy' !important"
     >D'autres questions ? <a id="other-button" (click)="augList()" >Cliquez ici</a></span
   >
 </div>

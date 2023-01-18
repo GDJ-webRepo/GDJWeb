@@ -6,6 +6,17 @@ body {
     background-color: #FFFBED;
 }
 
+@font-face {
+    font-family: 'Acumin-Variable-Concept';
+    src: url('./assets/font/Acumin Variable Concept.ttf');
+}
+
+@font-face {
+    font-family: 'Noteworthy';
+    src: url('./assets/font/FontsFree-Net-Noteworthy-Bold.ttf');
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// * {
+//     font-family: 'Acumin-Variable-Concept', 'Noteworthy' !important; 
+// }

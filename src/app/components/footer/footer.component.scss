@@ -2,5 +2,23 @@
     #contact-title{
       margin-bottom: 0 !important;
     }
-    
   }
+
+#submitButton {
+  background-color: #FFFBED;
+  text-align: center;
+  color: black;
+}
+
+#submitButton:hover {
+  background-color: #F6A864
+}
+
+.d-grid{
+  display: flex;
+  justify-content: end;
+}
+
+.rounded {
+  border-radius: 3px 3px 3px 3x;
+}

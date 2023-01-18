@@ -1,7 +1,7 @@
 <div class="position-relative overflow-hidden" style='background-image: url("../../../assets/images/fond.png"); background-size: cover;'>
   <div class="card mx-auto presentation" style="margin: 5%; padding: 3%; background-color:rgba(255, 255, 255, 0.6); width:65%">
-    <h2 class="text-center" style="color:black;"><strong>Explication du projet</strong></h2>
-    <span class="lead fw-normal" style="color:black; font-size:15px">C’est quoi les Ydays ?<br><br>
+    <h2 class="text-center" style="color:black; font-family: 'Noteworthy' !important"><strong>Explication du projet</strong></h2>
+    <span class="lead fw-normal" style="color:black; font-size:15px ;font-family: 'Acumin-Variable-Concept' !important; font-weight: 500 !important;">C’est quoi les Ydays ?<br><br>
 
       La réponse est simple, ce projet relie toutes les filières de notre école. Les Market Com, les Informatiques et les Créa design, toute année confondue, sont réunis tous ensemble afin de mener un projet qui durera toute l’année.<br><br>
 
@@ -39,8 +39,8 @@
           style="object-fit: cover;"
         />
         <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
-          <h5 id='caroussel-title'>{{ article.title }}</h5>
-          <p id='caroussel-body' [innerHTML]="article.previewText" >{{ article.previewText }}</p>
+          <h5 id='caroussel-title' style="font-family: 'Noteworthy' !important;">{{ article.title }}</h5>
+          <p id='caroussel-body' [innerHTML]="article.previewText" style="font-family: 'Acumin-Variable-Concept' !important;  font-weight: 300">{{ article.previewText }}</p>
         </div>
       </div>
   </div>
@@ -56,13 +56,13 @@
           style="object-fit: cover;"
         />
         <div id='caroussel-content' class="carousel-caption d-none d-md-block" style="white-space: pre-wrap">
-          <h5 id='caroussel-title'>{{ article.title }}</h5>
-          <p id='caroussel-body' [innerHTML]="article.previewText">{{ article.previewText }}</p>
+          <h5 id='caroussel-title' style="font-family: 'Noteworthy' !important;">{{ article.title }}</h5>
+          <p id='caroussel-body' [innerHTML]="article.previewText" style="font-family: 'Acumin-Variable-Concept' !important; font-weight: 300" >{{ article.previewText }}</p>
         </div>
       </mdb-carousel-item>
     </mdb-carousel>
   </div>
-  <div *ngIf="articles?.length == 0" style="text-align: center; font-size: 20px; padding: 5%;">Aucun article pour le moment !</div>
+  <div *ngIf="articles?.length == 0" style="text-align: center; font-size: 20px; padding: 5%; font-family: 'Acumin-Variable-Concept' !important">Aucun article pour le moment !</div>
 </div>
 
 <!-- <mdb-carousel [controls]="true" [indicators]="true">
@@ -81,9 +81,9 @@
 
 <div class="card mx-auto w-75" style="margin: 3%; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
   <div class="row justify-content-center">
-      <h2 class="fw-bold mb-5 p-5" style="text-align: center;">Présentation de l'équipe</h2>
+      <h2 class="fw-bold mb-5 p-5" style="text-align: center; font-family: 'Noteworthy' !important">Présentation de l'équipe</h2>
     </div>
-  <div class="row" id="test11" style="text-align: center;">
+  <div class="row" id="test11" style="text-align: center; font-family:'Acumin-Variable-Concept' !important">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3 centre membre-anim">
           <img class="imageSponsor" src="../../../assets/images/equipe/suzy.png">
