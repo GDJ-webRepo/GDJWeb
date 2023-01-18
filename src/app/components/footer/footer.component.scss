@@ -22,3 +22,14 @@
 .rounded {
   border-radius: 3px 3px 3px 3x;
 }
+
+i {
+  font-size: 40px; 
+  color: #FFFBED;
+  transition: all 0.2s;
+}
+
+i:hover {
+  color: #F6A864;
+  transition: all 0.2s;
+}
