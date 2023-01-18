@@ -1,5 +1,5 @@
 <div class="container" style="display: flex; justify-content: center; padding: 3%">
-  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+  <div id="corners" class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
   <div class="displayTable">
       <div class="displayTableCell">
         <div class="authBlock">
@@ -12,9 +12,9 @@
           </div>
           
           <div class="formGroup">
-            <button type="button" id="mail" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
-              <i class="fas fa-redo-alt"></i>
-              Je n'ai pas reçu le mail
+            <button  type="button" id="mail" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
+              <i id="orange" class="fas fa-redo-alt"></i>
+              <i id="orange">Je n'ai pas reçu le mail</i>
             </button>
           </div>
         </article>
