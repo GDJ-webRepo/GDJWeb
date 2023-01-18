@@ -1,55 +1,64 @@
 
 <div class="container" style="display: flex; justify-content: center; padding: 3%">
-  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+  <div  style="display: flex; justify-content: center;text-align: center; width: 90%;">
+    
+  <article class="card-body">
+    <h2 id="titre_auth" style="text-align: center; padding: 3%;">Création de Compte</h2>
+    <div style="text-align: center;">
+      
+    </div>
     <div class="justify-content-center">
-      <img
-      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-      class="img-fluid"
+      <img id="auth"
+      src="assets/images/auth/auth.jpg"
+      class="img-fluid rounded"
       alt="Sample image"
       />
   </div>
-    <article class="card-body">
-    <h2 style="text-align: center; padding: 3%;">Création de Compte</h2>
-    <div style="text-align: center;">
-      <!-- <button class="btn btn-block btn-outline-dark" style="margin: 3%;" (click)="googleAuth()"> <i class="fab fa-google"></i> Login via Google</button>
-      <button class="btn btn-block btn-outline-primary" (click)="facebookAuth()"> <i class="fab fa-facebook-f" ></i> Login via facebook</button> -->
-    </div>
     <p class="divider-text">
-      <span class="bg-light">OU</span>
+      <br>
+      <span>ou</span>
     </p>
-    <hr>
     <form style="padding: 1%;" [formGroup]="signUpForm" (ngSubmit)="submit()">
-    <div class="form-group input-group" style="padding-bottom: 2%;">
-      <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+    <div  class="form-group input-group" style="padding-bottom: 2%;">
+      <div  class="input-group-prepend">
+          <span id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="input-group-text"> <i class="fa fa-user"></i> </span>
+          
         </div>
-        <input class="form-control" formControlName="name" placeholder="Pseudo" type="text">
+        <input id="auth_btn2" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="form-control" formControlName="name" placeholder="Pseudo" type="text">
       </div>
       <div class="form-group input-group" style="padding-bottom: 2%;">
         <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          <span id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
-          <input type="email" class="form-control" placeholder="Adresse mail" formControlName="email" #userEmail
+          <input id="auth_btn2" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" type="email" class="form-control" placeholder="Adresse mail" formControlName="email" #userEmail
           required>
       </div>
       <div class="form-group input-group" style="padding-bottom: 2%;">
         <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          <span id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
-      <input class="form-control" formControlName="password"
+      <input id="auth_btn2" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+      rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="form-control" formControlName="password"
           #userPwd
           required placeholder="Mot de passe" type="password">
         </div>
       <div class="form-group input-group" style="padding-bottom: 2%;">
         <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          <span  id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="input-group-text"> <i class="fa fa-lock"></i> </span>
       </div>
-          <input class="form-control" formControlName="confirmPassword" placeholder="Confirmation du mot de passe" type="password">
+          <input id="auth_btn2" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="form-control" formControlName="confirmPassword" placeholder="Confirmation du mot de passe" type="password">
       </div>
       <div class="form-group" style="padding: 3%;">
-        <button type="submit" class="btn btn-primary btn-block" style="width:90%"> Créer un compte  </button>
+        <button id="btn_signlog" type="submit" class="btn" style="width:15%"> Inscription  </button>
       </div>
-      <p class="text-center">Déjà un compte ? <a routerLink="/connexion">Connexion</a> </p>
+      <p  class="text-center">Déjà un compte ? <a id="orange" routerLink="/connexion">Connexion</a> </p>
   </form>
 </article>
  </div>
