@@ -21,43 +21,12 @@ import { VerifyEmailComponent } from './components/auth/verify-email/verify-emai
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
-import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['connexion']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['accueil']);
 
-const cookieConfig:NgcCookieConsentConfig = {
-  cookie: {
-    domain: 'https://guidedesjeunes.com', 
-    secure: true
-  },
-  "position": "bottom",
-  "theme": "edgeless",
-  "palette": {
-    "popup": {
-      "background": "#ffffff",
-      "text": "#000000",
-      "link": "#000000"
-    },
-    "button": {
-      "background": "#bde0d5",
-      "text": "#000000",
-      "border": "transparent"
-    }
-  },
-  "type": "info",
-  "content": {
-    "message": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
-    "dismiss": "Accepter !",
-    "deny": "Refuser",
-    "close": "Fermer",
-    "link": "En savoir plus",
-    "href": "https://cookiesandyou.com",
-    "policy": "Cookie Policy"
-  },
-  dismissOnScroll: true,
-};
+
 
 
 const routes: Routes = [
@@ -123,7 +92,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes),NgcCookieConsentModule.forRoot(cookieConfig),],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 
