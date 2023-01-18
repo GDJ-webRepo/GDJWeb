@@ -1,24 +1,33 @@
-#auth{
-    opacity: 70%;
+.btn_signlog {
+  background-color: #f6a762;
+  color: #000000;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-
-    #auth_btn{
-    background-color: #BEE0D5;
+.btn_signlog:hover {
+  background-color: #fffbed;
+}
+.text-field{
+    border-radius: 4px;
+    border: 1px solid #f94747;
+    background-color: rgb(181, 41, 41);
+}
+.width-100{
     width: 100%;
-    height: 100%;
-    }
-#auth_btn2{
-    background-color: #c8ece1;
+    // background-color: #bee0d57d;
 }
-
-#btn_signlog{
-background-color: #F6A762;
-color: #000000;
+.login-compo{
+    color: #000000;
+    position: relative;
+    right: 2.5%;
+    text-decoration: none;
 }
-#orange{
+.link{
     color: #F6A762;
+    text-decoration: none;
 }
-#bottom_left{
-    position: absolute;
-    left: 50%;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px !important;
+    background-color: #bee0d57d !important;
+    color: #0000007d;
+    text-underline-offset: none !important;
 }
