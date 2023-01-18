@@ -1,39 +1,59 @@
+
 <div class="container" style="display: flex; justify-content: center; padding: 3%">
-  <div class="card" style="display: flex; justify-content: center;text-align: center; width: 90%;">
+  <div  style="display: flex; justify-content: center;text-align: center; width: 90%;">
+    
+    <article class="card-body">
+      <h2 id="titre_auth" style="text-align: center; padding: 3%; font-family: 'Noteworthy' !important">Connexion</h2>
+      <div style="text-align: center;">
+      
+    </div>
     <div class="justify-content-center">
       <img
-      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+      src="assets/images/auth/auth.jpg"
       class="img-fluid"
       alt="Sample image"
       />
   </div>
-  <article class="card-body">
-    <h2 style="text-align: center; padding: 3%;">Connexion</h2>
-    <div style="text-align: center;">
-      <!-- <button class="btn btn-block btn-outline-dark" style="margin: 3%;" (click)="authService.GoogleAuth()"> <i class="fab fa-google"></i> Login via Google</button> -->
-      <!-- <button class="btn btn-block btn-outline-primary" (click)="authService.FacebookAuth()"> <i class="fab fa-facebook-f" ></i> Login via facebook</button> -->
-    </div>
-    <hr>
+  <br>
+  Connexion avec :
+  <button class="btn btn-block btn-outline-dark" style="margin: 2%;" (click)="authService.GoogleAuth()"> <i class="fab fa-google"></i></button>
+  <button class="btn btn-block btn-outline-primary" style="margin: 0%;"  (click)="authService.FacebookAuth()"> <i class="fab fa-facebook" ></i></button>
+    <br>
     <form style="padding: 1%;" [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="form-group" style="margin: 2%;">
-        <input class="form-control" matInput formControlName="email" placeholder="Email" type="email">
+      <mat-form-field class="form-group width-100" appearance="fill" >
+        <mat-label> Email </mat-label>
+        <mat-icon matPrefix>email</mat-icon>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
+      <mat-form-field class="form-group width-100" appearance="fill" >
+        <mat-label> Mot de passe </mat-label>
+        <mat-icon matPrefix>password</mat-icon>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+      <!-- <div  class="form-group" style="margin: 2%;">
+        <input id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="form-control" matInput formControlName="email" placeholder="Email" type="email">
       </div>
       <div class="form-group" style="margin: 2%;">
-          <input class="form-control" matInput
+          <input id="auth_btn" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;" class="form-control" matInput
           type="password"
           placeholder="Mot de passe"
           formControlName="password">
-      </div>
+      </div> -->
       <div class="row">
         <div class="" style="text-align: right;">
-          <a class="small" routerLink="/mot-de-passe-oublié">Mot de passe oublié ?</a>
+          <a class="small forgot_pass" routerLink="/mot-de-passe-oublié">Mot de passe oublié ?</a>
         </div>
-        <div>
-          <button type="submit" mat-raised-button class="btn btn-primary btn-block" style="margin: 2%; width: 95%;">Connexion</button>
+        <div id="bottom_left">
+          <button type="submit" class="btn btn_signlog" style="margin: 2%; width: 15%;">Connexion</button>
+          <btn class="btn btn_signlog"  style="width: 15%;" routerLink="/inscription">Inscription</btn>
         </div>
       </div>
     </form>
-    <button class="btn btn-block btn-outline-primary" style="width: 95%;" routerLink="/inscription">Inscription</button>
+    <!-- <div id="bottom_left">
+      <button id="btn_signlog" class="btn"  mat-raised-button  style="width: 15%;" routerLink="/inscription">Inscription</button>
+    </div> -->
   </article>
   </div>
 </div>
