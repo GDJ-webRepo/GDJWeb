@@ -56,9 +56,41 @@ import { VerifyEmailComponent } from './components/auth/verify-email/verify-emai
 import { ConditionsUtilisationComponent } from './components/conditions-utilisation/conditions-utilisation.component';
 import { EditCommentComponent } from './components/article-detail/edit-comment/edit-comment.component';
 import { ObjectToArray} from './pipe/object-to-array.pipe';
-import {NgcCookieConsentModule} from 'ngx-cookieconsent';
+import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
 import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
 import { AnalyticsModule } from '@angular/fire/analytics'
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'https://guidedesjeunes.com', 
+    secure: true
+  },
+  "position": "bottom",
+  "theme": "edgeless",
+  "palette": {
+    "popup": {
+      "background": "#ffffff",
+      "text": "#000000",
+      "link": "#000000"
+    },
+    "button": {
+      "background": "#bde0d5",
+      "text": "#000000",
+      "border": "transparent"
+    }
+  },
+  "type": "opt-in",
+  "content": {
+    "message": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
+    "allow": "Accepter !",
+    "deny": "Refuser",
+    "close": "Fermer",
+    "link": "En savoir plus",
+    "href": "https://cookiesandyou.com",
+    "policy": "Cookie Policy"
+  },
+  dismissOnScroll: true,
+};
 
 @NgModule({
   declarations: [
@@ -118,7 +150,7 @@ import { AnalyticsModule } from '@angular/fire/analytics'
     FlexLayoutModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    NgcCookieConsentModule
+    NgcCookieConsentModule.forRoot(cookieConfig)
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthService],
