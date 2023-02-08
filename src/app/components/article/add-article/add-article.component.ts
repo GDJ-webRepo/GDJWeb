@@ -82,6 +82,7 @@ export class AddArticleComponent implements OnInit {
         previewText: this.addArticleForm.get('previewText')?.value,
         body: this.addArticleForm.get('body')?.value,
         comment: [],
+        favoris: [],
         date: new Date(),
         author: this.data.userData.displayName!,
         actif: true,
