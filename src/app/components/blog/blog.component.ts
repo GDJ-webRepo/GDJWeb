@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { Article } from 'src/app/model/article.model';
 import { map } from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/data/articles.service';
@@ -16,7 +16,7 @@ export class BlogComponent implements OnInit {
   articlesData: Article[] = [];
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
-  articlesLength!: number;
+  articlesLength: number = 6;
   constructor(
     private articleService: ArticleService,
     private usersService: UsersService,
@@ -37,10 +37,26 @@ export class BlogComponent implements OnInit {
     this.spinner.show();
     this.articleService.getArticles().subscribe((res: Article[]) => {
       this.articlesData = res;
-      this.articlesLength = this.articlesData.length;
-
       this.spinner.hide();
     });
+  }
+
+  switchLength() {
+    if(this.articlesLength != this.articlesData.length) {
+      console.log(this.articlesData.length)
+      this.articlesLength = this.articlesData.length
+    } else {
+      console.log('out of else')
+    }
+  }
+
+  @HostListener("window:scroll", ["$event"])
+  onWindowScroll() {
+    let pos = (document.documentElement.scrollTop) + document.documentElement.offsetHeight;
+    let max = document.documentElement.scrollHeight;
+    if(pos >= (max - 650)) {
+      this.switchLength()
+    }
   }
 
 

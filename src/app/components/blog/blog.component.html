@@ -6,7 +6,7 @@
 </div>
 
 <div class="grid">
-  <app-article *ngFor="let article of articlesData | slice:0:this.articlesData.length; " [article]=article></app-article>
-  <div *ngIf="articlesData?.length == 0" style="text-align: center; font-size: 20px; padding: 5%; font-family:'Acumin-Variable-Concept';">Aucun article pour le moment !</div>
+  <app-article *ngFor="let article of articlesData | slice:0:this.articlesLength; " [article]=article></app-article>
+  <div *ngIf="articlesData?.length == 0"style="text-align: center; font-size: 20px; padding: 5%; font-family:'Acumin-Variable-Concept';">Aucun article pour le moment !</div>
 </div>
 
