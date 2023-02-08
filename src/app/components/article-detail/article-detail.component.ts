@@ -2,7 +2,6 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { map, Subscription } from 'rxjs';
 import { Article } from 'src/app/model/article.model';
 import { Commentary } from 'src/app/model/comment.model';
 import { User } from 'src/app/model/user';
@@ -27,8 +26,8 @@ export class ArticleDetailComponent implements OnInit {
     private spinner: NgxSpinnerService
   ) {
     this.article.comment = [];
+    this.article.favoris = [];
   }
-
   article: Article = {};
   id!: string;
   async ngOnInit() {
@@ -39,10 +38,9 @@ export class ArticleDetailComponent implements OnInit {
       });
     }
 
-    await this.getArticleDetails();
-    if (this.article!.comment === undefined) {
-      this.article!.comment = []
-    }
+    await this.getArticleDetails()
+
+   
   }
 
   async getArticleDetails() {
@@ -54,6 +52,20 @@ export class ArticleDetailComponent implements OnInit {
         this.article! = res[0];
         return res[0];
       });
+  }
+
+
+  addFav(): void {
+    this.article!.favoris!.push(this.userData!.uid)
+    this.articleService.updateFav(this.article!, this.article!.favoris!);
+  }
+
+  removeFav(): void {
+    const indexOfObject = this.article!.favoris!.findIndex((object) => {
+      return object === this.userData!.uid;
+    });
+    this.article!.favoris!.splice(indexOfObject, 1);
+    this.articleService.updateFav(this.article!, this.article!.favoris!);
   }
 
   addComment(): void {
@@ -78,8 +90,12 @@ export class ArticleDetailComponent implements OnInit {
       });
     }
     else{
-      alert("Merci de vous connecter ou créer un compte pour poster un commentaire")
+      this.notConnected()
     }
+  }
+
+  notConnected(){
+    alert("Merci de vous connecter ou créer un compte pour poster un commentaire")
   }
 
   removeComment(comment: Commentary): void {
