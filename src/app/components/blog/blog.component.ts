@@ -16,6 +16,7 @@ export class BlogComponent implements OnInit {
   articlesData: Article[] = [];
   user$ = this.usersService.currentUserProfile$;
   userData?: User | null;
+  articlesLength!: number;
   constructor(
     private articleService: ArticleService,
     private usersService: UsersService,
@@ -35,11 +36,13 @@ export class BlogComponent implements OnInit {
   getAllArticles() {
     this.spinner.show();
     this.articleService.getArticles().subscribe((res: Article[]) => {
-
       this.articlesData = res;
+      this.articlesLength = this.articlesData.length;
+
       this.spinner.hide();
     });
   }
+
 
   addArticleDialog(): void {
     this.dialog.open(AddArticleComponent, {
