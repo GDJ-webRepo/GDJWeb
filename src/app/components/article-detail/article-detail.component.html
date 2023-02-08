@@ -1,5 +1,5 @@
 <ngx-spinner size="medium" color="#fff" [fullScreen]="true" type="ball-scale-mulitple"><p style="font-size : 20px; color: white">Chargement....</p></ngx-spinner>
-<div *ngIf="article !== null ">
+<div *ngIf="article !== null">
   <div class="card-image">
   <img
     src= "{{ article!.imageUrl }}"
@@ -7,7 +7,6 @@
     alt= ""
   />
   </div>
-
   <div class="container-body">
     <div class="card-body" >
       <a id="retour" [routerLink]="['/blog']">← Retour</a>
@@ -15,10 +14,26 @@
         <p class="card-text" style="font-family: 'Acumin-Variable-Concept'; font-size: 19px"  [innerHTML]="article!.body">
         </p>
     </div>
-
+    <div *ngIf="userData != null else ElseFav">
+      <ul>
+        <li>
+          <i *ngIf="!article.favoris!.includes(userData!.uid)" class="fa-sharp fa-regular fa-heart fa-2xl fav-hearth" (click)="addFav()"></i> 
+          <i *ngIf="article.favoris!.includes(userData!.uid)" class="fa-sharp fa-solid fa-heart fa-2xl fav-hearth" (click)="removeFav()"></i>
+        {{article.favoris!.length}} Favoris 
+        </li>
+      </ul>
+    </div>
+    <ng-template #ElseFav>
+      <ul>
+        <li>
+          <i class="fa-sharp fa-regular fa-heart fa-2xl fav-hearth" (click)="notConnected()"></i> 
+          {{article.favoris!.length}} Favoris 
+        </li>
+      </ul>
+    </ng-template>
   </div>
 
-  <div>
+  <div class="comment-section">
     <h3 style="text-align: center; padding: 3%">Espace Commentaire</h3>
     <div style="text-align:center">
       <button type="button" class="btn" style="background-color: #bde0d5; width: max-content; color: white" (click)="addComment()">Ajouter un commentaire</button>
