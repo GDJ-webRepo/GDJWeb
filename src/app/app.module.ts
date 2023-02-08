@@ -58,7 +58,8 @@ import { EditCommentComponent } from './components/article-detail/edit-comment/e
 import { ObjectToArray} from './pipe/object-to-array.pipe';
 import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
 import { PolitiqueConfidentialiteComponent } from './components/politique-confidentialite/politique-confidentialite.component';
-import { AnalyticsModule } from '@angular/fire/analytics'
+import { AnalyticsModule } from '@angular/fire/analytics';
+import { HourComponent } from './components/rdv/hour/hour.component'
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -120,6 +121,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     EditCommentComponent,
     ObjectToArray,
     PolitiqueConfidentialiteComponent,
+    HourComponent,
   ],
   imports: [
     BrowserModule,
