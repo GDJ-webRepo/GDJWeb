@@ -78,6 +78,10 @@ export class ArticleService {
     );
   }
 
+  updateFav(article: Article, fav: Array<String>){
+    return this.articleRef.doc(article.id).update({favoris: fav});
+  }
+
   updateComment(article: Article, comment: Commentary[]){
     return this.articleRef.doc(article.id).update({ comment: comment});
   }

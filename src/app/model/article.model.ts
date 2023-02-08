@@ -10,5 +10,6 @@ export interface Article {
   actif? : boolean;
   date? : Date;
   imgName?: string;
+  favoris?: Array<String>;
   comment?: Array<Commentary>;
 }
