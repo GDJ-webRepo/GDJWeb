@@ -9,39 +9,27 @@
       <div class="row">
         <div class="col-md-7">
           <div class="container px-5 my-5">
-              <form id="contactForm" #contactForm="ngForm" (ngSubmit)="onSubmitForm(contactForm)">
+              <form id="contactForm" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
                   <div class="form-floating mb-3 shadow rounded">
-                      <input class="form-control" id="nomPrenom" type="text" name="userName" [(ngModel)]="userName" placeholder="Nom &amp; Prénom" style="background-color: #FFFBED;"/>
+                      <input class="form-control" id="nomPrenom" type="text" name="name" [(ngModel)]="name" placeholder="Nom &amp; Prénom" style="background-color: #FFFBED;"/>
                       <label for="nomPrenom" style="opacity: 50%">Nom &amp; Prénom</label>
-                      <!-- <div class="invalid-feedback" data-sb-feedback="nomPrenom:required">Nom &amp; Prénom is required.</div> -->
                   </div>
                   <div class="form-floating mb-3 shadow rounded">
-                      <input class="form-control" id="email" type="email" name="userEmail" [(ngModel)]="userEmail" placeholder="Email" style="background-color: #FFFBED"/>
+                      <input class="form-control" id="email" type="email" name="email" [(ngModel)]="email" placeholder="Email" style="background-color: #FFFBED"/>
                       <label for="email" style="opacity: 50%">Email</label>
-                      <!-- <div class="invalid-feedback" data-sb-feedback="email:required">Email is required.</div>
-                      <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div> -->
                   </div>
                   <div class="form-floating mb-3 shadow rounded">
-                      <textarea class="form-control" id="votreMessageQuestion" type="text" name="userMessage" [(ngModel)]="userMessage" placeholder="Votre message, question …" style="height: 10rem; background-color:#FFFBED"></textarea>
+                      <textarea class="form-control" id="votreMessageQuestion" type="text" name="message" [(ngModel)]="message" placeholder="Votre message, question …" style="height: 10rem; background-color:#FFFBED"></textarea>
                       <label for="votreMessageQuestion" style="opacity: 50%">Votre message, question …</label>
-                      <!-- <div class="invalid-feedback" data-sb-feedback="votreMessageQuestion:required">ce champ est requis.</div> -->
                   </div>
-                  <!-- <div class="d-none" id="submitSuccessMessage">
-                      <div class="text-center mb-3">
-                          <div class="fw-bolder">Form submission successful!</div>
-                      </div>
-                  </div>
-                  <div class="d-none" id="submitErrorMessage">
-                      <div class="text-center text-danger mb-3">Error sending message!</div>
-                  </div> -->
                   <div class="d-grid">
                       <button class="btn shadow rounded" id="submitButton" type="submit">Envoyer</button>
                   </div>
               </form>
             </div>
 		    </div>
-        <div class="col-md-5">
-          <img alt="Bootstrap Image Preview" src="../../../assets/images/fond-footer.png" class="rounded" style="width:100%;height:100%"/>
+        <div class="col-md-5" style="width: min-content">
+          <img alt="Bootstrap Image Preview" src="../../../assets/images/fond-footer.png" class="rounded"/>
         </div>
       </div>
     </div>
