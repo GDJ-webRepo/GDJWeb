@@ -91,3 +91,22 @@ border:solid 3px #AEAEAE;
   color:whitesmoke;
   transition: all .5s;
 }
+
+::ng-deep .carousel-control-prev-icon,
+::ng-deep .carousel-control-next-icon {
+  height: 35px;
+  width: 35px;
+  background-color: #FFFBED;
+  border-radius: 50%;
+  border: solid 1px #000000;;
+}
+
+
+::ng-deep .carousel-control-next-icon
+{
+  background-image: url(../../../assets/images/icons8-chevron-right-48.png);
+}
+
+::ng-deep .carousel-control-prev-icon {
+  background-image: url(../../../assets/images/icons8-chevron-left-48.png);
+}

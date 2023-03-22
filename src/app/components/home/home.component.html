@@ -48,7 +48,7 @@
       </div>
   </div>
   <div *ngIf="articles?.length != 1 && articles?.length != 0">
-    <mdb-carousel [controls]="true" [indicators]="true" [dark]="true">
+    <mdb-carousel [controls]="true" [indicators]="true" [dark]="false">
       <mdb-carousel-item *ngFor="let article of articles | slice:0:6;" [routerLink]="['/detail', article.id]">
         <img
           src="{{article.imageUrl}}"
