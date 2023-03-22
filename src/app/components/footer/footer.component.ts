@@ -13,11 +13,11 @@ export class FooterComponent implements OnInit {
   name!: string;
   email!: string;
   message!: string;
-  
+
   constructor(private router: Router, private http: HttpClient, private toast: HotToastService) {}
-  
+
   ngOnInit(): void {}
-  
+
   onSubmit(contactForm: NgForm) {
     if (contactForm.valid) {
       this.toast.loading("Envoi du formulaire")
