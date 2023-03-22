@@ -45,6 +45,11 @@ export class FaqComponent implements OnInit {
     });
   }
 
+  bottomFunction() {
+    document.body.scrollTo(0, 1400); //For Safari
+    document.documentElement.scrollTo(0,1400); //For Chrome, Firefox, IE and Opera
+  }
+
   addFaqDialog(): void {
     this.dialog.open(AddFaqComponent, {
       width: '40rem',

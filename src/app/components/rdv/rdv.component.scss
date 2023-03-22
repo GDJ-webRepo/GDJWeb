@@ -5,7 +5,14 @@
   transition: all 0.2s;
   margin-right : 10px;
   background-color: #bde0d5;
-  color: white;
+  color: rgb(40, 40, 40);
   border-radius: 8px;
   height: 100%;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#edit-button:hover {
+  background-color: #c3ece0;
+  color: rgb(65, 65, 65);
 }
