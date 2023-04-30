@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rdv.component.scss']
 })
 export class RdvComponent implements OnInit {
+calendly: any;
+inline: any;
 
   constructor() { }
 
